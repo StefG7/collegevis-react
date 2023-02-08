@@ -1,9 +1,8 @@
+import React from 'react';
 import BarChart from './BarChart'
+import P5Background from './components/P5Background'
 
 const App = () => {
-    return (<BarChart 
-        data={[12, 5, 6, 6, 9, 10]}
-        width={700}
-        height={300}/>)
+    return (<P5Background/>)
 }
 export default App;
