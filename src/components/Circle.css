@@ -1,0 +1,22 @@
+.square {
+    display: flex;
+    width: 100px;
+    height: 100px;
+    background-color: red;
+}
+  
+.circle {
+    display: flex;
+    width: 100px;
+    height: 100px;
+    background-color: green;
+    border-radius: 50%;
+}
+
+.text {
+    margin: auto;
+}
+
+p {
+    color: white;
+}

@@ -1,54 +1,121 @@
-// BOILERPLATE APP.JS
+LEFTOVER EXPERIMENTAL CODE
+I haven't gotten rid of it in case I want to come back to it and use it.
 
-import logo from './logo.svg';
-import './App.css';
+BOOTSTRAP-REACT VERSION
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    // Bootstrap-React imports
+    // import { Form, Container, Row, Col, Table, Button } from 'react-bootstrap';
+
+    // <Container fluid>
+    //     <Row>
+    //         <Col xs={6} className="top">
+    //             {/* <div class="form-check form-switch">
+    //                 <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" checked="true"></input>
+    //                 <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+    //             </div> */}
+    //             {/* <Form>
+    //                 <h3><span>{this.state.checked ? 'Careers:' : 'Majors:'}</span></h3>
+    //                 <Form.Check 
+    //                     type="switch"
+    //                     onChange={this.handleChange}
+    //                     checked={this.state.checked}
+    //                     // label="majors-careers"
+    //                     className="switch"
+    //                 />
+    //             </Form> */}
+    //             <h2>Simple usage</h2>
+    //             <span>Switch with default style</span>
+    //             <Form>
+    //                 <Form.Check
+    //                     onChange={this.handleChange}
+    //                     checked={this.state.checked}
+    //                     className="switch"
+    //                     type="switch"
+    //                 />
+    //             </Form>
+    //             <p>The switch is <span>{this.state.checked ? 'on' : 'off'}</span>.</p>
+    //         </Col>
+    //     </Row>
+    //     <Row>
+    //         <Col xs={6} className="title">
+    //             <h1>Food & Nutrition</h1>
+    //             <Container>
+    //             <Table striped bordered hover>
+    //                 <thead>
+    //                     <tr>
+    //                     <th>#</th>
+    //                     <th>First Name</th>
+    //                     <th>Last Name</th>
+    //                     <th>Username</th>
+    //                     </tr>
+    //                 </thead>
+    //                 <tbody>
+    //                     <tr>
+    //                     <td>1</td>
+    //                     <td>Mark</td>
+    //                     <td>Otto</td>
+    //                     <td>@mdo</td>
+    //                     </tr>
+    //                     <tr>
+    //                     <td>2</td>
+    //                     <td>Jacob</td>
+    //                     <td>Thornton</td>
+    //                     <td>@fat</td>
+    //                     </tr>
+    //                     <tr>
+    //                     <td>3</td>
+    //                     <td colSpan={2}>Larry the Bird</td>
+    //                     <td>@twitter</td>
+    //                     </tr>
+    //                 </tbody>
+    //             </Table>
+    //             </Container>
+    //         </Col>
+    //         <Col xs={6} className="title">
+    //             <h1>Placeholder</h1>
+    //         </Col>
+    //     </Row>
+    // </Container>
+
+OLD VERSION OF TABLE
+    {/* <table className="table table-light table-striped">
+    <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Major</th>
+        <th scope="col">Campus</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        </tr>
+        <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        </tr>
+        <tr>
+        <th scope="row">3</th>
+        <td colSpan="2">Larry the Bird</td>
+        </tr>
+    </tbody>
+    </table> */}
+
+SWITCH STUFF THAT DIDNT WORK OUT
+
+    <div className="col-sm-6 switch">
+    <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Majors </label>
+    <div className="form-check form-switch">
+        <input 
+            className="form-check-input" 
+            type="checkbox" role="switch" 
+            id="flexSwitchCheckDefault" 
+            checked={this.state.checked}
+            onChange={this.handleChange}>
+        </input>
     </div>
-  );
-}
-
-export default App;
-
-import BarChart from './BarChart'
-
-class mytext extends Component {
-    render() {
-        return (
-            <p>something</p>
-        )
-    }
-}
-
-const App = () => {
-    return (<BarChart 
-        data={[12, 5, 6, 6, 9, 10]}
-        width={700}
-        height={300}/>)
-}
-export default App;
-
-// First modified version of App.js
-
-import BarChart from './BarChart'
-
-const App = () => {
-    return ( <BarChart /> )
-}
-export default App;
+    <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Careers</label>
+    </div>
