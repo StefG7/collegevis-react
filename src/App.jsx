@@ -16,13 +16,3 @@ function App() {
 }
 
 export default App
-
-{/* <p style={{color: "white"}}>TEXT IN FRONT OF P5 CANVAS!!!</p> */}
-{/* <Circle /> */}
-{/* <P5Background /> */}
-
-        // <Container fluid>
-        //     {/* <Detail_1 /> */}
-        //     <Detail2 />
-        //     {/* <P5Background /> */}
-        // </Container>

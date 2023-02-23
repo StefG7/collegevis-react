@@ -62,7 +62,9 @@ class Detail2 extends React.Component{
         return (
             <div className="container-fluid">
                 <div className="row top">
-                    
+                    <div className="col-sm-6 d-flex justify-content-center">
+                        <button className="btn" type="button">Careers</button>
+                    </div>
                 </div>
                 <div className="row">
                     <div className="col-sm-6 title">

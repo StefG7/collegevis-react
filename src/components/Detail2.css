@@ -1,5 +1,6 @@
 body {
     background-color: rgb(174, 208, 252);
+    font-family: 'Noto Sans', sans-serif;
 }
 
 h1 {
@@ -7,7 +8,7 @@ h1 {
     color: black;
     margin: 50px;
     font-size: 50px;
-    font-weight: 800;
+    font-weight: bolder;
 }
 
 h3 {
@@ -28,7 +29,28 @@ table thead {
     margin: 0 0 0 0;
 }
 
-.switch {
+.btn {
+    color: white;
+    background-color: #5e6caa;
+    font-size: 30px;
+    font-weight: bold;
+    border-radius: 7px;
+}
+
+.btn:hover {
+    color: #5e6caa;
+    background-color: white;
+}
+
+/* https://www.geeksforgeeks.org/how-to-add-a-pressed-effect-on-button-click-in-css/ */
+.btn:active {
+    transform: scale(0.98);
+    /* Scaling button to 0.98 to its original size */
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+    /* Lowering the shadow */
+}
+
+/* .switch {
     font-size: 50px;
     font-weight: bold;
     display: inline-flex;
@@ -39,7 +61,7 @@ table thead {
     margin-right: 25px;
     margin-top: 12px;
     margin-left: -3px;
-}
+} */
 
 .tableContainer{
     background-color: #8595de;
@@ -50,15 +72,15 @@ table thead {
     overflow: hidden;
 }
 
-.button {
-    /* padding: 20px; */
+/* .button {
+    padding: 20px;
     border-radius: 15px;
     margin: 50px;
     height: 100px;
     width: 250px;
     font-size: 20px;
     background-color: rgb(227, 88, 41);
-}
+} */
 
 .img {
     width: 50vh;
@@ -83,14 +105,3 @@ table thead {
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 }
-
-/* .minor1 {
-    margin: 0;
-    border-radius: 7px;
-    height: 100px;
-    width: 250px;
-    background-color: rgb(227, 88, 41);
-    color: red;
-    padding: 45px;
-    font-size: 40px;
-} */
