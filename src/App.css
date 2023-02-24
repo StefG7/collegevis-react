@@ -29,39 +29,12 @@ table thead {
     margin: 0 0 0 0;
 }
 
-.btn {
-    color: white;
-    background-color: #5e6caa;
-    font-size: 30px;
-    font-weight: bold;
-    border-radius: 7px;
+.p5Container {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
 }
-
-.btn:hover {
-    color: #5e6caa;
-    background-color: white;
-}
-
-/* https://www.geeksforgeeks.org/how-to-add-a-pressed-effect-on-button-click-in-css/ */
-.btn:active {
-    transform: scale(0.98);
-    /* Scaling button to 0.98 to its original size */
-    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
-    /* Lowering the shadow */
-}
-
-/* .switch {
-    font-size: 50px;
-    font-weight: bold;
-    display: inline-flex;
-    justify-content: center;
-}
-.switch label {
-    font-size: 30px;
-    margin-right: 25px;
-    margin-top: 12px;
-    margin-left: -3px;
-} */
 
 .tableContainer{
     background-color: #8595de;
@@ -71,16 +44,6 @@ table thead {
     overflow: scroll;
     overflow: hidden;
 }
-
-/* .button {
-    padding: 20px;
-    border-radius: 15px;
-    margin: 50px;
-    height: 100px;
-    width: 250px;
-    font-size: 20px;
-    background-color: rgb(227, 88, 41);
-} */
 
 .img {
     width: 50vh;
@@ -104,4 +67,29 @@ table thead {
     top: 50%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
+}
+
+.btn {
+    color: white;
+    background-color: #5e6caa;
+    font-size: 30px;
+    font-weight: bold;
+    border-radius: 7px;
+}
+
+.btn-layout {
+    padding: 10px;
+}
+
+.btn:hover {
+    color: #5e6caa;
+    background-color: white;
+}
+
+/* https://www.geeksforgeeks.org/how-to-add-a-pressed-effect-on-button-click-in-css/ */
+.btn:active {
+    transform: scale(0.98);
+    /* Scaling button to 0.98 to its original size */
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+    /* Lowering the shadow */
 }

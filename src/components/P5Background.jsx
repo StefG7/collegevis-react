@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import p5 from 'p5';
-import './P5Background.css';
+import './Detail.css'
 
 import {MAJOR_CATEGORIES, MAJOR_COLORS, MAJOR_POSITIONS, MINOR_CATEGORIES} from '../constants.jsx';
 

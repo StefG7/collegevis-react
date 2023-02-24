@@ -1,0 +1,95 @@
+body {
+    background-color: rgb(174, 208, 252);
+    font-family: 'Noto Sans', sans-serif;
+}
+
+h1 {
+    text-align: center;
+    color: black;
+    margin: 50px;
+    font-size: 50px;
+    font-weight: bolder;
+}
+
+h3 {
+    text-align: center;
+    color: black;
+    margin: 50px;
+    font-size: 30px;
+}
+
+table {
+    font-size: 15px;
+    /* margin-top: 10px; */
+}
+
+table thead {
+    position: sticky;
+    top: 0px;
+    margin: 0 0 0 0;
+}
+
+.p5Container {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+}
+
+.tableContainer{
+    background-color: #8595de;
+    border-radius: 10px;
+    height: 50vh;
+    /* padding: 0 10px 10px 10px; */
+    overflow: scroll;
+    overflow: hidden;
+}
+
+.img {
+    width: 50vh;
+    margin: auto;
+    display: inline-block;
+}
+
+.title {
+    margin-top: -5vh;
+    padding: 80px;
+}
+
+.top {
+    margin-top: 10vh;
+    padding: 20px;
+}
+
+.vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.btn {
+    color: white;
+    background-color: #5e6caa;
+    font-size: 30px;
+    font-weight: bold;
+    border-radius: 7px;
+}
+
+.btn-layout {
+    padding: 10px;
+}
+
+.btn:hover {
+    color: #5e6caa;
+    background-color: white;
+}
+
+/* https://www.geeksforgeeks.org/how-to-add-a-pressed-effect-on-button-click-in-css/ */
+.btn:active {
+    transform: scale(0.98);
+    /* Scaling button to 0.98 to its original size */
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+    /* Lowering the shadow */
+}

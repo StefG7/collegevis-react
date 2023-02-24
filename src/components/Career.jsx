@@ -1,6 +1,6 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './Detail2.css';
+import './Detail.css'
 import { MAJOR_DATA_SAMPLE } from "../constants";
 
 
@@ -47,7 +47,7 @@ Contains the overall layout of the detail page and calls other nested functions/
 */
 
 
-class Detail2 extends React.Component{
+class Career extends React.Component{
     constructor() {
         super();
         this.state = { checked: false };
@@ -61,18 +61,13 @@ class Detail2 extends React.Component{
     render() {
         return (
             <div className="container-fluid">
-                <div className="row top">
-                    <div className="col-sm-6 d-flex justify-content-center">
-                        <button className="btn" type="button">Careers</button>
-                    </div>
-                </div>
                 <div className="row">
                     <div className="col-sm-6 title">
-                        <h1>Food & Nutrition</h1>
+                        <h1>{this.props.minor}</h1>
                         <Table data={ MAJOR_DATA_SAMPLE }/>
                     </div>
                     <div className="col-sm-6 title">
-                        <h1>Placeholder</h1>
+                        <h1>CAREERr</h1>
                     </div>
                 </div>
             </div>
@@ -80,4 +75,4 @@ class Detail2 extends React.Component{
     }
 }
 
-export default Detail2
+export default Career

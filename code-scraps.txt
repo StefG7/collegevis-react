@@ -1,3 +1,21 @@
+----------------------------------------------------------------------------------------------
+TO DO LIST: 
+- simple state management/button component toggles 
+    - https://www.youtube.com/watch?v=eGaaw1Py2aY
+    - https://beta.reactjs.org/reference/react/useState
+- add openmap to major page using leaflet 
+    - https://giuliacajati.medium.com/all-about-openstreetmap-using-react-js-c24fd0856aca
+- buttons are being iffy
+- figure out how to scope the CSS 
+    - https://dev.to/viclafouch/how-to-scope-your-css-scss-in-react-js-271a
+    - https://reactjs.org/docs/faq-styling.html
+- set up state sharing across components 
+    - https://www.geeksforgeeks.org/how-to-share-state-across-react-components-with-context/
+    - will use context for now but might have to resort to other state management (redux?)
+        - https://react-redux.js.org/
+
+----------------------------------------------------------------------------------------------
+
 LEFTOVER EXPERIMENTAL CODE
 I haven't gotten rid of it in case I want to come back to it and use it.
 
@@ -158,4 +176,366 @@ OLD BOOTSTRAP IMPORT FROM HTML
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
           crossorigin="anonymous"/> -->
+
+DETAIL-1.JSX
+
+    import React from 'react';
+    import './Detail-1.css';
+
+    // Bootstrap imports
+    import { Container, Row, Col, Image, Button } from 'react-bootstrap';
+
+    class Detail_1 extends React.Component{
+        render() {
+            return (
+                <Container fluid>
+                    <Row>
+                        <Col xs={6}>
+                            <Image src="https://lh3.googleusercontent.com/H1_2W9MHglpx4Mg7Tglp74ZMKpfCB_eQXa_3annw4NtMs6kiTkVl3A_csxbHIXJNXrM=w2400" 
+                                alt="ag-major-logo"
+                                className='vertical-center img'/>
+                        </Col>
+                        <Col xs={6}>
+                            <Container className='vertical-center'>
+                                <Row>
+                                    <Col>
+                                        {/* <button class="button">Food & Nutrition</button> */}
+                                        <Button variant='danger' className='button' size="lg">Food & Nutrition</Button>
+                                        <Button variant='warning' className='button' size="lg">Environmental Science</Button>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col>
+                                        <Button variant='success'className='button' size="lg">Agriculture</Button>
+                                        <Button variant='primary' className='button' size="lg">Animal Science</Button>
+                                    </Col>
+                                </Row>
+                            </Container>
+                        </Col>
+                    </Row>
+                </Container>
+            )
+        }
+    }
+
+    export default Detail_1
+
+DETAIL-1.CSS
+
+    h1 {
+    text-align: center;
+    color: black;
+    }
+
+    /* button {
+        border-radius: 25px;
+        margin: 50px;
+        height: 100px;
+        width: 250px;
+        font-size: 50px;
+    } */
+
+    .button {
+        /* padding: 20px; */
+        border-radius: 15px;
+        margin: 50px;
+        height: 100px;
+        width: 250px;
+        font-size: 20px;
+        background-color: rgb(227, 88, 41);
+    }
+
+    .img {
+        width: 50vh;
+        margin: auto;
+        display: inline-block;
+    }
+
+    .vertical-center {
+        margin-left: 100px;
+        position: absolute;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+
+    .minor1 {
+        margin: 0;
+        border-radius: 7px;
+        height: 100px;
+        width: 250px;
+        background-color: rgb(227, 88, 41);
+        color: red;
+        padding: 45px;
+        font-size: 40px;
+    }
+
+CIRCLE.JSX
+
+    // https://www.google.com/search?q=react+interactive+svg&rlz=1C1ONGR_enUS994US994&oq=react+interactive+svg&aqs=chrome..69i57j0i512j0i22i30l2j0i390l4.7850j0j4&sourceid=chrome&ie=UTF-8
+    // https://medium.com/hackernoon/5-ways-to-animate-a-reactjs-app-in-2019-56eb9af6e3bf
+
+
+    // import { CSSTransitionGroup } from 'react-transition-group'
+
+    // class TodoList extends React.Component {
+    //     constructor(props) {
+    //       super(props);
+    //       this.state = {items: ['hello', 'world', 'click', 'me']};
+    //       this.handleAdd = this.handleAdd.bind(this);
+    //     }
+    
+    //     handleAdd() {
+    //       const newItems = this.state.items.concat([
+    //         prompt('Enter some text')
+    //       ]);
+    //       this.setState({items: newItems});
+    //     }
+    
+    //     handleRemove(i) {
+    //       let newItems = this.state.items.slice();
+    //       newItems.splice(i, 1);
+    //       this.setState({items: newItems});
+    //     }
+    
+    //     render() {
+    //       const items = this.state.items.map((item, i) => (
+    //         <div key={item} onClick={() => this.handleRemove(i)}>
+    //           {item}
+    //         </div>
+    //       ));
+    
+    //       return (
+    //         <div>
+    //           <button onClick={this.handleAdd}>Add Item</button>
+    //           <CSSTransitionGroup
+    //             transitionName="example"
+    //             transitionEnterTimeout={500}
+    //             transitionLeaveTimeout={300}>
+    //             {items}
+    //           </CSSTransitionGroup>
+    //         </div>
+    //       );
+    //     }
+    // }
+    // export default TodoList
+
+    import React from 'react'
+    import './Circle.css'
+
+
+    class MYTEXT extends React.Component {
+
+    render() {
+
+        return (
+            <p className="text">Additional Text</p>
+        )
+    }
+    }
+
+    class Circle extends React.Component {
+    render() {
+
+        return (
+        <div>
+            <div className="square">
+                <p className="text">Square text</p>
+                <MYTEXT />
+            </div>
+            <div className="circle">
+                <p className="text">Circle text</p>
+            </div>
+        </div>
+        )
+    }
+    }
+
+
+    // function Circle() {
+
+    //     return (
+    //         <div>
+    //             <div class="square">
+    //                 <p class="text">Square text</p>
+    //             </div>
+    //             <div class="circle">
+    //                 <p class="text">Circle text</p>
+    //             </div>
+    //         </div>
+    //     )
+
+    //     // const [count, setCount] = useState(0)
+    
+    //     // return (
+    //     //   <div className="App">
+    //     //     <div>
+    //     //       <a href="https://vitejs.dev" target="_blank">
+    //     //         <img src="/vite.svg" className="logo" alt="Vite logo" />
+    //     //       </a>
+    //     //       <a href="https://reactjs.org" target="_blank">
+    //     //         <img src={reactLogo} className="logo react" alt="React logo" />
+    //     //       </a>
+    //     //     </div>
+    //     //     <h1>Vite + React</h1>
+    //     //     <div className="card">
+    //     //       <button onClick={() => setCount((count) => count + 1)}>
+    //     //         count is {count}
+    //     //       </button>
+    //     //       <p>
+    //     //         Edit <code>src/App.jsx</code> and save to test HMR
+    //     //       </p>
+    //     //     </div>
+    //     //     <p className="read-the-docs">
+    //     //       Click on the Vite and React logos to learn more
+    //     //     </p>
+    //     //   </div>
+    //     // )
+    // }
+
+    export default Circle
+
+CIRCLE.CSS
+
+    .square {
+        display: flex;
+        width: 100px;
+        height: 100px;
+        background-color: red;
+    }
+    
+    .circle {
+        display: flex;
+        width: 100px;
+        height: 100px;
+        background-color: green;
+        border-radius: 50%;
+    }
+
+    .text {
+        margin: auto;
+    }
+
+    p {
+        color: white;
+    }
+
+REMOVE BUTTON FROM Detail2
+
+                <div className="row top">
+                    <div className="col-sm-6 d-flex justify-content-center">
+                        <button className="btn" type="button">Careers</button>
+                    </div>
+                </div>
+
+REMOVE BUTTON/SWITCH CSS FROM DETAIL2.CSS
+
+    .btn {
+        color: white;
+        background-color: #5e6caa;
+        /* font-size: 30px; */
+        font-weight: bold;
+        border-radius: 7px;
+    }
+
+    .btn:hover {
+        color: #5e6caa;
+        background-color: white;
+    }
+
+    /* https://www.geeksforgeeks.org/how-to-add-a-pressed-effect-on-button-click-in-css/ */
+    .btn:active {
+        transform: scale(0.98);
+        /* Scaling button to 0.98 to its original size */
+        box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+        /* Lowering the shadow */
+    }
+
+    /* .switch {
+        font-size: 50px;
+        font-weight: bold;
+        display: inline-flex;
+        justify-content: center;
+    }
+    .switch label {
+        font-size: 30px;
+        margin-right: 25px;
+        margin-top: 12px;
+        margin-left: -3px;
+    } */
+
+DETAIL1.SCOPED.CSS AND P5CONTAINER REMOVED TO KEEP ONLY GLOBAL CSS FOR NOW
+
+    body {
+        background-color: rgb(174, 208, 252);
+        font-family: 'Noto Sans', sans-serif;
+    }
+
+    h1 {
+        text-align: center;
+        color: black;
+        margin: 50px;
+        font-size: 50px;
+        font-weight: bolder;
+    }
+
+    h3 {
+        text-align: center;
+        color: black;
+        margin: 50px;
+        font-size: 30px;
+    }
+
+    table {
+        font-size: 15px;
+        /* margin-top: 10px; */
+    }
+
+    table thead {
+        position: sticky;
+        top: 0px;
+        margin: 0 0 0 0;
+    }
+
+
+
+    .tableContainer{
+        background-color: #8595de;
+        border-radius: 10px;
+        height: 50vh;
+        /* padding: 0 10px 10px 10px; */
+        overflow: scroll;
+        overflow: hidden;
+    }
+
+    .img {
+        width: 50vh;
+        margin: auto;
+        display: inline-block;
+    }
+
+    .title {
+        margin-top: -5vh;
+        padding: 80px;
+    }
+
+    .top {
+        margin-top: 10vh;
+        padding: 20px;
+    }
+
+    .vertical-center {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+
+    .p5Container {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+    }
 
