@@ -2,6 +2,7 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Detail.css'
 import { MAJOR_DATA_SAMPLE } from "../constants";
+import Map from "./Map";
 
 
 /* Table Generating Function
@@ -68,6 +69,7 @@ class Major extends React.Component{
                     </div>
                     <div className="col-sm-6 title">
                         <h1>Placeholder</h1>
+                        <Map />
                     </div>
                 </div>
             </div>

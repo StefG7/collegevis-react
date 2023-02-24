@@ -12,10 +12,11 @@ h1 {
 }
 
 h3 {
-    text-align: center;
+    text-align: left;
     color: black;
     margin: 50px;
     font-size: 30px;
+    font-weight: bold;
 }
 
 table {
@@ -46,9 +47,13 @@ table thead {
 }
 
 .img {
-    width: 50vh;
     margin: auto;
     display: inline-block;
+}
+
+.img-fluid {
+    max-width: 80%;
+    height: auto;
 }
 
 .title {
@@ -78,7 +83,8 @@ table thead {
 }
 
 .btn-layout {
-    padding: 10px;
+    padding: 25px;
+    /* margin-left: 10px; */
 }
 
 .btn:hover {

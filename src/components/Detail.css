@@ -3,6 +3,10 @@ body {
     font-family: 'Noto Sans', sans-serif;
 }
 
+p {
+    font-size: 20px;
+}
+
 h1 {
     text-align: center;
     color: black;
@@ -12,7 +16,7 @@ h1 {
 }
 
 h3 {
-    text-align: center;
+    text-align: left;
     color: black;
     margin: 50px;
     font-size: 30px;
@@ -45,10 +49,20 @@ table thead {
     overflow: hidden;
 }
 
+.leaflet-container {
+    width: 300px;
+    height: 300px;
+    z-index: 1;
+}
+
 .img {
-    width: 50vh;
     margin: auto;
     display: inline-block;
+}
+
+.img-fluid {
+    max-width: 80%;
+    height: auto;
 }
 
 .title {

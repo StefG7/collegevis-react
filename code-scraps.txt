@@ -13,7 +13,7 @@ TO DO LIST:
     - https://www.geeksforgeeks.org/how-to-share-state-across-react-components-with-context/
     - will use context for now but might have to resort to other state management (redux?)
         - https://react-redux.js.org/
-
+- separate files into "pages" and "components" folders
 ----------------------------------------------------------------------------------------------
 
 LEFTOVER EXPERIMENTAL CODE

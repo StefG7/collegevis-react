@@ -10,6 +10,8 @@ import { MAJOR_DATA_SAMPLE } from "../constants";
     2. Sets the table header and 3 columns. 
     3. Iterates through the data to populate table with rows.
 
+    Can separate this into its own component later on if needed. 
+
 */
 
 const Table = ({data}) => {
@@ -19,8 +21,8 @@ const Table = ({data}) => {
             <thead>
                 <tr>
                 <th scope="col">#</th>
-                <th scope="col">Major</th>
-                <th scope="col">Campus</th>
+                <th scope="col">Career</th>
+                <th scope="col">O'Net Link</th>
                 </tr>
             </thead>
             <tbody>
@@ -50,24 +52,25 @@ Contains the overall layout of the detail page and calls other nested functions/
 class Career extends React.Component{
     constructor() {
         super();
-        this.state = { checked: false };
-        this.handleChange = this.handleChange.bind(this);
     }
-
-    handleChange(checked) {
-        this.setState({ checked });
-    }
-
     render() {
         return (
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-sm-6 title">
+                        {/* eventually all the sample information shown below will be passed down as props or imported */}
                         <h1>{this.props.minor}</h1>
-                        <Table data={ MAJOR_DATA_SAMPLE }/>
+                        <div className=""></div>
+                        <img className="img-fluid rounded mx-auto d-block" src="src\assets\pexels-mario-schafer-11322619.jpg" alt="Chefs rolling out dough" />
+                        <br /><br />
+                        <div className="row">
+                            <h3>Chefs and Head Cooks</h3>
+                            <p>Direct and may participate in the preparation, seasoning, and cooking of salads, soups, fish, meats, vegetables, desserts, or other foods. May plan and price menu items, order supplies, and keep records and accounts.</p>
+                        </div>
                     </div>
                     <div className="col-sm-6 title">
-                        <h1>CAREERr</h1>
+                        <h1>List of Careers</h1>
+                        <Table data={ MAJOR_DATA_SAMPLE }/>
                     </div>
                 </div>
             </div>

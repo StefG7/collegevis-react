@@ -9,17 +9,21 @@ function App() {
     const [state, setState] = useState("Majors");
     return (
         <div className='container-fluid'>
-            <br/>
-            <div className='btn-layout'>
-                <button className='btn' onClick={() => setState("Home")}>Home</button>
-                <br/><br/>
-                {state === "Majors" && <button className='btn' onClick={() => setState("Careers")}>{state}</button>}
-                {state === "Careers" && <button className='btn' onClick={() => setState("Majors")}>{state}</button>}
+            {/* <br/> */}
+            <div className='row'>
+                <div className='btn-layout col-sm-6'>
+                    <button className='btn' onClick={() => setState("Home")}>Home</button>
+                </div>
+                <div className='btn-layout col-sm-6' style={{display: 'flex', justifyContent:'flex-end'}}>
+                    {state === "Majors" && <button className='btn' onClick={() => setState("Careers")}>Go to {state}</button>}
+                    {state === "Careers" && <button className='btn' onClick={() => setState("Majors")}>Go to {state}</button>}
+                </div>
             </div>
+
             <div>
                 {state === "Home" && <P5Background />}
-                {state === "Majors" && <Major minor="Food & Nutrition" />}
-                {state === "Careers" && <Career minor="Food & Nutrition" />}
+                {state === "Careers" && <Major minor="Food & Nutrition" />}
+                {state === "Majors" && <Career minor="Food & Nutrition" />}
                 {/* <Detail2 minor="Food & Nutrition" /> */}
             </div>
             {/* Make this minor prop reactive to pass clicked minor category events from P5Background to Details page*/}
