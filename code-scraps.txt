@@ -1,6 +1,8 @@
 ----------------------------------------------------------------------------------------------
 NOTE: npm run dev
 
+Deployment stuff: https://www.youtube.com/watch?v=MKw-IriprJY
+
 TO DO LIST: 
 - simple state management/button component toggles 
     - https://www.youtube.com/watch?v=eGaaw1Py2aY
