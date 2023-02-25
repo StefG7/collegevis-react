@@ -1,11 +1,15 @@
 body {
-    background-color: rgb(174, 208, 252);
+    background-color: #181D27;
     font-family: 'Noto Sans', sans-serif;
+    color: white;
+}
+
+p {
+    font-size: 20px;
 }
 
 h1 {
     text-align: center;
-    color: black;
     margin: 50px;
     font-size: 50px;
     font-weight: bolder;
@@ -13,7 +17,6 @@ h1 {
 
 h3 {
     text-align: left;
-    color: black;
     margin: 50px;
     font-size: 30px;
     font-weight: bold;
@@ -21,20 +24,12 @@ h3 {
 
 table {
     font-size: 15px;
-    /* margin-top: 10px; */
 }
 
 table thead {
     position: sticky;
     top: 0px;
     margin: 0 0 0 0;
-}
-
-.p5Container {
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    z-index: -1;
 }
 
 .tableContainer{
@@ -44,6 +39,18 @@ table thead {
     /* padding: 0 10px 10px 10px; */
     overflow: scroll;
     overflow: hidden;
+}
+
+.p5Container {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+}
+
+#MinorDescription {
+    position: absolute; 
+    color: white;
 }
 
 .img {
@@ -58,7 +65,7 @@ table thead {
 
 .title {
     margin-top: -5vh;
-    padding: 80px;
+    padding: 20px;
 }
 
 .top {
@@ -82,7 +89,7 @@ table thead {
     border-radius: 7px;
 }
 
-.btn-layout {
+.app .btn-layout {
     padding: 25px;
     /* margin-left: 10px; */
 }

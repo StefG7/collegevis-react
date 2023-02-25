@@ -61,7 +61,7 @@ class Major extends React.Component{
 
     render() {
         return (
-            <div className="container-fluid">
+            <div className="container-fluid major">
                 <div className="row">
                     <div className="col-sm-6 title">
                         <h1>{this.props.minor}</h1>

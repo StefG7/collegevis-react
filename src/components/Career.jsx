@@ -55,12 +55,18 @@ class Career extends React.Component{
     }
     render() {
         return (
-            <div className="container-fluid">
+            <div className="container-fluid career">
+                <div className="row">
+                    <div className="col-sm-6 title">
+                        <h1>{this.props.minor}</h1>
+                    </div>
+                    <div className="col-sm-6 title">
+                        <h1>List of Careers</h1>
+                    </div>
+                </div>
                 <div className="row">
                     <div className="col-sm-6 title">
                         {/* eventually all the sample information shown below will be passed down as props or imported */}
-                        <h1>{this.props.minor}</h1>
-                        <div className=""></div>
                         <img className="img-fluid rounded mx-auto d-block" src="src\assets\pexels-mario-schafer-11322619.jpg" alt="Chefs rolling out dough" />
                         <br /><br />
                         <div className="row">
@@ -69,7 +75,6 @@ class Career extends React.Component{
                         </div>
                     </div>
                     <div className="col-sm-6 title">
-                        <h1>List of Careers</h1>
                         <Table data={ MAJOR_DATA_SAMPLE }/>
                     </div>
                 </div>

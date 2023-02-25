@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import P5Background from './components/P5Background';
+import FirstPage from './components/FirstPage'
 import Major from './components/Major'
 import Career from './components/Career';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -8,7 +8,7 @@ import './App.css'
 function App() {
     const [state, setState] = useState("Majors");
     return (
-        <div className='container-fluid'>
+        <div className='container-fluid app'>
             {/* <br/> */}
             <div className='row'>
                 <div className='btn-layout col-sm-6'>
@@ -21,7 +21,7 @@ function App() {
             </div>
 
             <div>
-                {state === "Home" && <P5Background />}
+                {state === "Home" && <FirstPage />}
                 {state === "Careers" && <Major minor="Food & Nutrition" />}
                 {state === "Majors" && <Career minor="Food & Nutrition" />}
                 {/* <Detail2 minor="Food & Nutrition" /> */}

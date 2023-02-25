@@ -1,6 +1,7 @@
 body {
-    background-color: rgb(174, 208, 252);
+    background-color:  #181D27;
     font-family: 'Noto Sans', sans-serif;
+    color: white;
 }
 
 p {
@@ -9,7 +10,6 @@ p {
 
 h1 {
     text-align: center;
-    color: black;
     margin: 50px;
     font-size: 50px;
     font-weight: bolder;
@@ -17,7 +17,6 @@ h1 {
 
 h3 {
     text-align: left;
-    color: black;
     margin: 50px;
     font-size: 30px;
 }
@@ -40,7 +39,12 @@ table thead {
     z-index: -1;
 }
 
-.tableContainer{
+#MinorDescription {
+    position: absolute; 
+    color: white;
+}
+
+.tableContainer {
     background-color: #8595de;
     border-radius: 10px;
     height: 50vh;
@@ -50,8 +54,10 @@ table thead {
 }
 
 .leaflet-container {
-    width: 300px;
-    height: 300px;
+    position: relative;
+    margin: auto;
+    width: 500px;
+    height: 500px;
     z-index: 1;
 }
 
@@ -67,7 +73,7 @@ table thead {
 
 .title {
     margin-top: -5vh;
-    padding: 80px;
+    padding: 20px;
 }
 
 .top {

@@ -10,6 +10,7 @@ let majorPlanetInFocus = -1; // id of the major planet clicked on
 let numPlanet = MAJOR_CATEGORIES.length;
 let planetSizeRatio = 0.15;
 let majorPlanetList = [];
+let textSize = 16; // Planet text size
 
 let majorMinorRatio = 0.2; // size ratio between major and minor planets
 let minorFocusRatio = 0.8; // size ratio between major and minor planets when the minor planets are in focus
@@ -18,6 +19,13 @@ let minorOrbitHeightRatio = 0.15; // how far from the major planet is the minor 
 
 let borderMarginRatio = 0.05; // when in state 1, the ratio (to window size) of the margin from the border
 							 // Bigger the number, the closer to the center the planets are in state 2
+
+let textPlanetMarginRatio = 0.2; // The margin size between major planet in focus and the text description, in format of ratio to planet diameter
+
+// Somewhat hacky solution to communicate hovering between p5 minor planets and HTML
+let hoveringMinor = false;
+let previousHM = hoveringMinor; // this is necessary because we don't want to setState when we don't need to
+let hoveringPlanetName = "";
 
 function projectPosition(p0, p1, left, right, top, bottom) {	
 	// Figure out planet position after putting a major planet in focus
@@ -33,11 +41,13 @@ function projectPosition(p0, p1, left, right, top, bottom) {
 	else return pp1;
 }
 
-class P5Background extends React.Component {
+class FirstPage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.myRef = React.createRef();
 		this.canvasCreated = false;
+		this.state = {"textX": 0, "textY": 0,
+					"descriptionText": "Yeah", "textOpacity": 0};
 	}
 	
 	Sketch = (p5) => {
@@ -55,12 +65,13 @@ class P5Background extends React.Component {
 					majorPlanetList,
 					p5
 				);
+
 			}
 			p5.noStroke();
 		}
    
 		p5.draw = () => {
-			p5.background(0);
+			// p5.background(0);
 
 			majorPlanetList.forEach(planet => {
 				planet.display();
@@ -96,11 +107,12 @@ class P5Background extends React.Component {
 					else {
 						majorPlanetList[i].x = p5.width / 5;
 						majorPlanetList[i].y = p5.height / 3;
-						majorPlanetList[i].diameter = p5.min(p5.windowWidth, p5.windowHeight) * planetSizeRatio * 2;
+						majorPlanetList[i].diameter = p5.min(p5.windowWidth, p5.windowHeight) * planetSizeRatio * 2; // SAME AS THE ONE IN RENDER FUNCTION
+						this.setState({	 "textX": majorPlanetList[i].x + majorPlanetList[i].diameter / 2 + majorPlanetList[i].diameter * textPlanetMarginRatio,
+										 "textY": majorPlanetList[i].y - majorPlanetList[i].diameter / 2});
 					}
 					majorPlanetList[i].updateMinorPlanetPosition();
 				}
-
 			}
 		}
 
@@ -117,7 +129,6 @@ class P5Background extends React.Component {
 							p5.pow(majorPlanetList[i].diameter / 2, 2)) {
 						majorPlanetInFocus = i;
 						landingPageState = 1;
-						console.log(MAJOR_CATEGORIES[majorPlanetInFocus]);
 					}
 				}
 
@@ -129,7 +140,12 @@ class P5Background extends React.Component {
 				this.updatePlanetPosition();
 			}
 		}
-	 }
+	}
+
+	printSomething() {
+		console.log('hello!');
+		this.setState({"descriptionText": "hello", "textOpacity": 1});
+	}
 
 	componentDidMount() {
 		if (!this.canvasCreated){
@@ -137,11 +153,26 @@ class P5Background extends React.Component {
 			this.canvasCreated = true;
 		}
 	}
-	
+
 	render() {
-		return (
-			<div ref={this.myRef} className="p5Container"></div>
-		);
+		console.log([hoveringMinor, previousHM]);
+		if (previousHM != hoveringMinor){
+			this.setState({
+				"descriptionText": hoveringPlanetName,
+				"textOpacity": hoveringMinor ? 1 : 0});
+			previousHM = hoveringMinor;
+		}
+
+		return (	
+			<div id="FirstPageContainer">
+				<p id="MinorDescription" style={{
+												left: `${this.state.textX}px`,
+												top: `${this.state.textY}px`,
+												opacity: `${this.state.textOpacity}`}}>
+						{this.state.descriptionText}</p>
+				<div ref={this.myRef} className="p5Container"></div>
+			</div>
+			);
 	}
 }
 
@@ -182,6 +213,13 @@ class MajorPlanet {
 
 	display(){
 		if (landingPageState == 0){
+
+			// Display Major Planet Text
+			this.p5.fill(MAJOR_COLORS[MAJOR_CATEGORIES[this.id]]);
+			this.p5.textSize(textSize);
+			this.p5.textAlign(this.p5.CENTER);
+			this.p5.text(this.name, this.x, this.y + this.diameter / 2 + textSize);
+
 			// Hover checking
 			if (this.p5.pow(this.p5.mouseX - this.x, 2) + 
 				this.p5.pow(this.p5.mouseY - this.y, 2) < 
@@ -244,20 +282,36 @@ class MinorPlanet {
 
 	display(){
 		if (landingPageState == 1){
+
 			// Hover checking
+			hoveringMinor = false;
 			if (this.p5.pow(this.p5.mouseX - this.x, 2) + 
 				this.p5.pow(this.p5.mouseY - this.y, 2) < 
 					this.p5.pow(this.d / 2, 2)) {
 				this.p5.fill("#ffffff");
+				hoveringMinor = true;
+				hoveringPlanetName = this.name;
 			}
 			else {
 				this.p5.fill(MAJOR_COLORS[MAJOR_CATEGORIES[this.majorI]]);
 			}
+
+			// TODO: SET HOVERING MINOR TO FALSE WHEN NO PLANET GETS HOVERED OVER
 		}
 		else this.p5.fill(MAJOR_COLORS[MAJOR_CATEGORIES[this.majorI]]);
 
 		this.p5.ellipse(this.x, this.y, this.d, this.d);
+
+		if (landingPageState == 1 && this.majorI == majorPlanetInFocus){
+			
+			// Display Minor Planet Text
+			this.p5.fill("#ffffff");
+			this.p5.textSize(textSize);
+			this.p5.textAlign(this.p5.CENTER);
+			this.p5.text(this.name, this.x, this.y + this.d / 4);
+
+		}
 	}
 }
 
-export default P5Background;
+export default FirstPage;
