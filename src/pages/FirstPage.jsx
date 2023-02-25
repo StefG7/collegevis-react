@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 import p5 from 'p5';
-import './Detail.css'
 
 import {MAJOR_CATEGORIES, MAJOR_COLORS, MAJOR_POSITIONS, MINOR_CATEGORIES} from '../constants.jsx';
 
@@ -71,7 +70,7 @@ class FirstPage extends React.Component {
 		}
    
 		p5.draw = () => {
-			// p5.background(0);
+			p5.background(24, 29, 39);
 
 			majorPlanetList.forEach(planet => {
 				planet.display();

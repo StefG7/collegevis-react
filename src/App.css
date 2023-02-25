@@ -68,9 +68,13 @@ table thead {
     padding: 20px;
 }
 
-.top {
-    margin-top: 10vh;
-    padding: 20px;
+.leaflet-container {
+    position: relative;
+    margin: auto;
+    width: 500px;
+    height: 500px;
+    z-index: 1;
+    border-radius: 15px;
 }
 
 .vertical-center {
@@ -89,7 +93,7 @@ table thead {
     border-radius: 7px;
 }
 
-.app .btn-layout {
+.btn-layout {
     padding: 25px;
     /* margin-left: 10px; */
 }

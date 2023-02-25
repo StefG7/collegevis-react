@@ -1,15 +1,14 @@
 import { useState } from 'react';
-import FirstPage from './components/FirstPage'
-import Major from './components/Major'
-import Career from './components/Career';
+import FirstPage from './pages/FirstPage'
+import Major from './pages/Major'
+import Career from './pages/Career';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 
 function App() {
     const [state, setState] = useState("Majors");
     return (
-        <div className='container-fluid app'>
-            {/* <br/> */}
+        <div className='container-fluid'>
             <div className='row'>
                 <div className='btn-layout col-sm-6'>
                     <button className='btn' onClick={() => setState("Home")}>Home</button>
@@ -24,9 +23,8 @@ function App() {
                 {state === "Home" && <FirstPage />}
                 {state === "Careers" && <Major minor="Food & Nutrition" />}
                 {state === "Majors" && <Career minor="Food & Nutrition" />}
-                {/* <Detail2 minor="Food & Nutrition" /> */}
             </div>
-            {/* Make this minor prop reactive to pass clicked minor category events from P5Background to Details page*/}
+            {/* Make FirstPage prop reactive to pass clicked minor category events from P5Background to Details page*/}
             {/* <P5Background /> */}
         </div>
     );
