@@ -66,7 +66,7 @@ class Career extends React.Component{
                 <div className="row">
                     <div className="col-sm-6 title">
                         {/* eventually all the sample information shown below will be passed down as props or imported */}
-                        <img className="img-fluid rounded mx-auto d-block" src="src\assets\pexels-mario-schafer-11322619.jpg" alt="Chefs rolling out dough" />
+                        <img className="img-fluid rounded mx-auto d-block" src="\pexels-mario-schafer-11322619.jpg" alt="Chefs rolling out dough" />
                         <br /><br />
                         <div className="row">
                             <h3>Chefs and Head Cooks</h3>
