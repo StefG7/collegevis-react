@@ -52,6 +52,7 @@ class Career extends React.Component{
     constructor() {
         super();
     }
+
     render() {
         return (
             <div className="container-fluid">

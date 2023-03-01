@@ -1,3 +1,9 @@
+export const PAGE_STATE = {
+    "Home": 0,
+    "Careers": 1,
+    "Majors": 2
+}
+
 export const UNI_COLORS = {
     'University of California-Berkeley': '#ffcc00',
     'University of California-Davis': '#ff6666',

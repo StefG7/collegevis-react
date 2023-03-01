@@ -1,10 +1,11 @@
 import React, {useEffect} from 'react';
 import p5 from 'p5';
 
-import {MAJOR_CATEGORIES, MAJOR_COLORS, MAJOR_POSITIONS, MINOR_CATEGORIES} from '../constants.jsx';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../App.css'
 
-let landingPageState = 0; // 0: Major Planet in focus, 1: Minor Planet selection, 2: Minor Planet information
-let majorPlanetInFocus = -1; // id of the major planet clicked on
+import {PAGE_STATE, MAJOR_CATEGORIES, MAJOR_COLORS, MAJOR_POSITIONS, MINOR_CATEGORIES} from '../constants.jsx';
+import {MINOR_DESCRIPTION_FIRST_PAGE} from '../data/minor_descriptions.jsx';
 
 let numPlanet = MAJOR_CATEGORIES.length;
 let planetSizeRatio = 0.15;
@@ -21,11 +22,6 @@ let borderMarginRatio = 0.05; // when in state 1, the ratio (to window size) of 
 
 let textPlanetMarginRatio = 0.2; // The margin size between major planet in focus and the text description, in format of ratio to planet diameter
 
-// Somewhat hacky solution to communicate hovering between p5 minor planets and HTML
-let hoveringMinor = false;
-let previousHM = hoveringMinor; // this is necessary because we don't want to setState when we don't need to
-let hoveringPlanetName = "";
-
 function projectPosition(p0, p1, left, right, top, bottom) {	
 	// Figure out planet position after putting a major planet in focus
 	// Cast a ray from p0 to p1, given four bounds, return intersection pt of the ray & the bounds
@@ -40,13 +36,21 @@ function projectPosition(p0, p1, left, right, top, bottom) {
 	else return pp1;
 }
 
-class FirstPage extends React.Component {
+class P5Page extends React.Component {
 	constructor(props) {
 		super(props);
 		this.myRef = React.createRef();
 		this.canvasCreated = false;
 		this.state = {"textX": 0, "textY": 0,
-					"descriptionText": "Yeah", "textOpacity": 0};
+					"hoverMinorPlanetName": "Yeah", "textOpacity": 0,
+					"forceUpdate": true}; // Toggle this state var to force rerender
+
+		// Page Navigation related variables
+		this.landingPageState = 0; // 0: Major Planet in focus, 1: Minor Planet selection, 2: Minor Planet information
+		this.majorPlanetInFocus = -1; // id of the major planet clicked on
+		this.hoveringMinor = false;
+		this.previousHM = this.hoveringMinor; // this is necessary because we don't want to setState when we don't need to
+		this.hoverMinorPlanetName = '';
 	}
 	
 	Sketch = (p5) => {
@@ -72,23 +76,51 @@ class FirstPage extends React.Component {
 		p5.draw = () => {
 			p5.background(24, 29, 39);
 
-			majorPlanetList.forEach(planet => {
-				planet.display();
-			});
+			// Planet Rendering when in Home Page
+			if (this.props.pageState == PAGE_STATE["Home"]){
+				// SETTING HOVERMINOR TO FALSE EVERY FRAME
+				// The minor planet being hovered over will set this to true
+				this.hoveringMinor = false;
+				let minorPlanetString = '';
+
+				majorPlanetList.forEach(planet => {
+					minorPlanetString = planet.display(this.landingPageState, this.majorPlanetInFocus);
+					if (minorPlanetString){ 
+						this.hoveringMinor = true;
+						this.hoverMinorPlanetName = minorPlanetString;
+					}
+				});
+
+
+				// Checking whether hovering over minor planet is true and set text opacity
+				if (this.landingPageState == 1) {
+					if (this.previousHM != this.hoveringMinor){
+						this.setState({"textOpacity": this.hoveringMinor ? 1 : 0});
+						this.previousHM = this.hoveringMinor;
+					}
+					
+					// This is separate because just in case the user moves mouse too fast to update hoveringMinor
+					if (this.hoverMinorPlanetName != this.state.hoverMinorPlanetName){
+						this.setState({
+							"hoverMinorPlanetName": this.hoverMinorPlanetName});
+					}
+				}
+			}
+
 		}
 
 		this.updatePlanetPosition = () => {
-			if (landingPageState == 0) {
+			if (this.landingPageState == 0) {
 				for (let i = 0; i < majorPlanetList.length; i++){
 					majorPlanetList[i].x = p5.width * MAJOR_POSITIONS[MAJOR_CATEGORIES[i]][0];
 					majorPlanetList[i].y = p5.height * MAJOR_POSITIONS[MAJOR_CATEGORIES[i]][1];
 					majorPlanetList[i].diameter = p5.min(p5.windowWidth, p5.windowHeight) * planetSizeRatio;
-					majorPlanetList[i].updateMinorPlanetPosition();
+					majorPlanetList[i].updateMinorPlanetPosition(this.landingPageState, this.majorPlanetInFocus);
 				}
 			}
-			else if (landingPageState == 1) {
-				let p0 = [p5.width * MAJOR_POSITIONS[MAJOR_CATEGORIES[majorPlanetInFocus]][0],
-						  p5.height * MAJOR_POSITIONS[MAJOR_CATEGORIES[majorPlanetInFocus]][1]];
+			else if (this.landingPageState == 1) {
+				let p0 = [p5.width * MAJOR_POSITIONS[MAJOR_CATEGORIES[this.majorPlanetInFocus]][0],
+						  p5.height * MAJOR_POSITIONS[MAJOR_CATEGORIES[this.majorPlanetInFocus]][1]];
 				let left = 0 + p5.width * borderMarginRatio;
 				let right = p5.width - p5.width * borderMarginRatio;
 				let top = 0 + p5.height * borderMarginRatio;
@@ -98,7 +130,7 @@ class FirstPage extends React.Component {
 					let p1 = [p5.width * MAJOR_POSITIONS[MAJOR_CATEGORIES[i]][0],
 							p5.height * MAJOR_POSITIONS[MAJOR_CATEGORIES[i]][1]];
 
-					if (i != majorPlanetInFocus) {
+					if (i != this.majorPlanetInFocus) {
 						[majorPlanetList[i].x, majorPlanetList[i].y] = projectPosition(p0, p1,
 																		left, right, top, bottom);
 						majorPlanetList[i].diameter = p5.min(p5.windowWidth, p5.windowHeight) * planetSizeRatio / 4;
@@ -110,40 +142,70 @@ class FirstPage extends React.Component {
 						this.setState({	 "textX": majorPlanetList[i].x + majorPlanetList[i].diameter / 2 + majorPlanetList[i].diameter * textPlanetMarginRatio,
 										 "textY": majorPlanetList[i].y - majorPlanetList[i].diameter / 2});
 					}
-					majorPlanetList[i].updateMinorPlanetPosition();
+					majorPlanetList[i].updateMinorPlanetPosition(this.landingPageState, this.majorPlanetInFocus);
 				}
 			}
 		}
 
 		p5.windowResized = () => {
 			p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
-			this.updatePlanetPosition();
+			this.updatePlanetPosition(this.landingPageState, this.majorPlanetInFocus);
 		}
 
 		p5.mouseClicked = () => {
-			if (landingPageState == 0){
-				for (let i = 0; i < majorPlanetList.length; i++) {
-					if (p5.pow(p5.mouseX - majorPlanetList[i].x, 2) + 
-						p5.pow(p5.mouseY - majorPlanetList[i].y, 2) < 
-							p5.pow(majorPlanetList[i].diameter / 2, 2)) {
-						majorPlanetInFocus = i;
-						landingPageState = 1;
+			
+			// Click Event Handling when in Home Page
+			if (this.props.pageState == PAGE_STATE["Home"]){
+				if (this.landingPageState == 0){
+					for (let i = 0; i < majorPlanetList.length; i++) {
+						if (p5.pow(p5.mouseX - majorPlanetList[i].x, 2) + 
+							p5.pow(p5.mouseY - majorPlanetList[i].y, 2) < 
+								p5.pow(majorPlanetList[i].diameter / 2, 2)) {
+							this.majorPlanetInFocus = i;
+							this.landingPageState = 1;
+						}
+					}
+
+					this.updatePlanetPosition();
+				}
+				else if (this.landingPageState == 1){
+					let clickedOnMinorPlanet = false;
+
+					// Toggling the minor selections
+					let minorSelections = this.props.minorSelections;
+					let minorList = majorPlanetList[this.majorPlanetInFocus].minorList;
+
+					for (let i = 0; i < minorList.length; i++) {
+						if (p5.pow(p5.mouseX - minorList[i].x, 2) + 
+							p5.pow(p5.mouseY - minorList[i].y, 2) < 
+								p5.pow(minorList[i].d / 2, 2)) {
+							
+							let index = minorSelections.indexOf(minorList[i].name);
+							if (index > -1) minorSelections.splice(index, 1);
+							else minorSelections.push(minorList[i].name);
+
+							clickedOnMinorPlanet = true;
+							break
+						}
+					}
+
+					console.log(minorSelections);
+					this.props.setMinorSelections(minorSelections);
+					this.setState({"forceUpdate": !this.state.forceUpdate}); // set this state to force re-render
+
+					if (!clickedOnMinorPlanet) {
+						this.setState({"textOpacity": 0});
+						this.landingPageState = 0;
+						this.updatePlanetPosition();
 					}
 				}
-
-				this.updatePlanetPosition();
 			}
-			else if (landingPageState == 1){
-				landingPageState = 0;
-				
-				this.updatePlanetPosition();
+			else {
+				// when not in home page
+				this.setState({"textOpacity": 0});
+				this.updatePlanetPosition(this.landingPageState, this.majorPlanetInFocus);
 			}
 		}
-	}
-
-	printSomething() {
-		console.log('hello!');
-		this.setState({"descriptionText": "hello", "textOpacity": 1});
 	}
 
 	componentDidMount() {
@@ -154,21 +216,24 @@ class FirstPage extends React.Component {
 	}
 
 	render() {
-		console.log([hoveringMinor, previousHM]);
-		if (previousHM != hoveringMinor){
-			this.setState({
-				"descriptionText": hoveringPlanetName,
-				"textOpacity": hoveringMinor ? 1 : 0});
-			previousHM = hoveringMinor;
-		}
-
 		return (	
 			<div id="FirstPageContainer">
+				<div className='row'>
+					<div className='btn-layout col-sm-12' style={{display: 'flex', justifyContent:'flex-end'}}>
+						{ // For Home Page when minorSelection has content in it
+						this.props.pageState == PAGE_STATE["Home"] && this.props.minorSelections.length != 0 &&
+							<div>
+								<button className='btn' onClick={() => this.props.setState(PAGE_STATE["Majors"])}>Explore Majors</button>
+								<button className='btn' onClick={() => this.props.setState(PAGE_STATE["Careers"])}>Explore Careers</button>
+							</div>
+						}
+					</div>
+				</div>
 				<p id="MinorDescription" style={{
 												left: `${this.state.textX}px`,
 												top: `${this.state.textY}px`,
 												opacity: `${this.state.textOpacity}`}}>
-						{this.state.descriptionText}</p>
+						{MINOR_DESCRIPTION_FIRST_PAGE[this.state.hoverMinorPlanetName]}</p>
 				<div ref={this.myRef} className="p5Container"></div>
 			</div>
 			);
@@ -200,17 +265,18 @@ class MajorPlanet {
 		}
 	}
 
-	updateMinorPlanetPosition() {
+	updateMinorPlanetPosition(landingPageState, majorPlanetInFocus) {
 		for (let i = 0; i < this.minorList.length; i++) {
 			this.minorList[i].majorX = this.x;
 			this.minorList[i].majorY = this.y;
 			this.minorList[i].majorD = this.diameter;
 			this.minorList[i].r = this.diameter / 2 + this.diameter * minorOrbitHeightRatio;
-			this.minorList[i].setPosition();
+			this.minorList[i].setPosition(landingPageState, majorPlanetInFocus);
 		}
 	}
 
-	display(){
+	// The return is to account for passing which minor planet is being hovered over
+	display(landingPageState, majorPlanetInFocus){
 		if (landingPageState == 0){
 
 			// Display Major Planet Text
@@ -233,9 +299,16 @@ class MajorPlanet {
 
 		this.p5.ellipse(this.x, this.y, this.diameter, this.diameter);
 
+		// Return name of the minor planet when being hovered over and in focus, empty string otherwise
+		let minorPlanetString = '';
+
 		for (let i = 0; i < this.minorList.length; i++) {
-			this.minorList[i].display();
+			let minorName = this.minorList[i].display(landingPageState, majorPlanetInFocus);
+
+			if (minorName != '') minorPlanetString = minorName;
 		}
+
+		return minorPlanetString;
 	}
 }
 
@@ -255,7 +328,7 @@ class MinorPlanet {
 		this.setPosition();
 	}
 
-	setPosition(){
+	setPosition(landingPageState, majorPlanetInFocus){
 		let x = 0;
 		let y = 0;
 		let d = this.majorD * majorMinorRatio;
@@ -279,23 +352,24 @@ class MinorPlanet {
 		this.d = d;
 	}
 
-	display(){
+	// The return is to account for passing which minor planet is being hovered over
+	display(landingPageState, majorPlanetInFocus){
+
+		// Return name of the minor planet when being hovered over and in focus, empty string otherwise
+		let minorPlanetString = '';
+
 		if (landingPageState == 1){
 
 			// Hover checking
-			hoveringMinor = false;
 			if (this.p5.pow(this.p5.mouseX - this.x, 2) + 
 				this.p5.pow(this.p5.mouseY - this.y, 2) < 
 					this.p5.pow(this.d / 2, 2)) {
 				this.p5.fill("#ffffff");
-				hoveringMinor = true;
-				hoveringPlanetName = this.name;
+				minorPlanetString = this.name;
 			}
 			else {
 				this.p5.fill(MAJOR_COLORS[MAJOR_CATEGORIES[this.majorI]]);
 			}
-
-			// TODO: SET HOVERING MINOR TO FALSE WHEN NO PLANET GETS HOVERED OVER
 		}
 		else this.p5.fill(MAJOR_COLORS[MAJOR_CATEGORIES[this.majorI]]);
 
@@ -310,7 +384,9 @@ class MinorPlanet {
 			this.p5.text(this.name, this.x, this.y + this.d / 4);
 
 		}
+
+		return minorPlanetString;
 	}
 }
 
-export default FirstPage;
+export default P5Page;
