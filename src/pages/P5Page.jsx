@@ -4,6 +4,8 @@ import p5 from 'p5';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css'
 
+import MinorTags from '../components/MinorTags';
+
 import {PAGE_STATE, MAJOR_CATEGORIES, MAJOR_COLORS, MAJOR_POSITIONS, MINOR_CATEGORIES} from '../constants.jsx';
 import {MINOR_DESCRIPTION_FIRST_PAGE} from '../data/minor_descriptions.jsx';
 
@@ -16,6 +18,9 @@ let majorMinorRatio = 0.2; // size ratio between major and minor planets
 let minorFocusRatio = 0.8; // size ratio between major and minor planets when the minor planets are in focus
 let minorDistRatio = 0.05; // the margin given between each in-focus minor planets
 let minorOrbitHeightRatio = 0.15; // how far from the major planet is the minor planet orbiting
+
+let selectionStrokeRatio = 0.04; // the margin of highlight from circle, also determines the stroke weight
+let textBoxRatio = 0.4; // The size of the text box as an ratio to the diameter of the circle
 
 let borderMarginRatio = 0.05; // when in state 1, the ratio (to window size) of the margin from the border
 							 // Bigger the number, the closer to the center the planets are in state 2
@@ -84,7 +89,7 @@ class P5Page extends React.Component {
 				let minorPlanetString = '';
 
 				majorPlanetList.forEach(planet => {
-					minorPlanetString = planet.display(this.landingPageState, this.majorPlanetInFocus);
+					minorPlanetString = planet.display(this.landingPageState, this.majorPlanetInFocus, this.props.minorSelections);
 					if (minorPlanetString){ 
 						this.hoveringMinor = true;
 						this.hoverMinorPlanetName = minorPlanetString;
@@ -189,7 +194,6 @@ class P5Page extends React.Component {
 						}
 					}
 
-					console.log(minorSelections);
 					this.props.setMinorSelections(minorSelections);
 					this.setState({"forceUpdate": !this.state.forceUpdate}); // set this state to force re-render
 
@@ -233,8 +237,13 @@ class P5Page extends React.Component {
 												left: `${this.state.textX}px`,
 												top: `${this.state.textY}px`,
 												opacity: `${this.state.textOpacity}`}}>
-						{MINOR_DESCRIPTION_FIRST_PAGE[this.state.hoverMinorPlanetName]}</p>
+						{MINOR_DESCRIPTION_FIRST_PAGE[this.state.hoverMinorPlanetName]}
+				</p>
 				<div ref={this.myRef} className="p5Container"></div>
+				<MinorTags
+					minorSelections={this.props.minorSelections}
+					setMinorSelections={this.props.setMinorSelections}
+				></MinorTags>
 			</div>
 			);
 	}
@@ -276,7 +285,7 @@ class MajorPlanet {
 	}
 
 	// The return is to account for passing which minor planet is being hovered over
-	display(landingPageState, majorPlanetInFocus){
+	display(landingPageState, majorPlanetInFocus, minorSelections){
 		if (landingPageState == 0){
 
 			// Display Major Planet Text
@@ -303,7 +312,7 @@ class MajorPlanet {
 		let minorPlanetString = '';
 
 		for (let i = 0; i < this.minorList.length; i++) {
-			let minorName = this.minorList[i].display(landingPageState, majorPlanetInFocus);
+			let minorName = this.minorList[i].display(landingPageState, majorPlanetInFocus, minorSelections);
 
 			if (minorName != '') minorPlanetString = minorName;
 		}
@@ -324,7 +333,7 @@ class MinorPlanet {
 		this.p5 = p5;
 
 		this.r = this.majorD / 2 + this.majorD * minorOrbitHeightRatio;
-		this.angle = this.id * this.p5.PI / 4;
+		this.angle = this.id * this.p5.PI / 5;
 		this.setPosition();
 	}
 
@@ -353,7 +362,7 @@ class MinorPlanet {
 	}
 
 	// The return is to account for passing which minor planet is being hovered over
-	display(landingPageState, majorPlanetInFocus){
+	display(landingPageState, majorPlanetInFocus, minorSelections){
 
 		// Return name of the minor planet when being hovered over and in focus, empty string otherwise
 		let minorPlanetString = '';
@@ -375,13 +384,29 @@ class MinorPlanet {
 
 		this.p5.ellipse(this.x, this.y, this.d, this.d);
 
+		// Drawing highlight ring when the minor planet is selected
+		if (minorSelections.indexOf(this.name) > -1) {
+			this.p5.noFill();
+
+			if (landingPageState == 1) this.p5.strokeWeight(this.d * selectionStrokeRatio / 6);
+			else this.p5.strokeWeight(this.d * selectionStrokeRatio * 2);
+
+			this.p5.stroke("#ffffff")
+			this.p5.ellipse(this.x, this.y, this.d + this.d * selectionStrokeRatio);
+		}
+		this.p5.noStroke();
+
 		if (landingPageState == 1 && this.majorI == majorPlanetInFocus){
 			
 			// Display Minor Planet Text
 			this.p5.fill("#ffffff");
 			this.p5.textSize(textSize);
 			this.p5.textAlign(this.p5.CENTER);
-			this.p5.text(this.name, this.x, this.y + this.d / 4);
+			this.p5.text(this.name, 
+					this.x - this.d * textBoxRatio,
+					this.y + this.d * 0.1,
+					this.d * textBoxRatio * 2,
+					this.p5.sqrt(this.p5.sq(this.d / 2) - this.p5.sq(this.d * textBoxRatio)));
 
 		}
 
