@@ -8,7 +8,7 @@ import './App.css'
 import {PAGE_STATE} from './constants.jsx';
 
 function App() {
-    const [state, setState] = useState(PAGE_STATE["Home"]);//"Majors");
+    const [state, setState] = useState(PAGE_STATE["Careers"]);//"Majors");
     const [minorSelections, setMinorSelections] = useState([]);
 
     return (
@@ -20,9 +20,9 @@ function App() {
                     </div>
                     <div className='btn-layout col-sm-6' style={{display: 'flex', justifyContent:'flex-end'}}>
                         {state == PAGE_STATE["Majors"] &&
-                            <button className='btn' onClick={() => setState(PAGE_STATE["Careers"])}>Go to Careers</button>}
+                            <button className='btn' onClick={() => setState(PAGE_STATE["Careers"])}>Go to Majors</button>}
                         {state == PAGE_STATE["Careers"] &&
-                            <button className='btn' onClick={() => setState(PAGE_STATE["Majors"])}>Go to Majors</button>}
+                            <button className='btn' onClick={() => setState(PAGE_STATE["Majors"])}>Go to Careers</button>}
                     </div>
                 </div>
             }

@@ -18,6 +18,11 @@ TO DO LIST:
     - will use context for now but might have to resort to other state management (redux?)
         - https://react-redux.js.org/
 - separate files into "pages" and "components" folders
+
+OTHER SOURCES: 
+- trigger map popups on mouseover @Map.jsx
+    - https://stackoverflow.com/questions/71391251/react-leaflet-mouseover-hover-popup
+
 ----------------------------------------------------------------------------------------------
 
 LEFTOVER EXPERIMENTAL CODE
@@ -659,4 +664,24 @@ REDUCE CSS TO JUST APP.CSS SO HERE IS DETAIL.CSS
         box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
         /* Lowering the shadow */
     }
+
+MAP MARKER FORMAT OLD
+
+            {/* <Marker position={[36.652397, -121.79618]}>
+                <Popup>
+                California State University, Monterey Bay <br /> Seaside, CA
+                </Popup>
+            </Marker> */}
+
+UNUSED STATE CHANGE IN MAJOR.JSX
+
+    // constructor() {
+    //     super();
+    //     this.state = { checked: false };
+    //     this.handleChange = this.handleChange.bind(this);
+    // }
+
+    // handleChange(checked) {
+    //     this.setState({ checked });
+    // }
 

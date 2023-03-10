@@ -219,12 +219,12 @@ class P5Page extends React.Component {
 		return (	
 			<div id="FirstPageContainer">
 				<div className='row'>
-					<div className='btn-layout col-sm-12' style={{display: 'flex', justifyContent:'flex-end'}}>
+					<div className='btn-layout col-sm-12' style={{display: 'flex',justifyContent:'flex-end'}}>
 						{ // For Home Page when minorSelection has content in it
 						this.props.pageState == PAGE_STATE["Home"] && this.props.minorSelections.length != 0 &&
 							<div>
-								<button className='btn' onClick={() => this.props.setState(PAGE_STATE["Majors"])}>Explore Majors</button>
-								<button className='btn' onClick={() => this.props.setState(PAGE_STATE["Careers"])}>Explore Careers</button>
+								<button className='btn mx-3' onClick={() => this.props.setState(PAGE_STATE["Majors"])}>Explore Majors</button>
+								<button className='btn mx-3' onClick={() => this.props.setState(PAGE_STATE["Careers"])}>Explore Careers</button>
 							</div>
 						}
 					</div>
