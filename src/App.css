@@ -2,28 +2,34 @@ body {
     background-color: #181D27;
     font-family: 'Noto Sans', sans-serif;
     color: white;
+    height: 100%;
+    /* overflow: hidden; */
 }
 
 p {
-    font-size: 20px;
+    font-size: 0.9vw;
 }
 
 h1 {
     text-align: center;
-    margin: 50px;
-    font-size: 50px;
+    margin: 1.5vw;
+    font-size: 2.3vw;
     font-weight: bolder;
+}
+
+h1.campus {
+    font-size: 1.5vw;
 }
 
 h3 {
     text-align: left;
-    margin: 50px;
-    font-size: 30px;
+    margin: 1.5vw;
+    font-size: 1.7vw;
     font-weight: bold;
 }
 
 table {
-    font-size: 15px;
+    font-size: 0.6vw;
 }
 
 table thead {
@@ -32,11 +38,13 @@ table thead {
     margin: 0 0 0 0;
 }
 
+
+
 .tableContainer{
     background-color: #8595de;
     border-radius: 10px;
-    height: 50vh;
-    /* padding: 0 10px 10px 10px; */
+    height: 75vh;
+    margin: 0vh 10vh 0vh 10vh;
     overflow: scroll;
     overflow: hidden;
 }
@@ -46,6 +54,7 @@ table thead {
     left: 0px;
     top: 0px;
     z-index: -1;
+    overflow: hidden;
 }
 
 #MinorDescription {
@@ -94,17 +103,80 @@ table thead {
 
 .title {
     margin-top: -5vh;
-    padding: 20px;
+    padding: 1.5vw;
+    overflow: hidden;
+    border-radius: 15px;
+    /* height: 100%; */
 }
 
 .leaflet-container {
     position: relative;
-    margin: auto;
-    width: 500px;
-    height: 500px;
+    top: 30px;
+    margin: auto; 
+    /* 100%; 50%; */
+    width: 40vw;
+    height: 75vh;
     z-index: 1;
     border-radius: 15px;
 }
+
+.leaflet-expanded {
+    position: relative;
+    top: 30px;
+    margin: auto; 
+    /* 100%; 50%; */
+    width: 40vw;
+    height: 20vh;
+    z-index: 1;
+    border-radius: 15px;
+}
+
+.info {
+    width: 40vw;
+    height: 100%;
+}
+
+#detail {
+    position: relative;
+    margin: auto; 
+    top: -5.5vh;
+    width: 40vw;
+    height: 15vh;
+    z-index: 2;
+    border-radius: 15px;
+    background-color: #ffffff;
+    color: #5e6caa;
+    transition: 0.5s;
+}
+
+#detail.expanded {
+    position: relative;
+    margin: auto; 
+    top: -40.5vh;
+    width: 40vw;
+    height: 50vh;
+    z-index: 2;
+    border-radius: 15px;
+    background-color: #ffffff;
+    color: #5e6caa;
+}
+
+/* Looking to implement this: https://stackoverflow.com/questions/49517309/how-to-slide-or-hide-a-div-with-transition-in-react */
+
+/* .slider {
+    position: relative;
+    width: 40vw;
+    height: 70vw;
+    top: 0;
+    overflow: hidden;
+    background-color: #ffffff; color: #181D27;
+    transition: all 1s;
+}
+  
+.slider.close {
+    top: 100%;
+    height: 0;
+} */
 
 .vertical-center {
     margin: 0;
@@ -112,6 +184,12 @@ table thead {
     top: 50%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
+}
+
+.btn-slider {
+    margin: auto;
+    /* background-color: #5e6caa; */
+    width: 8vw;
 }
 
 .btn {
@@ -129,7 +207,7 @@ table thead {
 
 .btn:hover {
     color: #5e6caa;
-    background-color: white;
+    background-color: #d2d7ee;
 }
 
 /* https://www.geeksforgeeks.org/how-to-add-a-pressed-effect-on-button-click-in-css/ */

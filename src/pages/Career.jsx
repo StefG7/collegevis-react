@@ -27,7 +27,7 @@ const Table = ({data}) => {
             <tbody>
             {data.map((item, index) => {
                 return (
-                    <tr key={ item.key }>
+                    <tr key={ index * 20 + 5 }>
                     <th scope="row">{ index + 1 }</th>
                     <td>{ item.major }</td>
                     <td>{ item.campus }</td>
@@ -69,7 +69,7 @@ class Career extends React.Component{
                         {/* eventually all the sample information shown below will be passed down as props or imported */}
                         <img className="img-fluid rounded mx-auto d-block" src="https://github.com/StefG7/collegevis-react/blob/main/public/pexels-mario-schafer-11322619.jpg?raw=true" alt="Chefs rolling out dough" />
                         <br /><br />
-                        <div className="row">
+                        <div className="row mx-5">
                             <h3>Chefs and Head Cooks</h3>
                             <p>Direct and may participate in the preparation, seasoning, and cooking of salads, soups, fish, meats, vegetables, desserts, or other foods. May plan and price menu items, order supplies, and keep records and accounts.</p>
                         </div>

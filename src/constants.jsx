@@ -58,22 +58,30 @@ export const MAJOR_DATA_SAMPLE = [
     {
         major: "Business Administration (Agribusiness)",
         campus: "California State University, Monterey Bay",
-        key: 583
+        lat: "36.652397",
+        lon: "-121.79618",
+        city: "Seaside, CA"
     },
     {
         major: "Agricultural Science (General)",
         campus: "California Polytechnic State University, San Luis Obispo",
-        key: 65
+        lat: "35.299515",
+        lon: "-120.65731",
+        city: "San Luis Obispo, CA"
     },
     {
         major: "Viticulture and Enology",
         campus: "University of California-Davis",
-        key: 3770
+        lat: "38.539665",
+        lon: "-121.749565",
+        city: "Davis, CA"
     },
     {
         major:"Sustainable Agriculture and Food Systems",
         campus: "University of California-Davis",
-        key: 3672
+        lat: "38.539665",
+        lon: "-121.749565",
+        city: "Davis, CA"
     }
 ]
 
