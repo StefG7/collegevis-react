@@ -6,6 +6,9 @@ import { MAJOR_DATA_SAMPLE, UC_CAMPUSES } from "../constants";
 import 'leaflet/dist/leaflet.css';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 
+import ALL_MAJORS from "../data/all_major";
+import MAJOR_MINOR_CATEGORIZATION from "../data/major_minor_categorization";
+
 
 /* Table Generating Function
 

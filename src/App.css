@@ -59,7 +59,18 @@ table thead {
 
 #MinorDescription {
     position: absolute; 
+}
+
+#MinorDescription p {
     color: white;
+    font-size: 2vw;
+}
+
+#MinorDescription h1 {
+    text-align: center;
+    margin: 1.5vw;
+    font-size: 2.3vw;
+    font-weight: bolder;
 }
 
 #MinorTags {

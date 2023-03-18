@@ -233,12 +233,14 @@ class P5Page extends React.Component {
 						}
 					</div>
 				</div>
-				<p id="MinorDescription" style={{
-												left: `${this.state.textX}px`,
-												top: `${this.state.textY}px`,
-												opacity: `${this.state.textOpacity}`}}>
-						{MINOR_DESCRIPTION_FIRST_PAGE[this.state.hoverMinorPlanetName]}
-				</p>
+				<MinorDescription		style={{
+											left: `${this.state.textX}px`,
+											top: `${this.state.textY}px`,
+											width: `60%`,
+											opacity: `${this.state.textOpacity}`
+										}}
+										planetName={this.state.hoverMinorPlanetName}>
+				</MinorDescription>
 				<div ref={this.myRef} className="p5Container"></div>
 				<MinorTags
 					minorSelections={this.props.minorSelections}
@@ -247,6 +249,16 @@ class P5Page extends React.Component {
 			</div>
 			);
 	}
+}
+
+
+const MinorDescription = (props) => {
+    return (
+        <div id="MinorDescription" style={props.style}>
+			<h1> {props.planetName} </h1>
+            <p> {MINOR_DESCRIPTION_FIRST_PAGE[props.planetName]} </p>
+        </div>
+    );
 }
 
 class MajorPlanet {

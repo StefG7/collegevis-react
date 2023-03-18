@@ -1,85 +1,85 @@
 
 export const MINOR_DESCRIPTION_FIRST_PAGE = {
     "Agriculture & Food Science":
-        "they grow stuff",
+        "some very useful descriptions jfkdsahlfsajdklfhasdjklfhadsjkfadshfjksadhfjkii jkdsajf;sa jfdsklafjasl;k jklsdjfkladsfjl",
     "Environmental Science & Studies":
-        "they plant stuff",
+        "some very useful descriptions",
     "Animal Science":
-        "they breed stuff",
+        "some very useful descriptions",
     "General Art":
-        "trading financial security for life purpose",
+        "some very useful descriptions",
     "Design":
-        "everyone thinks they can do it",
+        "some very useful descriptions",
     "Music":
-        "beethoven and stuff",
+        "some very useful descriptions",
     "Cinema & Visual Arts":
-        "everyone thinks they know it",
+        "some very useful descriptions",
     "Performing Arts":
-        "dancing around being happy",
+        "some very useful descriptions",
     "Education":
         "underfunded",
     "Law & Criminology":
-        "too hard to do",
+        "some very useful descriptions",
     "Social Services":
-        "actually good people",
+        "some very useful descriptions",
     "Earth Sciences":
         "studying rocks",
     "Physics & Astronomy":
-        "cant even unite their theories lol",
+        "some very useful descriptions",
     "Biology":
-        "also too hard to do",
+        "some very useful descriptions",
     "Chemistry":
-        "much memorization",
+        "some very useful descriptions",
     "Information & Technology":
-        "technology is kinda everywhere you know",
+        "some very useful descriptions",
     "Specializations & Engineering":
-        "too specific to be notable",
+        "some very useful descriptions",
     "Electrical & Mechanical Engineering":
-        "making arms moving around",
+        "some very useful descriptions",
     "Computer Science and Engineering":
-        "finally you learn how to code",
+        "some very useful descriptions",
     "City Planning & Architecture":
-        "cities are like organisms",
+        "some very useful descriptions",
     "Cultural & Ethnic Studies":
-        "respectable",
+        "some very useful descriptions",
     "Feminist & Gender Studies":
-        "killjoys (according to Sara Ahmed)",
+        "some very useful descriptions",
     "Philosophy & Religion":
-        "idk its just vibes",
+        "some very useful descriptions",
     "Language & Literature":
-        "in competition with duolingo",
+        "some very useful descriptions",
     "Anthropology & History":
-        "caring too much about other people",
+        "some very useful descriptions",
     "General Humanities":
-        "undecided liberal arts",
+        "some very useful descriptions",
     "Communication & Journalism":
-        "i mean is it just about talking?",
+        "some very useful descriptions",
     "Politics & Public Policy":
-        "politicians",
+        "some very useful descriptions",
     "Sociology":
-        "there is no such thing as society",
+        "some very useful descriptions",
     "Linguistics":
-        "ser plumster's major",
+        "some very useful descriptions",
     "Management & Information Systems":
-        "PMCs",
+        "some very useful descriptions",
     "Accounting & Finance":
-        "Excel experts",
+        "some very useful descriptions",
     "Marketing & Consumer Services":
-        "sales people",
+        "some very useful descriptions",
     "Specializations & Business":
-        "idk what do business people actually do?",
+        "some very useful descriptions",
     "Food & Nutrition":
-        "cooks and cook researchers",
+        "some very useful descriptions",
     "Psychology":
-        "talking about feelings",
+        "some very useful descriptions",
     "Medical Sciences":
-        "too hard to do as well",
+        "some very useful descriptions",
     "Athletic & Bodily Science":
-        "flex and stretch",
+        "some very useful descriptions",
     "Statistics & Data Science":
-        "numbers and pretty graphs",
+        "some very useful descriptions",
     "Applied & General Mathematics":
-        "ser sterny's speciality",
+        "some very useful descriptions",
     "Economics":
-        "numbers and psychology"
+        "some very useful descriptions"
 }

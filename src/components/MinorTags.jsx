@@ -33,7 +33,6 @@ class MinorT extends React.Component {
 	}
 
     cancelMe() {
-        console.log("hit!");
         let minorSelection = this.props.minorSelections.map((x)=>x); // create a copy
         let index = minorSelection.indexOf(this.props.tag);
         minorSelection.splice(index, 1);
