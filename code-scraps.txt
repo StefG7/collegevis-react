@@ -685,3 +685,27 @@ UNUSED STATE CHANGE IN MAJOR.JSX
     //     this.setState({ checked });
     // }
 
+DETAIL ITERATION
+
+        for(name of ALL_CAMPUSES) {
+            console.log(name.campus)
+            // if (i.key == this.campus_key) {
+            //     console.log('match!' + this.campus_key)
+            //     // this.setState({
+            //     //     img_url: ALL_CAMPUSES[i].details.img,
+            //     //     size: ALL_CAMPUSES[i].details.size,
+            //     //     address: ALL_CAMPUSES[i].details.address,
+            //     //     phone: ALL_CAMPUSES[i].details.phone,
+            //     //     web: ALL_CAMPUSES[i].details.web,
+            //     //     in_tui: ALL_CAMPUSES[i].details.in_tuition,
+            //     //     out_tui: ALL_CAMPUSES[i].details.out_tuition,
+            //     // })
+            // }
+        }
+
+        let camp = CAMPUS_DET.forEach(function(item,index){
+            if (item.key == key) {
+                console.log(item.key)
+                return CAMPUS_DET[index]
+            }
+        })

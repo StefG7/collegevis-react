@@ -1,10 +1,12 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { MAJOR_DATA_SAMPLE, UC_CAMPUSES } from "../constants";
+import { MAJOR_DATA_SAMPLE } from "../constants";
+import { CAMPUS_DET } from "../data/campus_details";
 // import Map from "../components/Map";
 // import Info from "../components/Info";
 import 'leaflet/dist/leaflet.css';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+// import { FaInfoCircle } from 'react-icons';
 
 /* Table Generating Function
 
@@ -61,7 +63,7 @@ const Map = (props) => {
                     <Marker position={[item.lat, item.lon]} key={index*40+7}
                         eventHandlers={{
                         mouseover: (event) => event.target.openPopup(),
-                        click: (event) => props.markerFunc(item.campus)}}
+                        click: (event) => props.markerFunc(item.campus, item.key)}}
                         >
                         <Popup>
                             {item.campus} <br /> {item.city}
@@ -88,11 +90,20 @@ class Major extends React.Component{
         this.state = {
          myclass: '',
          campus: 'Pick a Campus on the Map!',
-         selected: ''
+         campus_key: '',
+         selected: '',
+         img_url: '',
+         size: '',
+         address: '',
+         phone: '',
+         web: '',
+         in_tui: '',
+         out_tui: '',
          }
       this.divclicked = this.divclicked.bind(this);
       this.setCampus = this.setCampus.bind(this);
       this.markerFunc = this.markerFunc.bind(this);
+      this.setDetails = this.setDetails.bind(this);
       }
      
       divclicked() {
@@ -114,12 +125,27 @@ class Major extends React.Component{
         })
      }
 
-     markerFunc(name) {
+     setDetails(key) {
+        // console.log(key)
+        this.setState({
+            img_url: CAMPUS_DET[key].details.img,
+            size: CAMPUS_DET[key].details.size,
+            address: CAMPUS_DET[key].details.address,
+            phone: CAMPUS_DET[key].details.phone,
+            web: CAMPUS_DET[key].details.web,
+            in_tui: CAMPUS_DET[key].details.in_tuition,
+            out_tui: CAMPUS_DET[key].details.out_tuition,
+        })
+     }
+
+     markerFunc(name,key) {
         this.setState({
             myclass: 'expanded',
-            selected: 'selected'
+            selected: 'selected',
+            campus_key: toString(key)
         })
         this.setCampus(name)
+        this.setDetails(key)
      }
     render() {
         return (
@@ -142,12 +168,14 @@ class Major extends React.Component{
                                 <div id="campus" className="row">
                                     <h1 className={"resize " + this.state.selected}>{this.state.campus}</h1>
                                     
-                                    <img id="img-fluid" className={this.state.selected} src={'https://slugcrm-ucsc-edu.cdn.technolutions.net/www/images/20210204-Aerial-westside-campus-look-to-water-01.JPG'} alt="Placeholder Campus Image" />
+                                    <img id="img-fluid" className={this.state.selected} src={this.state.img_url} alt="Placeholder Campus Image" />
                                 </div>
                                 <div id="overview" className={"row " + this.state.selected}>
-                                   <h2><b>Overview</b></h2>
-                                    <p>Public, Four or more years</p>
-                                    <p></p>
+                                    <h2><b>Overview</b></h2>
+                                    <br />
+                                    <p><strong>Size: </strong>{this.state.size}</p>
+                                    <p><strong>Address: </strong>{this.state.address}</p>
+                                    <p><strong>Phone: </strong>{this.state.phone}</p>
                                 </div>
                             </div>
                         </div>
