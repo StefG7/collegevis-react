@@ -16,43 +16,363 @@ export const UNI_COLORS = {
     'University of California-Santa Cruz': '#9de3d0'
 }
 
-export const UC_CAMPUSES = [
-    'University of California-Berkeley',
-    'University of California-Davis',
-    'University of California-Irvine',
-    'University of California-Los Angeles',
-    'University of California-Merced',
-    'University of California-Riverside',
-    'University of California-San Diego',
-    'University of California-Santa Barbara',
-    'University of California-Santa Cruz'
+export const ALL_CAMPUSES = [
+    {
+    campus: 'University of California-Berkeley',
+        details: {
+            img: 'https://www.tclf.org/sites/default/files/styles/crop_2000x700/public/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_courtesyWikimediaCommons_2015_003_Hero.jpg?itok=3xgaYihl',
+            size: '20,000 and above',
+            address: '200 California Hall, Berkeley, CA, 94720',
+            phone: '(510) 642-6000',
+            web: 'https://www.berkeley.edu/',
+            in_tuition: '$14,312',
+            out_tuition: '$44,066'
+        },
+    },
+    {
+    campus: 'University of California-Davis',
+        details: {
+            img: 'https://www.tclf.org/sites/default/files/styles/crop_2000x700/public/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_courtesyWikimediaCommons_2015_003_Hero.jpg?itok=3xgaYihl',
+            size: '20,000 and above',
+            address: '200 California Hall, Berkeley, CA, 94720',
+            phone: '(510) 642-6000',
+            web: 'https://www.berkeley.edu/',
+            in_tuition: '$14,312',
+            out_tuition: '$44,066'
+        },
+    },
+    {campus: 'University of California-Irvine',
+        details: {
+            img: 'https://www.tclf.org/sites/default/files/styles/crop_2000x700/public/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_courtesyWikimediaCommons_2015_003_Hero.jpg?itok=3xgaYihl',
+            size: '20,000 and above',
+            address: '200 California Hall, Berkeley, CA, 94720',
+            phone: '(510) 642-6000',
+            web: 'https://www.berkeley.edu/',
+            in_tuition: '$14,312',
+            out_tuition: '$44,066'
+        },
+    },
+    {campus: 'University of California-Los Angeles',
+        details: {
+            img: 'https://www.tclf.org/sites/default/files/styles/crop_2000x700/public/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_courtesyWikimediaCommons_2015_003_Hero.jpg?itok=3xgaYihl',
+            size: '20,000 and above',
+            address: '200 California Hall, Berkeley, CA, 94720',
+            phone: '(510) 642-6000',
+            web: 'https://www.berkeley.edu/',
+            in_tuition: '$14,312',
+            out_tuition: '$44,066'
+        },
+    },
+    {campus: 'University of California-Merced',
+        details: {
+            img: 'https://www.tclf.org/sites/default/files/styles/crop_2000x700/public/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_courtesyWikimediaCommons_2015_003_Hero.jpg?itok=3xgaYihl',
+            size: '20,000 and above',
+            address: '200 California Hall, Berkeley, CA, 94720',
+            phone: '(510) 642-6000',
+            web: 'https://www.berkeley.edu/',
+            in_tuition: '$14,312',
+            out_tuition: '$44,066'
+        },
+    },
+    {campus: 'University of California-Riverside',
+        details: {
+            img: 'https://www.tclf.org/sites/default/files/styles/crop_2000x700/public/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_courtesyWikimediaCommons_2015_003_Hero.jpg?itok=3xgaYihl',
+            size: '20,000 and above',
+            address: '200 California Hall, Berkeley, CA, 94720',
+            phone: '(510) 642-6000',
+            web: 'https://www.berkeley.edu/',
+            in_tuition: '$14,312',
+            out_tuition: '$44,066'
+        },
+    },
+    {campus: 'University of California-San Diego',
+        details: {
+            img: 'https://www.tclf.org/sites/default/files/styles/crop_2000x700/public/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_courtesyWikimediaCommons_2015_003_Hero.jpg?itok=3xgaYihl',
+            size: '20,000 and above',
+            address: '200 California Hall, Berkeley, CA, 94720',
+            phone: '(510) 642-6000',
+            web: 'https://www.berkeley.edu/',
+            in_tuition: '$14,312',
+            out_tuition: '$44,066'
+        },
+    },
+    {campus: 'University of California-Santa Barbara',
+        details: {
+            img: 'https://www.tclf.org/sites/default/files/styles/crop_2000x700/public/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_courtesyWikimediaCommons_2015_003_Hero.jpg?itok=3xgaYihl',
+            size: '20,000 and above',
+            address: '200 California Hall, Berkeley, CA, 94720',
+            phone: '(510) 642-6000',
+            web: 'https://www.berkeley.edu/',
+            in_tuition: '$14,312',
+            out_tuition: '$44,066'
+        },
+    },
+    {campus: 'University of California-Santa Cruz',
+        details: {
+            img: 'https://www.tclf.org/sites/default/files/styles/crop_2000x700/public/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_courtesyWikimediaCommons_2015_003_Hero.jpg?itok=3xgaYihl',
+            size: '20,000 and above',
+            address: '200 California Hall, Berkeley, CA, 94720',
+            phone: '(510) 642-6000',
+            web: 'https://www.berkeley.edu/',
+            in_tuition: '$14,312',
+            out_tuition: '$44,066'
+        },
+    },
+    {campus: 'California Polytechnic State University, San Luis Obispo',
+        details: {
+            img: 'https://www.tclf.org/sites/default/files/styles/crop_2000x700/public/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_courtesyWikimediaCommons_2015_003_Hero.jpg?itok=3xgaYihl',
+            size: '20,000 and above',
+            address: '200 California Hall, Berkeley, CA, 94720',
+            phone: '(510) 642-6000',
+            web: 'https://www.berkeley.edu/',
+            in_tuition: '$14,312',
+            out_tuition: '$44,066'
+        },
+    },
+    {campus: 'California State Polytechnic University, Humboldt',
+        details: {
+            img: 'https://www.tclf.org/sites/default/files/styles/crop_2000x700/public/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_courtesyWikimediaCommons_2015_003_Hero.jpg?itok=3xgaYihl',
+            size: '20,000 and above',
+            address: '200 California Hall, Berkeley, CA, 94720',
+            phone: '(510) 642-6000',
+            web: 'https://www.berkeley.edu/',
+            in_tuition: '$14,312',
+            out_tuition: '$44,066'
+        },
+    },
+    {campus: 'California State Polytechnic University, Pomona',
+        details: {
+            img: 'https://www.tclf.org/sites/default/files/styles/crop_2000x700/public/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_courtesyWikimediaCommons_2015_003_Hero.jpg?itok=3xgaYihl',
+            size: '20,000 and above',
+            address: '200 California Hall, Berkeley, CA, 94720',
+            phone: '(510) 642-6000',
+            web: 'https://www.berkeley.edu/',
+            in_tuition: '$14,312',
+            out_tuition: '$44,066'
+        },
+    },
+    {campus: 'California State University Channel Islands',
+    details: {
+        img: 'https://www.tclf.org/sites/default/files/styles/crop_2000x700/public/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_courtesyWikimediaCommons_2015_003_Hero.jpg?itok=3xgaYihl',
+        size: '20,000 and above',
+        address: '200 California Hall, Berkeley, CA, 94720',
+        phone: '(510) 642-6000',
+        web: 'https://www.berkeley.edu/',
+        in_tuition: '$14,312',
+        out_tuition: '$44,066'
+    },
+    },
+    {campus: 'California State University Maritime Academy',
+    details: {
+        img: 'https://www.tclf.org/sites/default/files/styles/crop_2000x700/public/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_courtesyWikimediaCommons_2015_003_Hero.jpg?itok=3xgaYihl',
+        size: '20,000 and above',
+        address: '200 California Hall, Berkeley, CA, 94720',
+        phone: '(510) 642-6000',
+        web: 'https://www.berkeley.edu/',
+        in_tuition: '$14,312',
+        out_tuition: '$44,066'
+    },
+    },
+    {campus: 'California State University San Marcos',
+    details: {
+        img: 'https://www.tclf.org/sites/default/files/styles/crop_2000x700/public/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_courtesyWikimediaCommons_2015_003_Hero.jpg?itok=3xgaYihl',
+        size: '20,000 and above',
+        address: '200 California Hall, Berkeley, CA, 94720',
+        phone: '(510) 642-6000',
+        web: 'https://www.berkeley.edu/',
+        in_tuition: '$14,312',
+        out_tuition: '$44,066'
+    },
+    },
+    {campus: 'California State University, Bakersfield',
+    details: {
+        img: 'https://www.tclf.org/sites/default/files/styles/crop_2000x700/public/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_courtesyWikimediaCommons_2015_003_Hero.jpg?itok=3xgaYihl',
+        size: '20,000 and above',
+        address: '200 California Hall, Berkeley, CA, 94720',
+        phone: '(510) 642-6000',
+        web: 'https://www.berkeley.edu/',
+        in_tuition: '$14,312',
+        out_tuition: '$44,066'
+    },
+    },
+    {campus: 'California State University, Chico',
+    details: {
+        img: 'https://www.tclf.org/sites/default/files/styles/crop_2000x700/public/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_courtesyWikimediaCommons_2015_003_Hero.jpg?itok=3xgaYihl',
+        size: '20,000 and above',
+        address: '200 California Hall, Berkeley, CA, 94720',
+        phone: '(510) 642-6000',
+        web: 'https://www.berkeley.edu/',
+        in_tuition: '$14,312',
+        out_tuition: '$44,066'
+    },
+    },
+    {campus: 'California State University, Dominguez Hills',
+    details: {
+        img: 'https://www.tclf.org/sites/default/files/styles/crop_2000x700/public/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_courtesyWikimediaCommons_2015_003_Hero.jpg?itok=3xgaYihl',
+        size: '20,000 and above',
+        address: '200 California Hall, Berkeley, CA, 94720',
+        phone: '(510) 642-6000',
+        web: 'https://www.berkeley.edu/',
+        in_tuition: '$14,312',
+        out_tuition: '$44,066'
+    },
+    },
+    {campus: 'California State University, East Bay',
+    details: {
+        img: 'https://www.tclf.org/sites/default/files/styles/crop_2000x700/public/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_courtesyWikimediaCommons_2015_003_Hero.jpg?itok=3xgaYihl',
+        size: '20,000 and above',
+        address: '200 California Hall, Berkeley, CA, 94720',
+        phone: '(510) 642-6000',
+        web: 'https://www.berkeley.edu/',
+        in_tuition: '$14,312',
+        out_tuition: '$44,066'
+    },
+    },
+    {campus: 'California State University, Fresno',
+    details: {
+        img: 'https://www.tclf.org/sites/default/files/styles/crop_2000x700/public/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_courtesyWikimediaCommons_2015_003_Hero.jpg?itok=3xgaYihl',
+        size: '20,000 and above',
+        address: '200 California Hall, Berkeley, CA, 94720',
+        phone: '(510) 642-6000',
+        web: 'https://www.berkeley.edu/',
+        in_tuition: '$14,312',
+        out_tuition: '$44,066'
+    },
+    },
+    {campus: 'California State University, Fullerton',
+    details: {
+        img: 'https://www.tclf.org/sites/default/files/styles/crop_2000x700/public/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_courtesyWikimediaCommons_2015_003_Hero.jpg?itok=3xgaYihl',
+        size: '20,000 and above',
+        address: '200 California Hall, Berkeley, CA, 94720',
+        phone: '(510) 642-6000',
+        web: 'https://www.berkeley.edu/',
+        in_tuition: '$14,312',
+        out_tuition: '$44,066'
+    },
+    },
+    {campus: 'California State University, Long Beach',
+    details: {
+        img: 'https://www.tclf.org/sites/default/files/styles/crop_2000x700/public/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_courtesyWikimediaCommons_2015_003_Hero.jpg?itok=3xgaYihl',
+        size: '20,000 and above',
+        address: '200 California Hall, Berkeley, CA, 94720',
+        phone: '(510) 642-6000',
+        web: 'https://www.berkeley.edu/',
+        in_tuition: '$14,312',
+        out_tuition: '$44,066'
+    },
+    },
+    {campus: 'California State University, Los Angeles',
+    details: {
+        img: 'https://www.tclf.org/sites/default/files/styles/crop_2000x700/public/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_courtesyWikimediaCommons_2015_003_Hero.jpg?itok=3xgaYihl',
+        size: '20,000 and above',
+        address: '200 California Hall, Berkeley, CA, 94720',
+        phone: '(510) 642-6000',
+        web: 'https://www.berkeley.edu/',
+        in_tuition: '$14,312',
+        out_tuition: '$44,066'
+    },
+    },
+    {campus: 'California State University, Monterey Bay',
+    details: {
+        img: 'https://www.tclf.org/sites/default/files/styles/crop_2000x700/public/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_courtesyWikimediaCommons_2015_003_Hero.jpg?itok=3xgaYihl',
+        size: '20,000 and above',
+        address: '200 California Hall, Berkeley, CA, 94720',
+        phone: '(510) 642-6000',
+        web: 'https://www.berkeley.edu/',
+        in_tuition: '$14,312',
+        out_tuition: '$44,066'
+    },
+    },
+    {campus: 'California State University, Northridge',
+    details: {
+        img: 'https://www.tclf.org/sites/default/files/styles/crop_2000x700/public/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_courtesyWikimediaCommons_2015_003_Hero.jpg?itok=3xgaYihl',
+        size: '20,000 and above',
+        address: '200 California Hall, Berkeley, CA, 94720',
+        phone: '(510) 642-6000',
+        web: 'https://www.berkeley.edu/',
+        in_tuition: '$14,312',
+        out_tuition: '$44,066'
+    },
+    },
+    {campus: 'California State University, Sacramento',
+    details: {
+        img: 'https://www.tclf.org/sites/default/files/styles/crop_2000x700/public/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_courtesyWikimediaCommons_2015_003_Hero.jpg?itok=3xgaYihl',
+        size: '20,000 and above',
+        address: '200 California Hall, Berkeley, CA, 94720',
+        phone: '(510) 642-6000',
+        web: 'https://www.berkeley.edu/',
+        in_tuition: '$14,312',
+        out_tuition: '$44,066'
+    },
+    },
+    {campus: 'California State University, San Bernardino',
+    details: {
+        img: 'https://www.tclf.org/sites/default/files/styles/crop_2000x700/public/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_courtesyWikimediaCommons_2015_003_Hero.jpg?itok=3xgaYihl',
+        size: '20,000 and above',
+        address: '200 California Hall, Berkeley, CA, 94720',
+        phone: '(510) 642-6000',
+        web: 'https://www.berkeley.edu/',
+        in_tuition: '$14,312',
+        out_tuition: '$44,066'
+    },
+    },
+    {campus: 'California State University, Stanislaus',
+    details: {
+        img: 'https://www.tclf.org/sites/default/files/styles/crop_2000x700/public/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_courtesyWikimediaCommons_2015_003_Hero.jpg?itok=3xgaYihl',
+        size: '20,000 and above',
+        address: '200 California Hall, Berkeley, CA, 94720',
+        phone: '(510) 642-6000',
+        web: 'https://www.berkeley.edu/',
+        in_tuition: '$14,312',
+        out_tuition: '$44,066'
+    },
+    },
+    {campus: 'San Diego State University',
+    details: {
+        img: 'https://www.tclf.org/sites/default/files/styles/crop_2000x700/public/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_courtesyWikimediaCommons_2015_003_Hero.jpg?itok=3xgaYihl',
+        size: '20,000 and above',
+        address: '200 California Hall, Berkeley, CA, 94720',
+        phone: '(510) 642-6000',
+        web: 'https://www.berkeley.edu/',
+        in_tuition: '$14,312',
+        out_tuition: '$44,066'
+    },
+    },
+    {campus: 'San Francisco State University',
+    details: {
+        img: 'https://www.tclf.org/sites/default/files/styles/crop_2000x700/public/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_courtesyWikimediaCommons_2015_003_Hero.jpg?itok=3xgaYihl',
+        size: '20,000 and above',
+        address: '200 California Hall, Berkeley, CA, 94720',
+        phone: '(510) 642-6000',
+        web: 'https://www.berkeley.edu/',
+        in_tuition: '$14,312',
+        out_tuition: '$44,066'
+    },
+    },
+    {campus: 'San José State University',
+    details: {
+        img: 'https://www.tclf.org/sites/default/files/styles/crop_2000x700/public/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_courtesyWikimediaCommons_2015_003_Hero.jpg?itok=3xgaYihl',
+        size: '20,000 and above',
+        address: '200 California Hall, Berkeley, CA, 94720',
+        phone: '(510) 642-6000',
+        web: 'https://www.berkeley.edu/',
+        in_tuition: '$14,312',
+        out_tuition: '$44,066'
+    },
+    },
+    {campus: 'Sonoma State University',
+    details: {
+        img: 'https://www.tclf.org/sites/default/files/styles/crop_2000x700/public/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_courtesyWikimediaCommons_2015_003_Hero.jpg?itok=3xgaYihl',
+        size: '20,000 and above',
+        address: '200 California Hall, Berkeley, CA, 94720',
+        phone: '(510) 642-6000',
+        web: 'https://www.berkeley.edu/',
+        in_tuition: '$14,312',
+        out_tuition: '$44,066'
+    },
+    },
 ]
 
-export const CSU_CAMPUSES = [
-    'California Polytechnic State University, San Luis Obispo',
-    'California State Polytechnic University, Humboldt',
-    'California State Polytechnic University, Pomona',
-    'California State University Channel Islands',
-    'California State University Maritime Academy',
-    'California State University San Marcos',
-    'California State University, Bakersfield',
-    'California State University, Chico',
-    'California State University, Dominguez Hills',
-    'California State University, East Bay',
-    'California State University, Fresno',
-    'California State University, Fullerton',
-    'California State University, Long Beach',
-    'California State University, Los Angeles',
-    'California State University, Monterey Bay',
-    'California State University, Northridge',
-    'California State University, Sacramento',
-    'California State University, San Bernardino',
-    'California State University, Stanislaus',
-    'San Diego State University',
-    'San Francisco State University',
-    'San José State University',
-    'Sonoma State University'
-]
 
 export const MAJOR_DATA_SAMPLE = [
     {
