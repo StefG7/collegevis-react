@@ -6,7 +6,7 @@ import { CAMPUS_DET } from "../data/campus_details";
 // import Info from "../components/Info";
 import 'leaflet/dist/leaflet.css';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
-// import { FaInfoCircle } from 'react-icons';
+import { IoInformationCircle, IoLocationSharp, IoCall } from "react-icons/io5";
 
 /* Table Generating Function
 
@@ -173,9 +173,9 @@ class Major extends React.Component{
                                 <div id="overview" className={"row " + this.state.selected}>
                                     <h2><b>Overview</b></h2>
                                     <br />
-                                    <p><strong>Size: </strong>{this.state.size}</p>
-                                    <p><strong>Address: </strong>{this.state.address}</p>
-                                    <p><strong>Phone: </strong>{this.state.phone}</p>
+                                    <p><IoInformationCircle/> {this.state.size}</p>
+                                    <p><IoLocationSharp/> {this.state.address}</p>
+                                    <p><IoCall/> {this.state.phone}</p>
                                 </div>
                             </div>
                         </div>
