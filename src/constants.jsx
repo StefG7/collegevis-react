@@ -16,48 +16,11 @@ export const UNI_COLORS = {
     'University of California-Santa Cruz': '#9de3d0'
 }
 
-export const UC_CAMPUSES = [
-    'University of California-Berkeley',
-    'University of California-Davis',
-    'University of California-Irvine',
-    'University of California-Los Angeles',
-    'University of California-Merced',
-    'University of California-Riverside',
-    'University of California-San Diego',
-    'University of California-Santa Barbara',
-    'University of California-Santa Cruz'
-]
-
-export const CSU_CAMPUSES = [
-    'California Polytechnic State University, San Luis Obispo',
-    'California State Polytechnic University, Humboldt',
-    'California State Polytechnic University, Pomona',
-    'California State University Channel Islands',
-    'California State University Maritime Academy',
-    'California State University San Marcos',
-    'California State University, Bakersfield',
-    'California State University, Chico',
-    'California State University, Dominguez Hills',
-    'California State University, East Bay',
-    'California State University, Fresno',
-    'California State University, Fullerton',
-    'California State University, Long Beach',
-    'California State University, Los Angeles',
-    'California State University, Monterey Bay',
-    'California State University, Northridge',
-    'California State University, Sacramento',
-    'California State University, San Bernardino',
-    'California State University, Stanislaus',
-    'San Diego State University',
-    'San Francisco State University',
-    'San José State University',
-    'Sonoma State University'
-]
-
 export const MAJOR_DATA_SAMPLE = [
     {
         major: "Business Administration (Agribusiness)",
         campus: "California State University, Monterey Bay",
+        key: 23,
         lat: "36.652397",
         lon: "-121.79618",
         city: "Seaside, CA"
@@ -65,6 +28,7 @@ export const MAJOR_DATA_SAMPLE = [
     {
         major: "Agricultural Science (General)",
         campus: "California Polytechnic State University, San Luis Obispo",
+        key: 9,
         lat: "35.299515",
         lon: "-120.65731",
         city: "San Luis Obispo, CA"
@@ -72,6 +36,7 @@ export const MAJOR_DATA_SAMPLE = [
     {
         major: "Viticulture and Enology",
         campus: "University of California-Davis",
+        key: 1,
         lat: "38.539665",
         lon: "-121.749565",
         city: "Davis, CA"
@@ -79,6 +44,7 @@ export const MAJOR_DATA_SAMPLE = [
     {
         major:"Sustainable Agriculture and Food Systems",
         campus: "University of California-Davis",
+        key: 2,
         lat: "38.539665",
         lon: "-121.749565",
         city: "Davis, CA"
