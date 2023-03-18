@@ -6,7 +6,6 @@ import { MAJOR_DATA_SAMPLE, UC_CAMPUSES } from "../constants";
 import 'leaflet/dist/leaflet.css';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 
-
 /* Table Generating Function
 
     1. Takes in data about majors and their campus from the "constants.js" file.
@@ -49,7 +48,7 @@ const Table = () => {
 
 */
 
-const Map = () => {
+const Map = (props) => {
     return (
         <div className="leaflet-container"> 
             <MapContainer center={[36.778259, -119.417931]} zoom={6} scrollWheelZoom={true}>
@@ -61,7 +60,8 @@ const Map = () => {
                 return (
                     <Marker position={[item.lat, item.lon]} key={index*40+7}
                         eventHandlers={{
-                        mouseover: (event) => event.target.openPopup()}}
+                        mouseover: (event) => event.target.openPopup(),
+                        click: (event) => props.markerFunc(item.campus)}}
                         >
                         <Popup>
                             {item.campus} <br /> {item.city}
@@ -87,24 +87,39 @@ class Major extends React.Component{
         super();
         this.state = {
          myclass: '',
-         map: 'leaflet-container'
+         campus: 'Pick a Campus on the Map!',
+         selected: ''
          }
       this.divclicked = this.divclicked.bind(this);
+      this.setCampus = this.setCampus.bind(this);
+      this.markerFunc = this.markerFunc.bind(this);
       }
      
       divclicked() {
        if (this.state.myclass === '') {
         this.setState({
-         myclass: 'expanded',
-         map: 'leaflet-expanded'
+            myclass: 'expanded'
         })
        }
       else {
        this.setState({
-         myclass: '',
-         map: 'leaflet-container'
+         myclass: ''
        })
       }
+     }
+
+     setCampus(name) {
+        this.setState({
+            campus: name
+        })
+     }
+
+     markerFunc(name) {
+        this.setState({
+            myclass: 'expanded',
+            selected: 'selected'
+        })
+        this.setCampus(name)
      }
     render() {
         return (
@@ -116,7 +131,7 @@ class Major extends React.Component{
                     </div>
                     <div className="col-sm-6">
                         <div className="row">
-                            <Map /> 
+                            <Map markerFunc ={this.markerFunc}/> 
                         </div>
                         <div className="row">
                             {/* <Info /> */}
@@ -124,14 +139,15 @@ class Major extends React.Component{
                                 <div className="row mt-3">
                                     <button className="btn btn-slider" onClick={this.divclicked}></button>
                                 </div>
-                                <div className="row mt-5" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                                    <h1 className="campus">{MAJOR_DATA_SAMPLE[0].campus}</h1>
-                                    <br />
-                                    <h2>Overview:</h2>
+                                <div id="campus" className="row">
+                                    <h1 className={"resize " + this.state.selected}>{this.state.campus}</h1>
+                                    
+                                    <img id="img-fluid" className={this.state.selected} src={'https://slugcrm-ucsc-edu.cdn.technolutions.net/www/images/20210204-Aerial-westside-campus-look-to-water-01.JPG'} alt="Placeholder Campus Image" />
+                                </div>
+                                <div id="overview" className={"row " + this.state.selected}>
+                                   <h2><b>Overview</b></h2>
                                     <p>Public, Four or more years</p>
                                     <p></p>
-
-                                    
                                 </div>
                             </div>
                         </div>
