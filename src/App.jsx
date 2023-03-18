@@ -20,16 +20,16 @@ function App() {
                     </div>
                     <div className='btn-layout col-sm-6' style={{display: 'flex', justifyContent:'flex-end'}}>
                         {state == PAGE_STATE["Majors"] &&
-                            <button className='btn' onClick={() => setState(PAGE_STATE["Careers"])}>Go to Majors</button>}
+                            <button className='btn' onClick={() => setState(PAGE_STATE["Careers"])}>Go to Careers</button>}
                         {state == PAGE_STATE["Careers"] &&
-                            <button className='btn' onClick={() => setState(PAGE_STATE["Majors"])}>Go to Careers</button>}
+                            <button className='btn' onClick={() => setState(PAGE_STATE["Majors"])}>Go to Majors</button>}
                     </div>
                 </div>
             }
 
             <div>
-                {state == PAGE_STATE["Careers"] && <Major minor="Food & Nutrition" />}
-                {state == PAGE_STATE["Majors"] && <Career minor="Food & Nutrition" />}
+                {state == PAGE_STATE["Careers"] && <Major minorSelections={minorSelections} />}
+                {state == PAGE_STATE["Majors"] && <Career minorSelections={minorSelections} />}
                 <P5Page pageState={state}
                         setState={(state) => {setState(state)}}
                         minorSelections={minorSelections}
