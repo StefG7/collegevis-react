@@ -8,7 +8,7 @@ import './App.css'
 import {PAGE_STATE} from './constants.jsx';
 
 function App() {
-    const [state, setState] = useState(PAGE_STATE["Home"]);//"Majors");
+    const [state, setState] = useState(PAGE_STATE["Careers"]);//"Home");
     const [minorSelections, setMinorSelections] = useState([]);
 
     return (

@@ -1,7 +1,8 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { MAJOR_DATA_SAMPLE } from "../constants";
-import { CAMPUS_DET } from "../data/campus_details";
+import { CAMPUS_DET } from "../data/old_campus_details";
+import { CAMPUS_DET_2 } from "../data/campus_details";
 // import Map from "../components/Map";
 // import Info from "../components/Info";
 import 'leaflet/dist/leaflet.css';
@@ -57,16 +58,17 @@ const Map = (props) => {
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            {MAJOR_DATA_SAMPLE.map((item,index) => {
+            /> 
+            {/* {MAJOR_DATA_SAMPLE.map((item,index) => { */}
+            {CAMPUS_DET_2.map((item,index) => {
                 return (
-                    <Marker position={[item.lat, item.lon]} key={index*40+7}
+                    <Marker position={[item[3], item[2]]} key={index*40+7}
                         eventHandlers={{
                         mouseover: (event) => event.target.openPopup(),
-                        click: (event) => props.markerFunc(item.campus, item.key)}}
+                        click: (event) => props.markerFunc(item[1], item[0])}}
                         >
                         <Popup>
-                            {item.campus} <br /> {item.city}
+                            {item[1]} <br /> {item[5] + ", CA"}
                         </Popup>
                     </Marker>
                 );
@@ -127,14 +129,24 @@ class Major extends React.Component{
 
      setDetails(key) {
         // console.log(key)
-        this.setState({
-            img_url: CAMPUS_DET[key].details.img,
-            size: CAMPUS_DET[key].details.size,
-            address: CAMPUS_DET[key].details.address,
-            phone: CAMPUS_DET[key].details.phone,
-            web: CAMPUS_DET[key].details.web,
-            in_tui: CAMPUS_DET[key].details.in_tuition,
-            out_tui: CAMPUS_DET[key].details.out_tuition,
+        CAMPUS_DET_2.map((item,index) => {
+            item.some(element => {
+                if (element == key) {
+                    console.log("✅ array has key " + key + " at index " + index)
+                    this.setState({
+                        img_url: 'https://www.tclf.org/sites/default/files/styles/crop_2000x700/public/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_courtesyWikimediaCommons_2015_003_Hero.jpg?itok=3xgaYihl',
+                        size: '20,000 placeholder',
+                        address: CAMPUS_DET_2[index][4] + ", " + CAMPUS_DET_2[index][5] + ", CA " + CAMPUS_DET_2[index][6],
+                        phone: CAMPUS_DET_2[index][7],
+                        web: 'imaginary website',
+                        in_tui: CAMPUS_DET_2[index][8],
+                        out_tui: CAMPUS_DET_2[index][9],
+                    })
+                } 
+                // else {
+                //     console.log("Error, didn't find matching key!")
+                // }
+            })
         })
      }
 
