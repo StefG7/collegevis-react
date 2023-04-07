@@ -34,6 +34,12 @@ h1.selected {
     text-shadow: 2px 5px 7px #000000;
 }
 
+
+h2 {
+    text-align: center;
+    font-weight: bolder;
+}
+
 h3 {
     text-align: left;
     margin: 1.5vw;
@@ -65,8 +71,7 @@ table thead {
     border-radius: 10px;
     height: 75vh;
     margin: 0vh 10vh 0vh 10vh;
-    overflow: scroll;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .p5Container {
@@ -196,6 +201,21 @@ table thead {
 #detail.expanded {
     top: -40.5vh;
     height: 50vh;
+}
+
+.online_icon {
+    height: 2em;
+    width: 2em;
+}
+
+.external_link_icon {
+    height: 2em;
+    width: 2em;
+    transition:0.3s;
+    filter: invert(100%);
+}
+.external_link_icon:hover {
+    filter: invert(100%);
 }
 
 /* Implemented above: https://stackoverflow.com/questions/49517309/how-to-slide-or-hide-a-div-with-transition-in-react */

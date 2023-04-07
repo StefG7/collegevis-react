@@ -2,6 +2,7 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { MAJOR_DATA_SAMPLE } from "../constants";
 
+import ExternalLink from "../components/ExternalLink";
 
 /* Table Generating Function
 
@@ -19,18 +20,18 @@ const Table = ({data}) => {
             <table className="table table-light table-striped">
             <thead>
                 <tr>
-                <th scope="col">#</th>
                 <th scope="col">Career</th>
-                <th scope="col">O'Net Link</th>
+                <th scope="col">Categories</th>
+                <th scope="col">Link</th>
                 </tr>
             </thead>
             <tbody>
             {data.map((item, index) => {
                 return (
                     <tr key={ index * 20 + 5 }>
-                    <th scope="row">{ index + 1 }</th>
-                    <td>{ item.major }</td>
-                    <td>{ item.campus }</td>
+                    <td>{ item[0] }</td>
+                    <td>WAIT!!!</td>
+                    <td><ExternalLink link={"https://www.onetonline.org/"}></ExternalLink></td>
                     </tr>
                 );
             })}
@@ -61,7 +62,7 @@ class Career extends React.Component{
                         <h1>{this.props.minorSelections[0]}</h1>
                     </div>
                     <div className="col-sm-6 title">
-                        <h1>List of Careers</h1>
+                        <h1>Discovered Careers</h1>
                     </div>
                 </div>
                 <div className="row">
@@ -75,7 +76,7 @@ class Career extends React.Component{
                         </div>
                     </div>
                     <div className="col-sm-6 title">
-                        <Table data={ MAJOR_DATA_SAMPLE }/>
+                        <Table data={ this.props.shownJobs }/>
                     </div>
                 </div>
             </div>

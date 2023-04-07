@@ -85,7 +85,7 @@ class P5Page extends React.Component {
 			if (this.props.pageState == PAGE_STATE["Home"]){
 				// SETTING HOVERMINOR TO FALSE EVERY FRAME
 				// The minor planet being hovered over will set this to true
-				this.hoveringMinor = false;
+				//this.hoveringMinor = false;
 				let minorPlanetString = '';
 
 				majorPlanetList.forEach(planet => {
@@ -200,6 +200,7 @@ class P5Page extends React.Component {
 					if (!clickedOnMinorPlanet) {
 						this.setState({"textOpacity": 0});
 						this.landingPageState = 0;
+						this.hoveringMinor = false;
 						this.updatePlanetPosition();
 					}
 				}
@@ -227,8 +228,8 @@ class P5Page extends React.Component {
 						{ // For Home Page when minorSelection has content in it
 						this.props.pageState == PAGE_STATE["Home"] && this.props.minorSelections.length != 0 &&
 							<div>
-								<button className='btn mx-3' onClick={() => this.props.setState(PAGE_STATE["Majors"])}>Explore Majors</button>
 								<button className='btn mx-3' onClick={() => this.props.setState(PAGE_STATE["Careers"])}>Explore Careers</button>
+								<button className='btn mx-3' onClick={() => this.props.setState(PAGE_STATE["Majors"])}>Explore Majors</button>
 							</div>
 						}
 					</div>
@@ -237,7 +238,8 @@ class P5Page extends React.Component {
 											left: `${this.state.textX}px`,
 											top: `${this.state.textY}px`,
 											width: `60%`,
-											opacity: `${this.state.textOpacity}`
+											opacity: `${this.state.textOpacity}`,
+											"pointerEvents": `${this.state.textOpacity ? "auto" : "none" }`
 										}}
 										planetName={this.state.hoverMinorPlanetName}>
 				</MinorDescription>

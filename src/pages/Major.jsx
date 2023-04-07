@@ -1,13 +1,18 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { MAJOR_DATA_SAMPLE } from "../constants";
 import { CAMPUS_DET } from "../data/old_campus_details";
-import { CAMPUS_DET_2 } from "../data/campus_details";
 // import Map from "../components/Map";
 // import Info from "../components/Info";
 import 'leaflet/dist/leaflet.css';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import { IoInformationCircle, IoLocationSharp, IoCall } from "react-icons/io5";
+
+import ExternalLink from "../components/ExternalLink";
+
+// Data Loading
+import { MAJOR_DATA_SAMPLE } from "../constants";
+import { CAMPUS_DET_2 } from "../data/campus_details";
+import { ALL_MAJORS } from '../data/all_major';
 
 /* Table Generating Function
 
@@ -17,28 +22,43 @@ import { IoInformationCircle, IoLocationSharp, IoCall } from "react-icons/io5";
 
 */
 
-const Table = () => {
+const OnlineIcon = () => {
+    return(
+        <img className="online_icon"
+            src="public/assets/online_icon.png"
+            alt="onlineIcon"
+            data-tooltip-id="my-tooltip" 
+            data-tooltip-content="Online Program" 
+            data-tooltip-place="right"></img>
+    );
+}
+
+const Table = (props) => {
     return (
         <div className="tableContainer">
             <table className="table table-light table-striped">
-            <thead>
-                <tr>
-                <th scope="col">#</th>
-                <th scope="col">Major</th>
-                <th scope="col">Campus</th>
-                </tr>
-            </thead>
-            <tbody>
-            {MAJOR_DATA_SAMPLE.map((item, index) => {
-                return (
-                    <tr key={ index + 2 }>
-                    <th scope="row">{ index + 1 }</th>
-                    <td>{ item.major }</td>
-                    <td>{ item.campus }</td>
+                <thead>
+                    <tr>
+                    <th scope="col">Major</th>
+                    <th scope="col">Campus</th>
+                    <th scope="col">Categories</th>
+                    <th scope="col">Link</th>
                     </tr>
-                );
-            })}
-            </tbody>
+                </thead>
+                <tbody>
+                {props.shownMajors.map((item, index) => {
+                    let majID = item[0]; 
+                    return (
+                        <tr key={ index }>
+                        <td>{ ALL_MAJORS[majID][0] } 
+                            {ALL_MAJORS[majID][3] === "TRUE" && <OnlineIcon></OnlineIcon>}</td>
+                        <td>{ ALL_MAJORS[majID][2] }</td>
+                        <td>Wait!!</td>
+                        <td><ExternalLink link={"https://" + ALL_MAJORS[majID][4]}></ExternalLink></td>
+                        </tr>
+                    );
+                })}
+                </tbody>
             </table>
         </div>
     );
@@ -164,8 +184,8 @@ class Major extends React.Component{
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-sm-6 title">
-                        <h1>{this.props.minorSelections[0]}</h1>
-                        <Table />
+                        <h2> Discovered Majors</h2>
+                        <Table shownMajors={this.props.shownMajors} />
                     </div>
                     <div className="col-sm-6">
                         <div className="row">
