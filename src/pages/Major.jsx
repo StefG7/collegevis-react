@@ -127,9 +127,9 @@ class Major extends React.Component{
         this.markerFunc = this.markerFunc.bind(this);
         this.setDetails = this.setDetails.bind(this);
         this.shownMajors = []; // shownMajors will be changed here based on campus in focus
-      }
+    }
      
-      divclicked() {
+    divclicked() {
        if (this.state.myclass === '') {
         this.setState({
             myclass: 'expanded'
@@ -140,15 +140,15 @@ class Major extends React.Component{
          myclass: ''
        })
       }
-     }
+    }
 
-     setCampus(name) {
+    setCampus(name) {
         this.setState({
             campus: name
         })
-     }
+    }
 
-     setDetails(key) {
+    setDetails(key) {
         // console.log(key)
         CAMPUS_DET_2.map((item,index) => {
             item.some(element => {
@@ -169,9 +169,9 @@ class Major extends React.Component{
                 // }
             })
         })
-     }
+    }
 
-     markerFunc(name,key) {
+    markerFunc(name,key) {
         this.setState({
             myclass: 'expanded',
             selected: 'selected',
@@ -179,8 +179,12 @@ class Major extends React.Component{
         })
         this.setCampus(name)
         this.setDetails(key)
+    }
 
-        // Push the major list of that university to the top
+    populateShownMajor() {
+        console.log("123")
+
+        // If a uni is selected, push the major list of that university to the top
         let uni_list = []; // majors in the selected uni
 
         // Copy
@@ -198,18 +202,17 @@ class Major extends React.Component{
             }
         }
 
-        console.log(uni_list);
-        console.log(this.shownMajors);
+        this.shownMajors = uni_list.concat(this.shownMajors);       
+    }
 
-        this.shownMajors = uni_list.concat(this.shownMajors);        
-     }
     render() {
+        this.populateShownMajor()
         return (
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-sm-6 title">
                         <h2> Discovered Majors</h2>
-                        <Table shownMajors={this.shownMajors.length == 0 ? this.props.shownMajors : this.shownMajors} />
+                        <Table shownMajors={this.shownMajors} />
                     </div>
                     <div className="col-sm-6">
                         <div className="row">
