@@ -184,6 +184,7 @@ class Major extends React.Component{
         let uni_list = []; // majors in the selected uni
 
         // Copy
+        this.shownMajors = [];
         for (let i = 0; i < this.props.shownMajors.length; i++)
             this.shownMajors.push(this.props.shownMajors[i]);
 
