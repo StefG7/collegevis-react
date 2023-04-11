@@ -122,10 +122,11 @@ class Major extends React.Component{
          in_tui: '',
          out_tui: '',
          }
-      this.divclicked = this.divclicked.bind(this);
-      this.setCampus = this.setCampus.bind(this);
-      this.markerFunc = this.markerFunc.bind(this);
-      this.setDetails = this.setDetails.bind(this);
+        this.divclicked = this.divclicked.bind(this);
+        this.setCampus = this.setCampus.bind(this);
+        this.markerFunc = this.markerFunc.bind(this);
+        this.setDetails = this.setDetails.bind(this);
+        this.shownMajors = []; // shownMajors will be changed here based on campus in focus
       }
      
       divclicked() {
@@ -178,6 +179,28 @@ class Major extends React.Component{
         })
         this.setCampus(name)
         this.setDetails(key)
+
+        // Push the major list of that university to the top
+        let uni_list = []; // majors in the selected uni
+
+        // Copy
+        for (let i = 0; i < this.props.shownMajors.length; i++)
+            this.shownMajors.push(this.props.shownMajors[i]);
+
+        // Push the university major to the top
+        let l = this.shownMajors.length;
+        for (let i = 0; i < l; i++){
+            if (ALL_MAJORS[this.shownMajors[i][0]][2] == name) {
+                uni_list.push(this.shownMajors.splice(i, 1)[0]);
+                i--;
+                l--;
+            }
+        }
+
+        console.log(uni_list);
+        console.log(this.shownMajors);
+
+        this.shownMajors = uni_list.concat(this.shownMajors);        
      }
     render() {
         return (
@@ -185,7 +208,7 @@ class Major extends React.Component{
                 <div className="row">
                     <div className="col-sm-6 title">
                         <h2> Discovered Majors</h2>
-                        <Table shownMajors={this.props.shownMajors} />
+                        <Table shownMajors={this.shownMajors.length == 0 ? this.props.shownMajors : this.shownMajors} />
                     </div>
                     <div className="col-sm-6">
                         <div className="row">
