@@ -181,9 +181,7 @@ class Major extends React.Component{
         this.setDetails(key)
     }
 
-    populateShownMajor() {
-        console.log("123")
-
+    populateShownMajor() {  
         // If a uni is selected, push the major list of that university to the top
         let uni_list = []; // majors in the selected uni
 
@@ -195,18 +193,18 @@ class Major extends React.Component{
         // Push the university major to the top
         let l = this.shownMajors.length;
         for (let i = 0; i < l; i++){
-            if (ALL_MAJORS[this.shownMajors[i][0]][2] == name) {
+            if (ALL_MAJORS[this.shownMajors[i][0]][2] == this.state.campus) {
                 uni_list.push(this.shownMajors.splice(i, 1)[0]);
                 i--;
                 l--;
             }
         }
 
-        this.shownMajors = uni_list.concat(this.shownMajors);       
+        this.shownMajors = uni_list.concat(this.shownMajors);
     }
 
     render() {
-        this.populateShownMajor()
+        this.populateShownMajor();
         return (
             <div className="container-fluid">
                 <div className="row">
