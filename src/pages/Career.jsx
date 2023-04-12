@@ -3,6 +3,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { MAJOR_DATA_SAMPLE } from "../constants";
 
 import ExternalLink from "../components/ExternalLink";
+import MinorTagsTable from "../components/MinorTagsTable";
+
+import { JOB_MINOR_CATEGORIZATION } from '../data/job_minor_categorization';
 
 /* Table Generating Function
 
@@ -30,7 +33,7 @@ const Table = ({data}) => {
                 return (
                     <tr key={ index * 20 + 5 }>
                     <td>{ item[0] }</td>
-                    <td>WAIT!!!</td>
+                    <td><MinorTagsTable minorCategories={JOB_MINOR_CATEGORIZATION[item[0]]}></MinorTagsTable></td>
                     <td><ExternalLink link={"https://www.onetonline.org/"}></ExternalLink></td>
                     </tr>
                 );

@@ -8,11 +8,13 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import { IoInformationCircle, IoLocationSharp, IoCall } from "react-icons/io5";
 
 import ExternalLink from "../components/ExternalLink";
+import MinorTagsTable from "../components/MinorTagsTable";
 
 // Data Loading
 import { MAJOR_DATA_SAMPLE } from "../constants";
 import { CAMPUS_DET_2 } from "../data/campus_details";
 import { ALL_MAJORS } from '../data/all_major';
+import { MAJOR_MINOR_CATEGORIZATION } from '../data/major_minor_categorization';
 
 /* Table Generating Function
 
@@ -53,7 +55,7 @@ const Table = (props) => {
                         <td>{ ALL_MAJORS[majID][0] } 
                             {ALL_MAJORS[majID][3] === "TRUE" && <OnlineIcon></OnlineIcon>}</td>
                         <td>{ ALL_MAJORS[majID][2] }</td>
-                        <td>Wait!!</td>
+                        <td><MinorTagsTable minorCategories={MAJOR_MINOR_CATEGORIZATION[majID]}></MinorTagsTable></td>
                         <td><ExternalLink link={"https://" + ALL_MAJORS[majID][4]}></ExternalLink></td>
                         </tr>
                     );

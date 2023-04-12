@@ -81,6 +81,7 @@ function App() {
 
     return (
         <div className='container-fluid'>
+            <Tooltip id="my-tooltip" />
             {state != PAGE_STATE["Home"] &&
                 <div className='row'>
                     <div className='btn-layout col-sm-6'>

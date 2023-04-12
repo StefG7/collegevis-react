@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import '../App.css'
 
-import {MAJOR_COLORS, MINOR_CATEGORIES, MAJOR_CATEGORIES} from '../constants.jsx';
+import {MAJOR_COLORS, MINOR_CATEGORIES, MAJOR_CATEGORIES, MINOR_COLORS} from '../constants.jsx';
 
 
 class MinorTags extends React.Component {
@@ -50,7 +50,8 @@ class MinorT extends React.Component {
         }
 
         return (
-            <p style={{"backgroundColor": MAJOR_COLORS[major]}}
+            <p style={{"backgroundColor": MAJOR_COLORS[major],
+                        "borderColor": MINOR_COLORS[this.props.tag]}}
                 onClick={this.cancelMe}>
                 {this.props.tag}
             </p>
