@@ -1,11 +1,10 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { CAMPUS_DET } from "../data/old_campus_details";
 // import Map from "../components/Map";
 // import Info from "../components/Info";
 import 'leaflet/dist/leaflet.css';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
-import { IoInformationCircle, IoLocationSharp, IoCall } from "react-icons/io5";
+import { IoInformationCircle, IoLocationSharp, IoCall, IoGlobeOutline} from "react-icons/io5";
 
 import ExternalLink from "../components/ExternalLink";
 import MinorTagsTable from "../components/MinorTagsTable";
@@ -26,12 +25,12 @@ import { MAJOR_MINOR_CATEGORIZATION } from '../data/major_minor_categorization';
 
 const OnlineIcon = () => {
     return(
-        <img className="online_icon"
+        <IoGlobeOutline className="online_icon"
             src="public/assets/online_icon.png"
             alt="onlineIcon"
             data-tooltip-id="my-tooltip" 
             data-tooltip-content="Online Program" 
-            data-tooltip-place="right"></img>
+            data-tooltip-place="right"></IoGlobeOutline>
     );
 }
 

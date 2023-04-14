@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {IoOpenOutline} from "react-icons/io5";
 
 class ExternalLink extends React.Component {
     constructor() {
@@ -8,11 +9,8 @@ class ExternalLink extends React.Component {
     render() {
         return (
             <a  href={this.props.link}  target="_blank">
-            <img className="external_link_icon"
-                 src="public/assets/external-link.png"
-                 href={this.props.link}
-                 alt="External_Link"
-                 pointerEvents="inherit"></img>
+            <IoOpenOutline className="external_link_icon"
+                 alt="External_Link"></IoOpenOutline>
             </a>
         );
     }

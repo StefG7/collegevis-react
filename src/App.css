@@ -55,6 +55,7 @@ table thead {
     position: sticky;
     top: 0px;
     margin: 0 0 0 0;
+    z-index: 3;
 }
 
 #campus {
@@ -228,18 +229,23 @@ table thead {
 }
 
 .online_icon {
-    height: 2em;
-    width: 2em;
+    height: 1.5em;
+    width: 1.5em;
+    color: #5e6caa;
 }
 
 .external_link_icon {
     height: 2em;
     width: 2em;
+    color: #5e6caa;
     transition:0.3s;
-    filter: invert(100%);
 }
 .external_link_icon:hover {
     filter: invert(100%);
+}
+
+#my-tooltip {
+    z-index: 4;
 }
 
 /* Implemented above: https://stackoverflow.com/questions/49517309/how-to-slide-or-hide-a-div-with-transition-in-react */
