@@ -7,7 +7,14 @@ body {
 }
 
 p {
-    font-size: 0.9vw;
+    font-size: 1vw;
+}
+
+p.othernames {
+    color:#8595de;
+    font-style: italic;
+    text-align: center;
+    font-size: 0.8vw;
 }
 
 h1 {
@@ -41,7 +48,7 @@ h2 {
 }
 
 h3 {
-    text-align: left;
+    text-align: center;
     margin: 1.5vw;
     font-size: 1.7vw;
     font-weight: bold;
