@@ -1,6 +1,7 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { MAJOR_DATA_SAMPLE } from "../constants";
+import JOBS from '../data/final_jobs.json'
 
 import ExternalLink from "../components/ExternalLink";
 import MinorTagsTable from "../components/MinorTagsTable";
@@ -74,8 +75,12 @@ class Career extends React.Component{
                         <img className="img-fluid rounded mx-auto d-block" src="https://github.com/StefG7/collegevis-react/blob/main/public/pexels-mario-schafer-11322619.jpg?raw=true" alt="Chefs rolling out dough" />
                         <br /><br />
                         <div className="row mx-5">
-                            <h3>Chefs and Head Cooks</h3>
-                            <p>Direct and may participate in the preparation, seasoning, and cooking of salads, soups, fish, meats, vegetables, desserts, or other foods. May plan and price menu items, order supplies, and keep records and accounts.</p>
+                            <h3>{JOBS[0].title}</h3>
+                            <p className="othernames">
+                                {JOBS[0].also_called.title[0]}, {JOBS[0].also_called.title[0]}, {JOBS[0].also_called.title[0]}...
+                            </p>
+                            <br /><br />
+                            <p>{JOBS[0].what_they_do}</p>
                         </div>
                     </div>
                     <div className="col-sm-6 title">
