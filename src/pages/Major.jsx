@@ -27,12 +27,10 @@ let DefaultIcon = L.icon({
 
 let crazyIcon = L.icon({
     iconUrl: 'assets/check-icon.png',
-    iconSize: [40, 40],
+    iconSize: [40, 40], // changing size based on majors offered at campus
     iconAnchor: [12, 12],
     popupAnchor: [0, 0],
 })
-
-// L.Marker.prototype.options.icon = DefaultIcon;
 
 /* Table Generating Function
 
@@ -174,7 +172,7 @@ class Major extends React.Component{
                 if (element == key) {
                     console.log("✅ array has key " + key + " at index " + index)
                     this.setState({
-                        img_url: 'https://www.tclf.org/sites/default/files/styles/crop_2000x700/public/thumbnails/image/CA_Berkeley_UniversityOfCaliforniaAtBerkeley_courtesyWikimediaCommons_2015_003_Hero.jpg?itok=3xgaYihl',
+                        img_url: 'assets/csumb.jpg',
                         size: '20,000 placeholder',
                         address: CAMPUS_DET_2[index][4] + ", " + CAMPUS_DET_2[index][5] + ", CA " + CAMPUS_DET_2[index][6],
                         phone: CAMPUS_DET_2[index][7],
