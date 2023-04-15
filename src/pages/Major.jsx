@@ -15,6 +15,25 @@ import { CAMPUS_DET_2 } from "../data/campus_details";
 import { ALL_MAJORS } from '../data/all_major';
 import { MAJOR_MINOR_CATEGORIZATION } from '../data/major_minor_categorization';
 
+// Markers
+import icon from 'leaflet/dist/images/marker-icon.png';
+import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+// import check from 'public/assets/check-icon.png';
+
+let DefaultIcon = L.icon({
+    iconUrl: icon,
+    shadowUrl: iconShadow
+});
+
+let crazyIcon = L.icon({
+    iconUrl: 'assets/check-icon.png',
+    iconSize: [40, 40],
+    iconAnchor: [12, 12],
+    popupAnchor: [0, 0],
+})
+
+// L.Marker.prototype.options.icon = DefaultIcon;
+
 /* Table Generating Function
 
     1. Takes in data about majors and their campus from the "constants.js" file.
@@ -26,7 +45,6 @@ import { MAJOR_MINOR_CATEGORIZATION } from '../data/major_minor_categorization';
 const OnlineIcon = () => {
     return(
         <IoGlobeOutline className="online_icon"
-            src="public/assets/online_icon.png"
             alt="onlineIcon"
             data-tooltip-id="my-tooltip" 
             data-tooltip-content="Online Program" 
@@ -83,7 +101,7 @@ const Map = (props) => {
             {/* {MAJOR_DATA_SAMPLE.map((item,index) => { */}
             {CAMPUS_DET_2.map((item,index) => {
                 return (
-                    <Marker position={[item[3], item[2]]} key={index*40+7}
+                    <Marker icon={crazyIcon} position={[item[3], item[2]]} key={index*40+7}
                         eventHandlers={{
                         mouseover: (event) => event.target.openPopup(),
                         click: (event) => props.markerFunc(item[1], item[0])}}
