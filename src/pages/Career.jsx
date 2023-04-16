@@ -1,6 +1,5 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { MAJOR_DATA_SAMPLE } from "../constants";
 import JOBS from '../data/final_jobs.json';
 import { JOB_DATA } from "../data/job_data";
 

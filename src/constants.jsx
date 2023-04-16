@@ -16,41 +16,6 @@ export const UNI_COLORS = {
     'University of California-Santa Cruz': '#9de3d0'
 }
 
-export const MAJOR_DATA_SAMPLE = [
-    {
-        major: "Business Administration (Agribusiness)",
-        campus: "California State University, Monterey Bay",
-        key: 23,
-        lat: "36.652397",
-        lon: "-121.79618",
-        city: "Seaside, CA"
-    },
-    {
-        major: "Agricultural Science (General)",
-        campus: "California Polytechnic State University, San Luis Obispo",
-        key: 9,
-        lat: "35.299515",
-        lon: "-120.65731",
-        city: "San Luis Obispo, CA"
-    },
-    {
-        major: "Viticulture and Enology",
-        campus: "University of California-Davis",
-        key: 1,
-        lat: "38.539665",
-        lon: "-121.749565",
-        city: "Davis, CA"
-    },
-    {
-        major:"Sustainable Agriculture and Food Systems",
-        campus: "University of California-Davis",
-        key: 2,
-        lat: "38.539665",
-        lon: "-121.749565",
-        city: "Davis, CA"
-    }
-]
-
 export const MAJOR_CATEGORIES = [    
     "Agriculture & Environmental Studies",
     "Arts & Design",

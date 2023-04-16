@@ -101,6 +101,9 @@ function App() {
                                                           shownMajors={shownMajors}/>}
                 {state == PAGE_STATE["Careers"] && <Career minorSelections={minorSelections}
                                                           shownJobs={shownJobs}/>}
+                {state == PAGE_STATE["Home"] && 
+                    <img className='logo' src="assets/Pathways-Logo.png" alt="Pathways Logo" />
+                }
                 <P5Page pageState={state}
                         setState={setState}
                         minorSelections={minorSelections}

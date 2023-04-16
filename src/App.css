@@ -1,6 +1,31 @@
+/* creating color palette */
+:root {
+    /* Main UI CSS HEX */
+    --jet: #3b3a4cff;
+    --jet2: #dddce4;
+    --orange1: #ef5c29ff;
+    --orange2: #F5997A;
+    --orange3: #F8B6A0;
+    --straw: #d7d65bff;
+    --lavender: #bd86fcff;
+    --keppel: #23b9a9ff;
+
+    /* Planets CSS HEX */
+    --light-red: #fc7c7cff;
+    --sandy-brown: #f9a963ff;
+    --naples-yellow: #f5d549ff;
+    --pear: #c0d14eff;
+    --mantis: #82bf4dff;
+    --turquoise: #39d4c4ff;
+    --argentinian-blue: #70b2e2ff;
+    --tropical-indigo: #a78fffff;
+    --violet-web: #df94ffff;
+    --per-pink: #ff99d6ff;
+}
+
 body {
-    background-color: #181D27;
-    font-family: 'Noto Sans', sans-serif;
+    background-color: var(--jet);
+    font-family: 'Montserrat', sans-serif;
     color: white;
     height: 100%;
     overflow: hidden;
@@ -11,7 +36,7 @@ p {
 }
 
 p.othernames {
-    color:#8595de;
+    color: var(--orange2);
     font-style: italic;
     text-align: center;
     font-size: 0.8vw;
@@ -28,6 +53,7 @@ h1.resize {
     font-size: 2vw;
     z-index: 3;
     margin-top: 2.4vw;
+    color: var(--jet);
 }
 
 h1.selected {
@@ -73,9 +99,15 @@ table thead {
     justify-content: center;
 }
 
+.logo {
+    position: absolute;
+    top: 2vh;
+    width: 17vw;
+    z-index: 2;
+}
 
 .tableContainer{
-    background-color: #8595de;
+    background-color: var(--orange2);
     border-radius: 10px;
     height: 75vh;
     margin: 0vh 10vh 0vh 10vh;
@@ -207,7 +239,7 @@ table thead {
     margin: 1vw;
     padding: .8vw;
     border-radius: 15px;
-    background-color: #e9ecf9;
+    background-color: var(--jet2);
     visibility: hidden;
 }
 
@@ -224,10 +256,19 @@ table thead {
     height: 15vh;
     border-radius: 15px;
     background-color: #ffffff;
-    color: #5e6caa;
+    color: var(--jet);
     transition: 0.5s;
     overflow: hidden;
     z-index: 2;
+}
+
+#detail p {
+    color: var(--jet);
+    font-weight: 500;
+}
+
+#detail h2 {
+    color: var(--orange1);
 }
 
 #detail.expanded {
@@ -238,13 +279,13 @@ table thead {
 .online_icon {
     height: 1.5em;
     width: 1.5em;
-    color: #5e6caa;
+    color: var(--orange2);
 }
 
 .external_link_icon {
     height: 2em;
     width: 2em;
-    color: #5e6caa;
+    color: var(--orange1);
     transition:0.3s;
 }
 .external_link_icon:hover {
@@ -273,7 +314,7 @@ table thead {
 
 .btn {
     color: white;
-    background-color: #5e6caa;
+    background-color: #ef5c29;
     font-size: 30px;
     font-weight: bold;
     border-radius: 7px;
@@ -285,8 +326,8 @@ table thead {
 }
 
 .btn:hover {
-    color: #5e6caa;
-    background-color: #d2d7ee;
+    color: #ef5c29;
+    background-color: #F7AE94;
 }
 
 /* https://www.geeksforgeeks.org/how-to-add-a-pressed-effect-on-button-click-in-css/ */

@@ -12,7 +12,7 @@ import {MINOR_DESCRIPTION_FIRST_PAGE} from '../data/minor_descriptions.jsx';
 let numPlanet = MAJOR_CATEGORIES.length;
 let planetSizeRatio = 0.15;
 let majorPlanetList = [];
-let textSize = 16; // Planet text size
+let textSize = 18; // Planet text size
 
 let majorMinorRatio = 0.2; // size ratio between major and minor planets
 let minorFocusRatio = 0.8; // size ratio between major and minor planets when the minor planets are in focus
@@ -303,8 +303,9 @@ class MajorPlanet {
 		if (landingPageState == 0){
 
 			// Display Major Planet Text
-			this.p5.fill(MAJOR_COLORS[MAJOR_CATEGORIES[this.id]]);
+			this.p5.fill("#ffffff");
 			this.p5.textSize(textSize);
+			// this.p5.textStyle(BOLD);
 			this.p5.textAlign(this.p5.CENTER);
 			this.p5.text(this.name, this.x, this.y + this.diameter / 2 + textSize);
 

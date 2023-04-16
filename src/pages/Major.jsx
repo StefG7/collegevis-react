@@ -1,7 +1,5 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import Map from "../components/Map";
-// import Info from "../components/Info";
 import 'leaflet/dist/leaflet.css';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import { IoInformationCircle, IoLocationSharp, IoCall, IoGlobeOutline} from "react-icons/io5";
@@ -10,8 +8,7 @@ import ExternalLink from "../components/ExternalLink";
 import MinorTagsTable from "../components/MinorTagsTable";
 
 // Data Loading
-import { MAJOR_DATA_SAMPLE } from "../constants";
-import { CAMPUS_DET_2 } from "../data/campus_details";
+import { CAMPUS_DET } from "../data/campus_details2";
 import { ALL_MAJORS } from '../data/all_major';
 import { MAJOR_MINOR_CATEGORIZATION } from '../data/major_minor_categorization';
 
@@ -67,7 +64,7 @@ const Table = (props) => {
                     let majID = item[0]; 
                     return (
                         <tr key={ index }>
-                        <td>{ ALL_MAJORS[majID][0] } 
+                        <td>{ ALL_MAJORS[majID][0] + " "}
                             {ALL_MAJORS[majID][3] === "TRUE" && <OnlineIcon></OnlineIcon>}</td>
                         <td>{ ALL_MAJORS[majID][2] }</td>
                         <td><MinorTagsTable minorCategories={MAJOR_MINOR_CATEGORIZATION[majID]}></MinorTagsTable></td>
@@ -97,7 +94,7 @@ const Map = (props) => {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             /> 
             {/* {MAJOR_DATA_SAMPLE.map((item,index) => { */}
-            {CAMPUS_DET_2.map((item,index) => {
+            {CAMPUS_DET.map((item,index) => {
                 return (
                     <Marker icon={crazyIcon} position={[item[3], item[2]]} key={index*40+7}
                         eventHandlers={{
@@ -167,18 +164,18 @@ class Major extends React.Component{
 
     setDetails(key) {
         // console.log(key)
-        CAMPUS_DET_2.map((item,index) => {
+        CAMPUS_DET.map((item,index) => {
             item.some(element => {
                 if (element == key) {
-                    console.log("✅ array has key " + key + " at index " + index)
+                    // console.log("✅ array has key " + key + " at index " + index)
                     this.setState({
                         img_url: 'assets/csumb.jpg',
-                        size: '20,000 placeholder',
-                        address: CAMPUS_DET_2[index][4] + ", " + CAMPUS_DET_2[index][5] + ", CA " + CAMPUS_DET_2[index][6],
-                        phone: CAMPUS_DET_2[index][7],
+                        size: CAMPUS_DET[index][10],
+                        address: CAMPUS_DET[index][4] + ", " + CAMPUS_DET[index][5] + ", CA " + CAMPUS_DET[index][6],
+                        phone: CAMPUS_DET[index][7],
                         web: 'imaginary website',
-                        in_tui: CAMPUS_DET_2[index][8],
-                        out_tui: CAMPUS_DET_2[index][9],
+                        in_tui: CAMPUS_DET[index][8],
+                        out_tui: CAMPUS_DET[index][9],
                     })
                 } 
                 // else {
@@ -227,6 +224,7 @@ class Major extends React.Component{
                 <div className="row">
                     <div className="col-sm-6 title">
                         <h2> Discovered Majors</h2>
+                        <br />
                         <Table shownMajors={this.shownMajors} />
                     </div>
                     <div className="col-sm-6">
@@ -246,10 +244,12 @@ class Major extends React.Component{
                                 </div>
                                 <div id="overview" className={"row " + this.state.selected}>
                                     <h2><b>Overview</b></h2>
-                                    <br />
-                                    <p><IoInformationCircle/> {this.state.size}</p>
-                                    <p><IoLocationSharp/> {this.state.address}</p>
-                                    <p><IoCall/> {this.state.phone}</p>
+                                    <p><IoInformationCircle color="#ef5c29ff"/> <strong>Students: </strong> {this.state.size}</p>
+                                    <p><IoLocationSharp color="#ef5c29ff"/> {this.state.address}</p>
+                                    <p><IoCall color="#ef5c29ff"/> {this.state.phone}</p>
+                                </div>
+                                <div className="row">
+
                                 </div>
                             </div>
                         </div>
