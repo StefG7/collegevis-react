@@ -2,7 +2,7 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'leaflet/dist/leaflet.css';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
-import { IoInformationCircle, IoLocationSharp, IoCall, IoGlobeOutline} from "react-icons/io5";
+import { IoInformationCircle, IoLocationSharp, IoCall, IoGlobeOutline, IoPeople, IoEnter, IoSchool, IoCash, IoCashOutline} from "react-icons/io5";
 
 import ExternalLink from "../components/ExternalLink";
 import MinorTagsTable from "../components/MinorTagsTable";
@@ -22,11 +22,14 @@ let DefaultIcon = L.icon({
     shadowUrl: iconShadow
 });
 
-let crazyIcon = L.icon({
-    iconUrl: 'assets/check-icon.png',
+let customIcon = L.icon({
+    iconUrl: 'assets/glow-2.png',
     iconSize: [40, 40], // changing size based on majors offered at campus
-    iconAnchor: [12, 12],
+    iconAnchor: [12, 15],
     popupAnchor: [0, 0],
+    // shadowUrl: 'assets/shadow-3.png',
+    // shadowSize: [40, 40],
+    // shadowAnchor: [12, 10],
 })
 
 /* Table Generating Function
@@ -96,7 +99,7 @@ const Map = (props) => {
             {/* {MAJOR_DATA_SAMPLE.map((item,index) => { */}
             {CAMPUS_DET.map((item,index) => {
                 return (
-                    <Marker icon={crazyIcon} position={[item[3], item[2]]} key={index*40+7}
+                    <Marker icon={customIcon} position={[item[3], item[2]]} key={index*40+7}
                         eventHandlers={{
                         mouseover: (event) => event.target.openPopup(),
                         click: (event) => props.markerFunc(item[1], item[0])}}
@@ -135,6 +138,9 @@ class Major extends React.Component{
          web: '',
          in_tui: '',
          out_tui: '',
+         app: '',
+         liv_cam: '',
+         liv_off: '',
          }
         this.divclicked = this.divclicked.bind(this);
         this.setCampus = this.setCampus.bind(this);
@@ -169,13 +175,16 @@ class Major extends React.Component{
                 if (element == key) {
                     // console.log("✅ array has key " + key + " at index " + index)
                     this.setState({
-                        img_url: 'assets/csumb.jpg',
+                        img_url: CAMPUS_DET[index][15],
                         size: CAMPUS_DET[index][10],
                         address: CAMPUS_DET[index][4] + ", " + CAMPUS_DET[index][5] + ", CA " + CAMPUS_DET[index][6],
                         phone: CAMPUS_DET[index][7],
-                        web: 'imaginary website',
+                        web: CAMPUS_DET[index][11],
                         in_tui: CAMPUS_DET[index][8],
                         out_tui: CAMPUS_DET[index][9],
+                        app: CAMPUS_DET[index][12],
+                        liv_cam: CAMPUS_DET[index][13],
+                        liv_off: CAMPUS_DET[index][14],
                     })
                 } 
                 // else {
@@ -233,23 +242,42 @@ class Major extends React.Component{
                         </div>
                         <div className="row">
                             {/* <Info /> */}
-                            <div id="detail" className={this.state.myclass}>
+                            <div id="detail" className={"scroll " + this.state.myclass}>
                                 <div className="row mt-3">
                                     <button className="btn btn-slider" onClick={this.divclicked}></button>
                                 </div>
                                 <div id="campus" className="row">
                                     <h1 className={"resize " + this.state.selected}>{this.state.campus}</h1>
-                                    
-                                    <img id="img-fluid" className={this.state.selected} src={this.state.img_url} alt="Placeholder Campus Image" />
+                                    <div className={this.state.selected} color="black">
+                                        <img id="img-fluid" className={this.state.selected} src={this.state.img_url} alt="Placeholder Campus Image" />
+                                    </div>
                                 </div>
                                 <div id="overview" className={"row " + this.state.selected}>
-                                    <h2><b>Overview</b></h2>
-                                    <p><IoInformationCircle color="#ef5c29ff"/> <strong>Students: </strong> {this.state.size}</p>
-                                    <p><IoLocationSharp color="#ef5c29ff"/> {this.state.address}</p>
-                                    <p><IoCall color="#ef5c29ff"/> {this.state.phone}</p>
+                                    <div className="row">
+                                        <h2><b>Overview</b></h2>
+                                        <div className="col-sm-9 mt-3">
+                                            <p><IoInformationCircle color="#ef5c29ff"/> <a href={this.state.web} target="_blank" rel="noopener noreferrer">{this.state.web}</a></p>
+                                            <p><IoPeople color="#ef5c29ff"/> {this.state.size}</p>
+                                            <p><IoLocationSharp color="#ef5c29ff"/> {this.state.address}</p>
+                                            <p><IoCall color="#ef5c29ff"/> {this.state.phone}</p>
+                                        </div>
+                                        <div className="col-sm-3 mt-3">
+                                            {/* <div className="row mx-6"><a className="btn" href={this.state.web} target="_blank" rel="noopener noreferrer"><IoEnter/>  Webpage</a></div> */}
+                                            <div className="row mx-3 mt-2"><a id="app" className="btn" href={this.state.app} target="_blank" rel="noopener noreferrer">  Apply <br></br> <IoSchool className="mt-2" size={70}/></a></div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="row">
-
+                                <div id="cost" className="row mt-3">
+                                    <div className="col-sm-6">
+                                        <h2 className="my-3">Tuition + Fees</h2>
+                                        <p><IoCash/> <strong>{this.state.in_tui}</strong> in-state tuition</p>
+                                        <p><IoCashOutline/> <strong>{this.state.out_tui}</strong> out-of-state</p>
+                                    </div>
+                                    <div className="col-sm-6">
+                                        <h2 className="my-3">Housing</h2>
+                                        <p><IoCash/> <strong>{this.state.liv_cam}</strong> on-campus</p>
+                                        <p><IoCashOutline/> <strong>{this.state.liv_off}</strong> off-campus w/o family</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>

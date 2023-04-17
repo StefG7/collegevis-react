@@ -17,7 +17,7 @@ import { MAJOR_MINOR_CATEGORIZATION, MINOR_CATEGORIZATION_MAJOR } from "./data/m
 import { JOB_MINOR_CATEGORIZATION, MINOR_CATEGORIZATION_JOB} from "./data/job_minor_categorization";
 
 function App() {
-    const [state, setState] = useState(PAGE_STATE["Home"]);//"Majors");
+    const [state, setState] = useState(PAGE_STATE["Majors"]);//"Majors");
     const [minorSelections, setMinorSelections] = useState([]);
     const [shownMajors, setShownMajors] = useState([]); // format: [[major_id1, edit_dist1], ...]
     const [shownJobs, setShownJobs] = useState([]); // format: [[job_title1, edit_dist1], ...]

@@ -9,6 +9,8 @@
     --straw: #d7d65bff;
     --lavender: #bd86fcff;
     --keppel: #23b9a9ff;
+    --keppel2: rgb(166, 242, 234);
+    --keppel3: rgb(217, 248, 245);
 
     /* Planets CSS HEX */
     --light-red: #fc7c7cff;
@@ -21,6 +23,9 @@
     --tropical-indigo: #a78fffff;
     --violet-web: #df94ffff;
     --per-pink: #ff99d6ff;
+
+    /* Map Dark Mode | https://blog.jamie.holdings/2022/05/15/dark-mode-for/*/
+    --leaflet-tile-filter: invert(1) hue-rotate(700deg);
 }
 
 body {
@@ -225,9 +230,11 @@ table thead {
     margin: auto; 
     /* 100%; 50%; */
     width: 40vw;
+    left: -4px;
     height: 75vh;
     z-index: 1;
     border-radius: 15px;
+    filter: var(--leaflet-tile-filter, none);
 }
 
 .info {
@@ -241,12 +248,39 @@ table thead {
     border-radius: 15px;
     background-color: var(--jet2);
     visibility: hidden;
+    font-size: 0.5vw;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
 #overview.selected {
     visibility: visible;
 }
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scroll {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+#cost {
+    margin: 1vw;
+    padding: .8vw;
+    border-radius: 15px;
+    background-color: var(--keppel3);
+}
+
+#cost h2 {
+    color: var(--keppel) !important;
+}
+#cost p {
+    color: var(--jet) !important;
+}
 
 #detail {
     position: relative;
@@ -258,17 +292,30 @@ table thead {
     background-color: #ffffff;
     color: var(--jet);
     transition: 0.5s;
-    overflow: hidden;
+    overflow: auto;
     z-index: 2;
 }
 
 #detail p {
     color: var(--jet);
+    font-size: 0.85vw;
     font-weight: 500;
 }
 
 #detail h2 {
     color: var(--orange1);
+    text-align: left;
+}
+
+#app {
+    background-color: var(--keppel);
+    font-size: 1.5vw;
+    border-radius: 17px;
+}
+
+#app:hover {
+    background-color: var(--keppel2);
+    color: var(--keppel);
 }
 
 #detail.expanded {
@@ -337,3 +384,14 @@ table thead {
     box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
     /* Lowering the shadow */
 }
+
+.mx-6 {
+    margin-left: 6rem !important;
+    margin-right: 6rem !important;
+}
+
+.mx-7 {
+    margin-left: 8rem !important;
+    margin-right: 8rem !important;
+}
+
