@@ -343,6 +343,23 @@ table thead {
     z-index: 4;
 }
 
+
+.table-striped>tbody>tr:nth-child(odd)>td.clickableJobTitle, 
+.table-striped>tbody>tr:nth-child(even)>td.clickableJobTitle {
+    transition:0.3s;
+ }
+
+.table-striped>tbody>tr:nth-child(odd)>td.clickableJobTitle:hover, 
+.table-striped>tbody>tr:nth-child(even)>td.clickableJobTitle:hover {
+    filter: invert(10%);
+    cursor: pointer;
+ }
+
+.table-striped>tbody>tr:nth-child(odd)>td.clickableJobTitle:active, 
+.table-striped>tbody>tr:nth-child(even)>td.clickableJobTitle:active {
+    filter: invert(30%);
+ }
+
 /* Implemented above: https://stackoverflow.com/questions/49517309/how-to-slide-or-hide-a-div-with-transition-in-react */
 
 .vertical-center {

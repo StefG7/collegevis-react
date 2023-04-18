@@ -18,7 +18,7 @@ import { JOB_MINOR_CATEGORIZATION } from '../data/job_minor_categorization';
 
 */
 
-const Table = ({data}) => {
+const Table = ({data, jobClicked}) => {
     return (
         <div className="tableContainer">
             <table className="table table-light table-striped">
@@ -33,7 +33,7 @@ const Table = ({data}) => {
             {data.map((item, index) => {
                 return (
                     <tr key={ index * 20 + 5 }>
-                    <td>{ item[0] }</td>
+                    <td onClick={(e) => jobClicked(e.target.innerText)} className="clickableJobTitle">{ item[0] }</td>
                     <td><MinorTagsTable minorCategories={JOB_MINOR_CATEGORIZATION[item[0]]}></MinorTagsTable></td>
                     <td><ExternalLink link={"https://www.onetonline.org/"}></ExternalLink></td>
                     </tr>
@@ -56,15 +56,27 @@ Contains the overall layout of the detail page and calls other nested functions/
 class Career extends React.Component{
     constructor() {
         super();
+        this.state = {
+         selectedJobTitle: '',
+        }
+        this.jobClicked = this.jobClicked.bind(this);
     }
+    
+    jobClicked(name) {
+        this.setState({
+            selectedJobTitle: name
+        });
+     }
 
     render() {
+        let jobtitle = this.state.selectedJobTitle ? this.state.selectedJobTitle : this.props.shownJobs[0][0];
+
         return (
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-sm-6 title">
-                        <h1>{this.props.minorSelections[0]}</h1>
-                    </div>
+                        {/* <h1>{this.props.minorSelections[0]}</h1> */}
+                    </div> 
                     <div className="col-sm-6 title">
                         <h1>Discovered Careers</h1>
                     </div>
@@ -75,16 +87,19 @@ class Career extends React.Component{
                         <img className="img-fluid rounded mx-auto d-block" src="assets/campus/pexels-mario-schafer-11322619.jpg" alt="Chefs rolling out dough" />
                         <br /><br />
                         <div className="row mx-5">
-                            <h3>{JOBS[0].title}</h3>
+                            <h3>{jobtitle}</h3>
                             <p className="othernames">
-                                {JOBS[0].also_called.title[0]}, {JOBS[0].also_called.title[0]}, {JOBS[0].also_called.title[0]}...
+                                {JOB_DATA[jobtitle][0][0]},&nbsp;
+                                {JOB_DATA[jobtitle][0][1]},&nbsp;
+                                {JOB_DATA[jobtitle][0][2]}...
                             </p>
                             <br /><br />
-                            <p>{JOBS[0].what_they_do}</p>
+                            {/* what they do*/}
+                            <p>{JOB_DATA[jobtitle][1]}</p>
                         </div>
                     </div>
                     <div className="col-sm-6 title">
-                        <Table data={ this.props.shownJobs }/>
+                        <Table data={ this.props.shownJobs } jobClicked={ this.jobClicked }/>
                     </div>
                 </div>
             </div>
