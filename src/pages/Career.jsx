@@ -63,13 +63,15 @@ class Career extends React.Component{
     }
     
     jobClicked(name) {
+        console.log(name);
         this.setState({
             selectedJobTitle: name
         });
      }
 
     render() {
-        let jobtitle = this.state.selectedJobTitle ? this.state.selectedJobTitle : this.props.shownJobs[0][0];
+        let jobtitle = this.props.shownJobs.length ? this.props.shownJobs[0][0] : '';
+        jobtitle = this.state.selectedJobTitle ? this.state.selectedJobTitle : jobtitle;
 
         return (
             <div className="container-fluid">
@@ -87,15 +89,18 @@ class Career extends React.Component{
                         <img className="img-fluid rounded mx-auto d-block" src="assets/campus/pexels-mario-schafer-11322619.jpg" alt="Chefs rolling out dough" />
                         <br /><br />
                         <div className="row mx-5">
-                            <h3>{jobtitle}</h3>
-                            <p className="othernames">
+                            <h3>{jobtitle ? jobtitle : "No Job Found"}</h3>
+                            { jobtitle ? 
+                                <p className="othernames">
                                 {JOB_DATA[jobtitle][0][0]},&nbsp;
                                 {JOB_DATA[jobtitle][0][1]},&nbsp;
                                 {JOB_DATA[jobtitle][0][2]}...
-                            </p>
+                                </p> 
+                             : ''
+                            }
                             <br /><br />
                             {/* what they do*/}
-                            <p>{JOB_DATA[jobtitle][1]}</p>
+                            <p>{jobtitle ? JOB_DATA[jobtitle][1] : ''}</p>
                         </div>
                     </div>
                     <div className="col-sm-6 title">

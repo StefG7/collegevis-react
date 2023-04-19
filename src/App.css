@@ -148,6 +148,7 @@ table thead {
 #MinorTags {
   position: absolute;
   bottom:1em;
+  z-index: 4;
 }
 
 #MinorTags p {
@@ -169,7 +170,9 @@ table thead {
 }
 
 #MinorTags p:hover {
-    color: white;
+    transition: 0.2s;
+    opacity: 20%;
+    
 }
 
 #MinorTags p + p {
@@ -340,7 +343,7 @@ table thead {
 }
 
 #my-tooltip {
-    z-index: 4;
+    z-index: 5;
 }
 
 

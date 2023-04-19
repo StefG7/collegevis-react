@@ -9,7 +9,7 @@ import P5Page from './pages/P5Page';
 import Major from './pages/Major';
 import Career from './pages/Career';
 
-import EditDist from './utility';
+import {EditDist} from './utility';
 
 // Constant var and data loading
 import {PAGE_STATE} from './constants.jsx';
