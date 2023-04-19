@@ -6,7 +6,7 @@ import '../App.css'
 
 import MinorTags from '../components/MinorTags';
 
-import {PAGE_STATE, MAJOR_CATEGORIES, MAJOR_COLORS, MAJOR_POSITIONS, MINOR_CATEGORIES} from '../constants.jsx';
+import {PAGE_STATE, MAJOR_CATEGORIES, MAJOR_COLORS, MAJOR_POSITIONS, MINOR_CATEGORIES, MINOR_COLORS} from '../constants.jsx';
 import {MINOR_DESCRIPTION_FIRST_PAGE} from '../data/minor_descriptions.jsx';
 import {linearInterpolation} from '../utility.jsx';
 
@@ -187,6 +187,7 @@ class P5Page extends React.Component {
 							majorPlanetList[i].x_old = majorPlanetList[i].x;
 							majorPlanetList[i].y_old = majorPlanetList[i].y;
 							majorPlanetList[i].diameter_old = majorPlanetList[i].diameter;
+							majorPlanetList[i].setMinorPlanetOldPosition();
 						}
 					}
 
@@ -227,6 +228,7 @@ class P5Page extends React.Component {
 							majorPlanetList[i].x_old = majorPlanetList[i].x;
 							majorPlanetList[i].y_old = majorPlanetList[i].y;
 							majorPlanetList[i].diameter_old = majorPlanetList[i].diameter;
+							majorPlanetList[i].setMinorPlanetOldPosition();
 						}
 
 						this.updatePlanetPosition();
@@ -331,6 +333,14 @@ class MajorPlanet {
 		}
 	}
 
+	setMinorPlanetOldPosition() {
+		for (let i = 0; i < this.minorList.length; i++) {
+			this.minorList[i].x_old = this.minorList[i].x;
+			this.minorList[i].y_old = this.minorList[i].y;
+			this.minorList[i].d_old = this.minorList[i].d;
+		}
+	}
+
 	// The return is to account for passing which minor planet is being hovered over
 	// timePassed is for animation, how many milliseconds passed since the transition started, for interpolation
 	display(landingPageState, majorPlanetInFocus, minorSelections, timePassed){
@@ -407,6 +417,10 @@ class MinorPlanet {
 		this.r = this.majorD / 2 + this.majorD * minorOrbitHeightRatio;
 		this.angle = this.id * this.p5.PI / 5;
 		this.setPosition();
+		
+		this.x_old = this.x;
+		this.y_old = this.y;
+		this.d_old = this.d;
 	}
 
 	setPosition(landingPageState, majorPlanetInFocus){
@@ -435,12 +449,26 @@ class MinorPlanet {
 
 	// The return is to account for passing which minor planet is being hovered over
 	// timePassed is for animation, how many milliseconds passed since the transition started, for interpolation
-	display(landingPageState, majorPlanetInFocus, minorSelections){
+	display(landingPageState, majorPlanetInFocus, minorSelections, timePassed){
 
 		// Return name of the minor planet when being hovered over and in focus, empty string otherwise
 		let minorPlanetString = '';
 
-		if (landingPageState == 1){
+		if (timePassed < transitionTime && this.majorI != majorPlanetInFocus) {
+			let color = this.p5.color(MINOR_COLORS[this.name]);
+			if (landingPageState == 0) {
+				color.setAlpha(
+					linearInterpolation(0, 255, 0, transitionTime, timePassed)
+				);
+			}
+			else {
+				color.setAlpha(
+					linearInterpolation(255, 0, 0, transitionTime, timePassed)
+				);
+			}
+			this.p5.fill(color);
+		}
+		else if (landingPageState == 1 && this.majorI == majorPlanetInFocus){
 
 			// Hover checking
 			if (this.p5.pow(this.p5.mouseX - this.x, 2) + 
@@ -450,13 +478,23 @@ class MinorPlanet {
 				minorPlanetString = this.name;
 			}
 			else {
-				this.p5.fill(MAJOR_COLORS[MAJOR_CATEGORIES[this.majorI]]);
+				this.p5.fill(MINOR_COLORS[this.name]);
 			}
+
 		}
-		else this.p5.fill(MAJOR_COLORS[MAJOR_CATEGORIES[this.majorI]]);
+		else if (landingPageState == 0) this.p5.fill(MINOR_COLORS[this.name]);
+		else this.p5.noFill();
 
-		this.p5.ellipse(this.x, this.y, this.d, this.d);
-
+		let trans_x = this.x;
+		let trans_y = this.y;
+		let trans_d = this.d;
+		if (timePassed < transitionTime){
+			trans_x = linearInterpolation(this.x_old, this.x, 0, transitionTime, timePassed);
+			trans_y = linearInterpolation(this.y_old, this.y, 0, transitionTime, timePassed);
+			trans_d = linearInterpolation(this.d_old, this.d, 0, transitionTime, timePassed);
+		}
+		this.p5.ellipse(trans_x, trans_y, trans_d, trans_d);
+		
 		// Drawing highlight ring when the minor planet is selected
 		if (minorSelections.indexOf(this.name) > -1) {
 			this.p5.noFill();
@@ -465,11 +503,11 @@ class MinorPlanet {
 			else this.p5.strokeWeight(this.d * selectionStrokeRatio * 2);
 
 			this.p5.stroke("#ffffff")
-			this.p5.ellipse(this.x, this.y, this.d + this.d * selectionStrokeRatio);
+			this.p5.ellipse(trans_x, trans_y, trans_d + trans_d * selectionStrokeRatio);
 		}
 		this.p5.noStroke();
 
-		if (landingPageState == 1 && this.majorI == majorPlanetInFocus){
+		if (landingPageState == 1 && this.majorI == majorPlanetInFocus && timePassed > transitionTime){
 			
 			// Display Minor Planet Text
 			this.p5.fill("#ffffff");
