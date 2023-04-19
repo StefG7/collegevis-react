@@ -35,7 +35,7 @@ const Table = ({data, jobClicked}) => {
                     <tr key={ index * 20 + 5 }>
                     <td onClick={(e) => jobClicked(e.target.innerText)} className="clickableJobTitle">{ item[0] }</td>
                     <td><MinorTagsTable minorCategories={JOB_MINOR_CATEGORIZATION[item[0]]}></MinorTagsTable></td>
-                    <td><ExternalLink link={"https://www.onetonline.org/"}></ExternalLink></td>
+                    <td><ExternalLink link={JOB_DATA[item[0]][3]}></ExternalLink></td>
                     </tr>
                 );
             })}
