@@ -13,16 +13,16 @@
     --keppel3: rgb(217, 248, 245);
 
     /* Planets CSS HEX */
-    --light-red: #fc7c7cff;
-    --sandy-brown: #f9a963ff;
-    --naples-yellow: #f5d549ff;
-    --pear: #c0d14eff;
-    --mantis: #82bf4dff;
-    --turquoise: #39d4c4ff;
-    --argentinian-blue: #70b2e2ff;
-    --tropical-indigo: #a78fffff;
-    --violet-web: #df94ffff;
-    --per-pink: #ff99d6ff;
+    --sky-blue: #82c0d8ff;
+    --tiffany-blue: #9de4e2ff;
+    --pear: #def05aff;
+    --jasmine: #fee28cff;
+    --earth-yellow: #ffb45eff;
+    --melon: #fda8a7ff;
+    --salmon: #eb8a6fff;
+    --persian-pink: #fc8bc0ff;
+    --plum-web: #ecb3f1ff;
+    --lavender-floral: #c77ee6ff;
 
     /* Map Dark Mode | https://blog.jamie.holdings/2022/05/15/dark-mode-for/*/
     --leaflet-tile-filter: invert(1) hue-rotate(700deg);

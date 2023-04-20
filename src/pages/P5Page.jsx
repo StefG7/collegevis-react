@@ -6,13 +6,14 @@ import '../App.css'
 
 import MinorTags from '../components/MinorTags';
 
-import {PAGE_STATE, MAJOR_CATEGORIES, MAJOR_COLORS, MAJOR_POSITIONS, MINOR_CATEGORIES, MINOR_COLORS} from '../constants.jsx';
+import {PAGE_STATE, MAJOR_CATEGORIES, MAJOR_COLORS, MAJOR_POSITIONS, MINOR_CATEGORIES, MAJOR_IMG, MINOR_COLORS} from '../constants.jsx';
 import {MINOR_DESCRIPTION_FIRST_PAGE} from '../data/minor_descriptions.jsx';
 import {linearInterpolation} from '../utility.jsx';
 
 let numPlanet = MAJOR_CATEGORIES.length;
 let planetSizeRatio = 0.15;
 let majorPlanetList = [];
+let planetImg = [];
 let textSize = 18; // Planet text size
 
 let majorMinorRatio = 0.2; // size ratio between major and minor planets
@@ -67,8 +68,9 @@ class P5Page extends React.Component {
 
 		p5.setup = () => {
 			p5.createCanvas(p5.windowWidth, p5.windowHeight);
-
+			// planetImg[0] = p5.loadImage(MAJOR_IMG[0]);
 			for (let i = 0; i < numPlanet; i++) {
+				planetImg[i] = p5.loadImage(MAJOR_IMG[i]);
 				majorPlanetList[i] = new MajorPlanet(
 					p5.width * MAJOR_POSITIONS[MAJOR_CATEGORIES[i]][0],
 					p5.height * MAJOR_POSITIONS[MAJOR_CATEGORIES[i]][1],
@@ -76,7 +78,8 @@ class P5Page extends React.Component {
 					i,
 					MAJOR_CATEGORIES[i],
 					majorPlanetList,
-					p5
+					p5,
+					planetImg[i]
 				);
 
 			}
@@ -85,7 +88,7 @@ class P5Page extends React.Component {
    
 		p5.draw = () => {
 			p5.background(24, 29, 39);
-			let currentTime = p5.millis();
+			// p5.image(planetImg[0],0,0,200,200);			let currentTime = p5.millis();
 			let timePassed = currentTime - this.aniStartTime;
 
 			// Planet Rendering when in Home Page

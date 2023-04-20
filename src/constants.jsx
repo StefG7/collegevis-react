@@ -29,6 +29,19 @@ export const MAJOR_CATEGORIES = [
     "Mathematics & Economics"
 ]
 
+export const MAJOR_IMG = [
+    "./assets/planets/ag.png",
+    "./assets/planets/art.png",
+    "./assets/planets/services.png",
+    "./assets/planets/science.png",
+    "./assets/planets/engineering.png",
+    "./assets/planets/humanities.png",
+    "./assets/planets/social.png",
+    "./assets/planets/business.png",
+    "./assets/planets/health.png",
+    "./assets/planets/math.png"
+]
+
 export const MINOR_CATEGORIES = {
     "Agriculture & Environmental Studies": 
         ["Agriculture & Food Science",
@@ -84,16 +97,16 @@ export const MINOR_CATEGORIES = {
 }
 
 export const MAJOR_COLORS = {
-    "Agriculture & Environmental Studies": '#d175ff',
-    "Arts & Design": '#ffb3b7',
-    "Human & Public Services": '#ff6666',
-    "Natural Sciences": '#cc0066',
-    "Engineering & Technology": '#66cccc',
-    "Humanities": '#f688bb',
-    "Social & Political Sciences": '#65587f',
-    "Business & Management": '#baf1a1',
-    "Health & Psychology": '#0c7b93',
-    "Mathematics & Economics": '#75b79e'
+    "Agriculture & Environmental Studies": '#def05aff',
+    "Arts & Design": '#fc8bc0ff',
+    "Human & Public Services": '#fda8a7ff',
+    "Natural Sciences": '#c77ee6ff',
+    "Engineering & Technology": '#82c0d8ff',
+    "Humanities": '#fee28cff',
+    "Social & Political Sciences": '#eb8a6fff',
+    "Business & Management": '#ffb45eff',
+    "Health & Psychology": '#ecb3f1ff',
+    "Mathematics & Economics": '#9de4e2ff'
 }
 
 export const MAJOR_POSITIONS = {
@@ -111,14 +124,14 @@ export const MAJOR_POSITIONS = {
 
 
 export const MINOR_COLORS = {
-    "Agriculture & Food Science":  '#baf1a1',
-    "Environmental Science & Studies": '#0c7b93',
-    "Animal Science": '#75b79e',
-    "General Art": '#cc0066',
-    "Design": '#66cccc',
-    "Music": '#f688bb',
-    "Cinema & Visual Arts": '#65587f',
-    "Performing Arts": '#baf1a1', 
+    "Agriculture & Food Science":  '#BED414',
+    "Environmental Science & Studies": '#D2EA1F',
+    "Animal Science": '#E2F16C',
+    "General Art": '#F91A82',
+    "Design": '#FA4097',
+    "Music": '#FB66AC',
+    "Cinema & Visual Arts": '#FDA4CD',
+    "Performing Arts": '#FDAFD3', 
     "Education": '#d175ff',
     "Law & Criminology": '#ffb3b7',
     "Social Services": '#cc0066',
