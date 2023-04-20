@@ -379,16 +379,15 @@ class MajorPlanet {
 			this.p5.fill(MAJOR_COLORS[MAJOR_CATEGORIES[this.id]]);
 		else this.p5.noFill();
 
+		let trans_x = this.x;
+		let trans_y = this.y;
+		let trans_d = this.diameter;
 		if (timePassed < transitionTime){
-			let trans_x = linearInterpolation(this.x_old, this.x, 0, transitionTime, timePassed);
-			let trans_y = linearInterpolation(this.y_old, this.y, 0, transitionTime, timePassed);
-			let trans_diameter = linearInterpolation(this.diameter_old, this.diameter, 0, transitionTime, timePassed);
-			this.p5.ellipse(trans_x, trans_y, trans_diameter, trans_diameter);
+			trans_x = linearInterpolation(this.x_old, this.x, 0, transitionTime, timePassed);
+			trans_y = linearInterpolation(this.y_old, this.y, 0, transitionTime, timePassed);
+			trans_d = linearInterpolation(this.diameter_old, this.diameter, 0, transitionTime, timePassed);
 		}
-		else {
-			this.p5.ellipse(this.x, this.y, this.diameter, this.diameter);
-		}
-
+		this.p5.ellipse(trans_x, trans_y, trans_d, trans_d);
 
 		// Return name of the minor planet when being hovered over and in focus, empty string otherwise
 		let minorPlanetString = '';
