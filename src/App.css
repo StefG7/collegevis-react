@@ -377,19 +377,19 @@ table thead {
 }
 
 
-.table-striped>tbody>tr:nth-child(odd)>td.clickableJobTitle, 
-.table-striped>tbody>tr:nth-child(even)>td.clickableJobTitle {
+.table-striped>tbody>tr:nth-child(odd)>td.clickableTableCell, 
+.table-striped>tbody>tr:nth-child(even)>td.clickableTableCell {
     transition:0.3s;
  }
 
-.table-striped>tbody>tr:nth-child(odd)>td.clickableJobTitle:hover, 
-.table-striped>tbody>tr:nth-child(even)>td.clickableJobTitle:hover {
+.table-striped>tbody>tr:nth-child(odd)>td.clickableTableCell:hover, 
+.table-striped>tbody>tr:nth-child(even)>td.clickableTableCell:hover {
     filter: invert(10%);
     cursor: pointer;
  }
 
-.table-striped>tbody>tr:nth-child(odd)>td.clickableJobTitle:active, 
-.table-striped>tbody>tr:nth-child(even)>td.clickableJobTitle:active {
+.table-striped>tbody>tr:nth-child(odd)>td.clickableTableCell:active, 
+.table-striped>tbody>tr:nth-child(even)>td.clickableTableCell:active {
     filter: invert(30%);
  }
 

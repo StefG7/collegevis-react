@@ -64,7 +64,9 @@ const Table = (props) => {
                     let majID = item[0]; 
                     return (
                         <tr key={ index }>
-                        <td>{ ALL_MAJORS[majID][0] + " "}
+                        {/* <td onClick={() => props.markerFunc(ALL_MAJORS[majID][2])} className="clickableTableCell"> */}
+                        <td>
+                            { ALL_MAJORS[majID][0] + " "}
                             {ALL_MAJORS[majID][3] === "TRUE" && <OnlineIcon></OnlineIcon>}</td>
                         <td>{ ALL_MAJORS[majID][2] }</td>
                         <td><MinorTagsTable minorCategories={MAJOR_MINOR_CATEGORIZATION[majID]}></MinorTagsTable></td>
@@ -100,7 +102,7 @@ const Map = (props) => {
                         eventHandlers={{
                         mouseover: (event) => event.target.openPopup(),
                         mouseout: (event) => event.target.closePopup(),
-                        click: (event) => props.markerFunc(item[1], item[0])}}
+                        click: (event) => props.markerFunc(item[1])}}
                         >
                         <Popup>
                             <strong>{item[1]}</strong> <br /> {item[5] + ", CA"}
@@ -166,11 +168,11 @@ class Major extends React.Component{
         })
     }
 
-    setDetails(key) {
+    setDetails(name) {
         // console.log(key)
         CAMPUS_DET.map((item,index) => {
             item.some(element => {
-                if (element == key) {
+                if (element == name) {
                     // console.log("✅ array has key " + key + " at index " + index)
                     this.setState({
                         img_url: CAMPUS_DET[index][15],
@@ -192,14 +194,14 @@ class Major extends React.Component{
         })
     }
 
-    markerFunc(name,key) {
+    markerFunc(name) {
+        console.log(name)
         this.setState({
             myclass: 'expanded',
-            selected: 'selected',
-            campus_key: toString(key)
+            selected: 'selected'
         })
         this.setCampus(name)
-        this.setDetails(key)
+        this.setDetails(name)
     }
 
     populateShownMajor() {  
@@ -229,14 +231,14 @@ class Major extends React.Component{
         return (
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-sm-6 title" style={{"pointer-events":"none"}}>
+                    <div className="col-sm-6 title" style={{"pointerEvents":"none"}}>
                         <h2 > Discovered Majors</h2>
                         <br />
-                        <div style={{"pointer-events":"auto"}}><Table shownMajors={this.shownMajors}/></div>
+                        <div style={{"pointerEvents":"auto"}}><Table shownMajors={this.shownMajors} markerFunc={this.markerFunc}/></div>
                     </div>
                     <div className="col-sm-6">
                         <div className="row">
-                            <Map markerFunc ={this.markerFunc}/> 
+                            <Map markerFunc={this.markerFunc}/> 
                         </div>
                         <div className="row">
                             {/* <Info /> */}

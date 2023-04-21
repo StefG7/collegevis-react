@@ -353,22 +353,7 @@ class MajorPlanet {
 	// The return is to account for passing which minor planet is being hovered over
 	// timePassed is for animation, how many milliseconds passed since the transition started, for interpolation
 	display(landingPageState, majorPlanetInFocus, minorSelections, timePassed){
-		// we should transition the opacity of the major planet image instead of the fill now
-		if (timePassed < transitionTime && this.id != majorPlanetInFocus) {
-			let color = this.p5.color(MAJOR_COLORS[MAJOR_CATEGORIES[this.id]]);
-			if (landingPageState == 0) {
-				color.setAlpha(
-					linearInterpolation(0, 255, 0, transitionTime, timePassed)
-				);
-			}
-			else {
-				color.setAlpha(
-					linearInterpolation(255, 0, 0, transitionTime, timePassed)
-				);
-			}
-			this.p5.fill(color);
-		}
-		else if (landingPageState == 0){
+		if (landingPageState == 0){
 
 			// Display Major Planet Text
 			this.p5.fill("#ffffff");
@@ -391,9 +376,11 @@ class MajorPlanet {
 				this.p5.fill(majorColor);
 			}
 		}
-		else if (landingPageState == 1 && this.id == majorPlanetInFocus)
-			this.p5.fill(MAJOR_COLORS[MAJOR_CATEGORIES[this.id]]);
-		else this.p5.noFill();
+		else {
+			let majorColor = this.p5.color(MAJOR_COLORS[MAJOR_CATEGORIES[this.id]]);
+			majorColor.setAlpha(0);
+			this.p5.fill(majorColor);
+		}
 
 		let trans_x = this.x;
 		let trans_y = this.y;

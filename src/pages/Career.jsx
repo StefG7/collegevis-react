@@ -33,7 +33,7 @@ const Table = ({data, jobClicked}) => {
             {data.map((item, index) => {
                 return (
                     <tr key={ index * 20 + 5 }>
-                    <td onClick={(e) => jobClicked(e.target.innerText)} className="clickableJobTitle">{ item[0] }</td>
+                    <td onClick={(e) => jobClicked(e.target.innerText)} className="clickableTableCell">{ item[0] }</td>
                     <td><MinorTagsTable minorCategories={JOB_MINOR_CATEGORIZATION[item[0]]}></MinorTagsTable></td>
                     <td><ExternalLink link={JOB_DATA[item[0]][3]}></ExternalLink></td>
                     </tr>
@@ -75,7 +75,7 @@ class Career extends React.Component{
 
         return (
             <div className="container-fluid">
-                <div className="row" style={{"pointer-events":"None"}}>
+                <div className="row" style={{"pointerEvents":"None"}}>
                     <div className="col-sm-6 title">
                         {/* <h1>{this.props.minorSelections[0]}</h1> */}
                     </div> 
@@ -104,12 +104,15 @@ class Career extends React.Component{
                             <p>{jobtitle ? JOB_DATA[jobtitle][1] : ''}</p>
 
                             <div className="my-4">
+                                
                                 <h4><strong>Tasks:</strong></h4>
+                                { jobtitle ? 
                                 <ul>
                                     <li>{JOB_DATA[jobtitle][2][0]}</li>
                                     <li>{JOB_DATA[jobtitle][2][1]}</li>
                                     <li>{JOB_DATA[jobtitle][2][2]}</li>
                                 </ul>
+                                : ''}
                             </div>
                         </div>
                     </div>
