@@ -43,9 +43,11 @@ function App() {
         }
 
         // Iterate through major_ids, calculate distance
+        console.log(major_ids);
         let major_id_iter = major_ids.values();
         let major_i = -1;
-        while (major_i = major_id_iter.next().value) {
+        console.log(major_id_iter.next().value);
+        while (major_i = major_id_iter.next().value || major_i == 0) {
             newShownMajors.push([major_i, EditDist(MAJOR_MINOR_CATEGORIZATION[major_i], selections)])
         }
 

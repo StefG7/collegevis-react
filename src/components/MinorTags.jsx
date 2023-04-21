@@ -54,7 +54,8 @@ class MinorT extends React.Component {
             // "borderColor": MINOR_COLORS[this.props.tag] change colors to match minor cat
             <p className='mt-2 p-1' style={{"backgroundColor": MINOR_COLORS[this.props.tag]}}
                 onClick={this.cancelMe}>
-                {this.props.tag} <IoClose color='black'/>
+                {this.props.tag}
+                <a className='redCancel'><IoClose/></a> 
             </p>
         )
     }

@@ -19,7 +19,7 @@ if process_job_data:
     job_categories = {}
     categories_job = {}
 
-    with open('raw_data/test_job_data_analysis.csv') as job_data:
+    with open('raw_data/job_cat_list.csv') as job_data:
         reader = csv.reader(job_data)
         job_initial = True
         for row in reader:
