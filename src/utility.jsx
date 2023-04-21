@@ -1,4 +1,18 @@
 
+import {MINOR_CATEGORIES, MAJOR_CATEGORIES} from './constants.jsx';
+
+export function sort_minor(minorCategories) {
+    let new_category_list = [];
+    for (let i = 0; i < MAJOR_CATEGORIES.length; i++) {
+        for (let j = 0; j < MINOR_CATEGORIES[MAJOR_CATEGORIES[i]].length; j++){
+            if (minorCategories.indexOf(MINOR_CATEGORIES[MAJOR_CATEGORIES[i]][j]) >= 0) {
+                new_category_list.push(MINOR_CATEGORIES[MAJOR_CATEGORIES[i]][j]);
+            }
+        }
+    }
+    return new_category_list;
+}
+
 // Given two arrays, calculate their edit distance
 // Return -1 if there's no shared element between the two arrays
 // Each add or delete from the array adds 1 to the distance

@@ -2,7 +2,8 @@ import React, {useEffect} from 'react';
 import '../App.css'
 
 import { IoClose } from 'react-icons/io5';
-import {MAJOR_COLORS, MINOR_CATEGORIES, MAJOR_CATEGORIES, MINOR_COLORS} from '../constants.jsx';
+import {MINOR_CATEGORIES, MAJOR_CATEGORIES, MINOR_COLORS} from '../constants.jsx';
+import {sort_minor} from '../utility.jsx';
 
 
 class MinorTags extends React.Component {
@@ -11,9 +12,10 @@ class MinorTags extends React.Component {
 	}
 
     render() {
+        let sorted_minor = sort_minor(this.props.minorSelections);
 		return (
             <div id="MinorTags">
-                {this.props.minorSelections.map(tag => (
+                {sorted_minor.map(tag => (
                     <MinorT
                         key={tag} tag={tag}
                         minorSelections={this.props.minorSelections}

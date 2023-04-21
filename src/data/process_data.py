@@ -1,6 +1,6 @@
 import csv
 
-process_job_data = True
+process_job_data = False
 process_all_maj = False
 process_maj_min = False
 

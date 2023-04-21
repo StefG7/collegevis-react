@@ -1,19 +1,20 @@
 import React, {useEffect} from 'react';
 import '../App.css'
 
-import {MAJOR_COLORS, MINOR_CATEGORIES, MAJOR_CATEGORIES, MINOR_COLORS} from '../constants.jsx';
+import {MINOR_CATEGORIES, MAJOR_CATEGORIES, MINOR_COLORS} from '../constants.jsx';
+import {sort_minor} from '../utility.jsx';
 
 // One used in detail page to display the tags
-
 class MinorTagsTable extends React.Component {
 	constructor(props) {
 		super(props);
 	}
 
     render() {
+        let sorted_minor = sort_minor(this.props.minorCategories);
 		return (
             <div className="MinorTagsTable">
-                {this.props.minorCategories.map(tag => (
+                {sorted_minor.map(tag => (
                     <MinorTTable
                         key={tag} tag={tag}
                     ></MinorTTable> 
