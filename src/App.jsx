@@ -17,8 +17,6 @@ import {PAGE_STATE} from './constants.jsx';
 import { MAJOR_MINOR_CATEGORIZATION, MINOR_CATEGORIZATION_MAJOR } from "./data/major_minor_categorization";
 import { JOB_MINOR_CATEGORIZATION, MINOR_CATEGORIZATION_JOB} from "./data/job_minor_categorization";
 
-console.log(MINOR_CATEGORIZATION_JOB)
-
 function App() {
     const [state, setState] = useState(PAGE_STATE["Home"]);
     const [minorSelections, setMinorSelections] = useState([]);
