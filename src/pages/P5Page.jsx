@@ -529,9 +529,15 @@ class MinorPlanet {
 		if (landingPageState == 1 && this.majorI == majorPlanetInFocus && timePassed > transitionTime){
 			
 			// Display Minor Planet Text
-			this.p5.fill("#ffffff");
 			this.p5.textSize(textSize);
 			this.p5.textAlign(this.p5.CENTER);
+			this.p5.fill("#202020");
+			this.p5.text(this.name, 
+				this.x - this.d * textBoxRatio + 1,
+				this.y + this.d * 0.1 + 1,
+				this.d * textBoxRatio * 2,
+				this.p5.sqrt(this.p5.sq(this.d / 2) - this.p5.sq(this.d * textBoxRatio)));
+			this.p5.fill("#ffffff");
 			this.p5.text(this.name, 
 					this.x - this.d * textBoxRatio,
 					this.y + this.d * 0.1,

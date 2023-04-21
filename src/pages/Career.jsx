@@ -75,7 +75,7 @@ class Career extends React.Component{
 
         return (
             <div className="container-fluid">
-                <div className="row">
+                <div className="row" style={{"pointer-events":"None"}}>
                     <div className="col-sm-6 title">
                         {/* <h1>{this.props.minorSelections[0]}</h1> */}
                     </div> 

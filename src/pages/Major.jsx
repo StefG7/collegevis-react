@@ -229,10 +229,10 @@ class Major extends React.Component{
         return (
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-sm-6 title">
-                        <h2> Discovered Majors</h2>
+                    <div className="col-sm-6 title" style={{"pointer-events":"none"}}>
+                        <h2 > Discovered Majors</h2>
                         <br />
-                        <Table shownMajors={this.shownMajors} />
+                        <div style={{"pointer-events":"auto"}}><Table shownMajors={this.shownMajors}/></div>
                     </div>
                     <div className="col-sm-6">
                         <div className="row">
