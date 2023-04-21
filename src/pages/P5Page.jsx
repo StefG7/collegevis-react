@@ -68,7 +68,9 @@ class P5Page extends React.Component {
 
 		p5.setup = () => {
 			p5.createCanvas(p5.windowWidth, p5.windowHeight);
-			// planetImg[0] = p5.loadImage(MAJOR_IMG[0]);
+			
+			// p5.imageMode(CORNER);
+
 			for (let i = 0; i < numPlanet; i++) {
 				planetImg[i] = p5.loadImage(MAJOR_IMG[i]);
 				majorPlanetList[i] = new MajorPlanet(
@@ -88,7 +90,8 @@ class P5Page extends React.Component {
    
 		p5.draw = () => {
 			p5.background(24, 29, 39);
-			// p5.image(planetImg[0],0,0,200,200);			let currentTime = p5.millis();
+			// p5.image(planetImg[0],0,0,200,200);			
+			let currentTime = p5.millis();
 			let timePassed = currentTime - this.aniStartTime;
 
 			// Planet Rendering when in Home Page
@@ -278,10 +281,12 @@ class P5Page extends React.Component {
 					planetName={this.state.hoverMinorPlanetName}>
 				</MinorDescription>
 				<div ref={this.myRef} className="p5Container"></div>
-				<MinorTags
-					minorSelections={this.props.minorSelections}
-					setMinorSelections={this.props.setMinorSelections}
-				></MinorTags>
+				<div>
+					<MinorTags
+						minorSelections={this.props.minorSelections}
+						setMinorSelections={this.props.setMinorSelections}
+					></MinorTags>
+				</div>
 			</div>
 			);
 	}
@@ -298,7 +303,7 @@ const MinorDescription = (props) => {
 }
 
 class MajorPlanet {
-	constructor(xin, yin, din, idin, nin, oin, p5) {
+	constructor(xin, yin, din, idin, nin, oin, p5, img) {
 		this.x = xin;
 		this.y = yin;
 		this.diameter = din;
@@ -310,6 +315,7 @@ class MajorPlanet {
 		this.name = nin;
 		this.others = oin;
 		this.p5 = p5;
+		this.img = img;
 
 		this.minorList = [];
 		for (let i = 0; i < MINOR_CATEGORIES[this.name].length; i++) {
@@ -347,6 +353,7 @@ class MajorPlanet {
 	// The return is to account for passing which minor planet is being hovered over
 	// timePassed is for animation, how many milliseconds passed since the transition started, for interpolation
 	display(landingPageState, majorPlanetInFocus, minorSelections, timePassed){
+		// we should transition the opacity of the major planet image instead of the fill now
 		if (timePassed < transitionTime && this.id != majorPlanetInFocus) {
 			let color = this.p5.color(MAJOR_COLORS[MAJOR_CATEGORIES[this.id]]);
 			if (landingPageState == 0) {
@@ -366,17 +373,23 @@ class MajorPlanet {
 			// Display Major Planet Text
 			this.p5.fill("#ffffff");
 			this.p5.textSize(textSize);
-			// this.p5.textStyle(BOLD);
+			this.p5.textStyle(this.p5.BOLD);
 			this.p5.textAlign(this.p5.CENTER);
-			this.p5.text(this.name, this.x, this.y + this.diameter / 2 + textSize);
+			this.p5.text(this.name, this.x, this.y + this.diameter / 2 + textSize*1.5);
 
 			// Hover checking
 			if (this.p5.pow(this.p5.mouseX - this.x, 2) + 
 				this.p5.pow(this.p5.mouseY - this.y, 2) < 
 					this.p5.pow(this.diameter / 2, 2)) {
-				this.p5.fill("#ffffff");
+				let hoverColor = this.p5.color("#ffffff")
+				hoverColor.setAlpha(90);
+				this.p5.fill(hoverColor);
 			}
-			else this.p5.fill(MAJOR_COLORS[MAJOR_CATEGORIES[this.id]]);
+			else {
+				let majorColor = this.p5.color(MAJOR_COLORS[MAJOR_CATEGORIES[this.id]]);
+				majorColor.setAlpha(0);
+				this.p5.fill(majorColor);
+			}
 		}
 		else if (landingPageState == 1 && this.id == majorPlanetInFocus)
 			this.p5.fill(MAJOR_COLORS[MAJOR_CATEGORIES[this.id]]);
@@ -390,6 +403,10 @@ class MajorPlanet {
 			trans_y = linearInterpolation(this.y_old, this.y, 0, transitionTime, timePassed);
 			trans_d = linearInterpolation(this.diameter_old, this.diameter, 0, transitionTime, timePassed);
 		}
+		// this did not want to work for whatever reason, it would fix the image placement issue we have now when resizing
+		this.p5.imageMode(this.p5.CENTER);
+
+		this.p5.image(this.img, trans_x, trans_y, trans_d+10, trans_d+10); // placed behind ellipse so hover still works but set fill of ellipse to 0 opacity
 		this.p5.ellipse(trans_x, trans_y, trans_d, trans_d);
 
 		// Return name of the minor planet when being hovered over and in focus, empty string otherwise

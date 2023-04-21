@@ -38,7 +38,7 @@ class MinorTTable extends React.Component {
         }
 
         return (
-            <p style={{"backgroundColor": MAJOR_COLORS[major],
+            <p style={{"backgroundColor": MINOR_COLORS[this.props.tag],
                         "borderColor": MINOR_COLORS[this.props.tag]}}    
                 data-tooltip-id="my-tooltip" 
                 data-tooltip-content={this.props.tag}

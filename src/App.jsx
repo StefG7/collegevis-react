@@ -10,6 +10,7 @@ import Major from './pages/Major';
 import Career from './pages/Career';
 
 import {EditDist} from './utility';
+import { IoHome, IoBriefcase, IoSchool } from 'react-icons/io5';
 
 // Constant var and data loading
 import {PAGE_STATE} from './constants.jsx';
@@ -85,7 +86,7 @@ function App() {
             {state != PAGE_STATE["Home"] &&
                 <div className='row'>
                     <div className='btn-layout col-sm-6'>
-                            <button className='btn' onClick={() => setState(PAGE_STATE["Home"])}>Home</button>
+                            <button className='btn' onClick={() => setState(PAGE_STATE["Home"])}><IoHome/></button>
                     </div>
                     <div className='btn-layout col-sm-6' style={{display: 'flex', justifyContent:'flex-end'}}>
                         {state == PAGE_STATE["Majors"] &&
@@ -110,8 +111,6 @@ function App() {
                         setMinorSelections={handleMinorChange}
                 />
             </div>
-            {/* Make FirstPage prop reactive to pass clicked minor category events from P5Background to Details page*/}
-            {/* <P5Background /> */}
         </div>
     );
 

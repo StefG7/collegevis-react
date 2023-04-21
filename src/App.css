@@ -86,7 +86,8 @@ h3 {
 }
 
 table {
-    font-size: 0.6vw;
+    font-size: 0.7vw;
+    font-weight: 500;
 }
 
 table thead {
@@ -151,19 +152,28 @@ table thead {
   z-index: 4;
 }
 
+#MinorTags:hover {
+    background-color: rgba(255,0,0,0.7);
+}
+
 #MinorTags p {
     display:inline;
     position: relative;
-    color: black;
+    color: var(--jet);
     text-align: center;
     font-size: 1em;
-    border-style:solid;
+    font-weight: 600;
     border-width: 10;
     border-radius: 8px;
-    padding-top: 1px;
+    /* text-shadow: 0.1px 1.2px 1.8px #000000; */
+    text-shadow: -1px 1px 0 white,
+				  1px 1px 0 white,
+				 1px -1px 0 white,
+				-1px -1px 0 white;
+    /* padding-top: 1px;
     padding-bottom: 1px;
     padding-left: 5px;
-    padding-right: 5px;
+    padding-right: 5px; */
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none; /* Standard syntax */
@@ -172,7 +182,6 @@ table thead {
 #MinorTags p:hover {
     transition: 0.2s;
     opacity: 20%;
-    
 }
 
 #MinorTags p + p {
@@ -190,8 +199,8 @@ table thead {
     border-radius: 8px;
     padding-top: 1px;
     padding-bottom: 1px;
-    padding-left: 1px;
-    padding-right: 1px;
+    padding-left: 2px;
+    padding-right: 2px;
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none; /* Standard syntax */
@@ -312,7 +321,7 @@ table thead {
 
 #app {
     background-color: var(--keppel);
-    font-size: 1.5vw;
+    font-size: 1.4vw;
     border-radius: 17px;
 }
 
@@ -382,13 +391,13 @@ table thead {
 .btn {
     color: white;
     background-color: #ef5c29;
-    font-size: 30px;
+    font-size: 1.5vw;
     font-weight: bold;
-    border-radius: 7px;
+    border-radius: 0.8vh;
 }
 
 .btn-layout {
-    padding: 25px;
+    padding: 2vh;
     /* margin-left: 10px; */
 }
 

@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import '../App.css'
 
+import { IoClose } from 'react-icons/io5';
 import {MAJOR_COLORS, MINOR_CATEGORIES, MAJOR_CATEGORIES, MINOR_COLORS} from '../constants.jsx';
 
 
@@ -50,10 +51,10 @@ class MinorT extends React.Component {
         }
 
         return (
-            <p style={{"backgroundColor": MAJOR_COLORS[major],
-                        "borderColor": MINOR_COLORS[this.props.tag]}}
+            // "borderColor": MINOR_COLORS[this.props.tag] change colors to match minor cat
+            <p className='mt-2 p-1' style={{"backgroundColor": MINOR_COLORS[this.props.tag]}}
                 onClick={this.cancelMe}>
-                {this.props.tag}
+                {this.props.tag} <IoClose color='black'/>
             </p>
         )
     }

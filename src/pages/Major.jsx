@@ -27,9 +27,6 @@ let customIcon = L.icon({
     iconSize: [40, 40], // changing size based on majors offered at campus
     iconAnchor: [12, 15],
     popupAnchor: [0, 0],
-    // shadowUrl: 'assets/shadow-3.png',
-    // shadowSize: [40, 40],
-    // shadowAnchor: [12, 10],
 })
 
 /* Table Generating Function
@@ -102,10 +99,11 @@ const Map = (props) => {
                     <Marker icon={customIcon} position={[item[3], item[2]]} key={index*40+7}
                         eventHandlers={{
                         mouseover: (event) => event.target.openPopup(),
+                        mouseout: (event) => event.target.closePopup(),
                         click: (event) => props.markerFunc(item[1], item[0])}}
                         >
                         <Popup>
-                            {item[1]} <br /> {item[5] + ", CA"}
+                            <strong>{item[1]}</strong> <br /> {item[5] + ", CA"}
                         </Popup>
                     </Marker>
                 );
@@ -255,15 +253,15 @@ class Major extends React.Component{
                                 <div id="overview" className={"row " + this.state.selected}>
                                     <div className="row">
                                         <h2><b>Overview</b></h2>
-                                        <div className="col-sm-9 mt-3">
+                                        <div className="col-sm-8 mt-3">
                                             <p><IoInformationCircle color="#ef5c29ff"/> <a href={this.state.web} target="_blank" rel="noopener noreferrer">{this.state.web}</a></p>
                                             <p><IoPeople color="#ef5c29ff"/> {this.state.size}</p>
                                             <p><IoLocationSharp color="#ef5c29ff"/> {this.state.address}</p>
                                             <p><IoCall color="#ef5c29ff"/> {this.state.phone}</p>
                                         </div>
-                                        <div className="col-sm-3 mt-3">
+                                        <div className="col-sm-4 mt-3">
                                             {/* <div className="row mx-6"><a className="btn" href={this.state.web} target="_blank" rel="noopener noreferrer"><IoEnter/>  Webpage</a></div> */}
-                                            <div className="row mx-3 mt-2"><a id="app" className="btn" href={this.state.app} target="_blank" rel="noopener noreferrer">  Apply <br></br> <IoSchool className="mt-2" size={70}/></a></div>
+                                            <div className="row mx-3 mt-2"><a id="app" className="btn" href={this.state.app} target="_blank" rel="noopener noreferrer">  Apply <br></br> <IoSchool className="mt-2 lg"/></a></div>
                                         </div>
                                     </div>
                                 </div>
