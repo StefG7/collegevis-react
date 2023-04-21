@@ -86,9 +86,10 @@ class Career extends React.Component{
                 <div className="row">
                     <div className="col-sm-6 title">
                         {/* eventually all the sample information shown below will be passed down as props or imported */}
-                        <img className="img-fluid rounded mx-auto d-block" src="assets/campus/pexels-mario-schafer-11322619.jpg" alt="Chefs rolling out dough" />
-                        <br /><br />
-                        <div className="row mx-5">
+                        <div id="campus" className="row mb-5">
+                            <img id="career-img" src="assets/campus/pexels-mario-schafer-11322619.jpg" alt="Chefs rolling out dough" />
+                        </div>
+                        <div className="row mx-4">
                             <h3>{jobtitle ? jobtitle : "No Job Found"}</h3>
                             { jobtitle ? 
                                 <p className="othernames">
@@ -101,11 +102,23 @@ class Career extends React.Component{
                             <br /><br />
                             {/* what they do*/}
                             <p>{jobtitle ? JOB_DATA[jobtitle][1] : ''}</p>
+
+                            <div className="my-4">
+                                <h4><strong>Tasks:</strong></h4>
+                                <ul>
+                                    <li>{JOB_DATA[jobtitle][2][0]}</li>
+                                    <li>{JOB_DATA[jobtitle][2][1]}</li>
+                                    <li>{JOB_DATA[jobtitle][2][2]}</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <div className="col-sm-6 title">
                         <Table data={ this.props.shownJobs } jobClicked={ this.jobClicked }/>
                     </div>
+                </div>
+                <div className="row source">
+                    <p>Data sourced from <a href="https://www.onetonline.org/" target="_blank" rel="noopener noreferrer">O*NET OnLine</a>  | Nov. 2022</p>
                 </div>
             </div>
         )

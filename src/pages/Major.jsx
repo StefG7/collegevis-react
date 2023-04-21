@@ -88,7 +88,7 @@ const Table = (props) => {
 const Map = (props) => {
     return (
         <div className="leaflet-container"> 
-            <MapContainer center={[36.778259, -119.417931]} zoom={6} scrollWheelZoom={true}>
+            <MapContainer center={[36, -119.9]} zoom={6} scrollWheelZoom={true}>
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -281,6 +281,9 @@ class Major extends React.Component{
                         </div>
                     </div>
                 </div>
+                <div className="row source2">
+                    <p>Data sourced from <a href="https://educationdata.urban.org/data-explorer" target="_blank" rel="noopener noreferrer">Educational Data Explorer</a> | Nov. 2022</p>
+                </div>  
             </div>
         )
     }

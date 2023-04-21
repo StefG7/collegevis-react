@@ -215,6 +215,13 @@ table thead {
     display: inline-block;
 }
 
+#career-img {
+    width: 94%;
+    height: 20vh;
+    object-fit:cover;
+    border-radius: 25px;
+}
+
 #img-fluid {
     width: 94%;
     height: 20vh;
@@ -232,7 +239,7 @@ table thead {
     margin-top: -5vh;
     padding: 1.5vw;
     overflow: hidden;
-    border-radius: 15px;
+    /* border-radius: 15px; */
     /* height: 100%; */
 }
 
@@ -297,7 +304,7 @@ table thead {
 #detail {
     position: relative;
     margin: auto; 
-    top: -5.5vh;
+    top: -9.5vh;
     width: 40vw;
     height: 15vh;
     border-radius: 15px;
@@ -331,8 +338,8 @@ table thead {
 }
 
 #detail.expanded {
-    top: -40.5vh;
-    height: 50vh;
+    top: -40vh;
+    height: 45vh;
 }
 
 .online_icon {
@@ -424,3 +431,21 @@ table thead {
     margin-right: 8rem !important;
 }
 
+.source {
+    text-align: right;
+}
+
+.source p {
+    font-size: 0.8em;
+}
+
+.source2 {
+    text-align: right;
+    position: absolute;
+    right: 1.5em;
+    bottom: 0.4em;
+}
+
+.source2 p {
+    font-size: 0.8em;
+}
