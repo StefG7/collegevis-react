@@ -14,6 +14,7 @@ let numPlanet = MAJOR_CATEGORIES.length;
 let planetSizeRatio = 0.15;
 let majorPlanetList = [];
 let planetImg = [];
+let stars;
 let textSize = 19; // Planet text size
 
 let majorMinorRatio = 0.2; // size ratio between major and minor planets
@@ -68,8 +69,9 @@ class P5Page extends React.Component {
 
 		p5.setup = () => {
 			p5.createCanvas(p5.windowWidth, p5.windowHeight);
+			p5.frameRate(23);
 			
-			// p5.imageMode(CORNER);
+			stars = p5.loadImage("./assets/stars.png");
 
 			for (let i = 0; i < numPlanet; i++) {
 				planetImg[i] = p5.loadImage(MAJOR_IMG[i]);
@@ -93,17 +95,14 @@ class P5Page extends React.Component {
 			// p5.image(planetImg[0],0,0,200,200);			
 			let currentTime = p5.millis();
 			let timePassed = currentTime - this.aniStartTime;
-			// add stars here
+
 			// Stars
-			// for (let j = 0; j < 20; j++) {
-			// 	let a = Math.floor(Math.random() * 10) + 1;
-			// 	let x1 = Math.floor(Math.random() * p5.windowWidth-5) + 5;
-			// 	let y1 = Math.floor(Math.random() * p5.windowHeight-5) + 5;
-			// 	p5.stroke("#b3deff"); 
-			// 	p5.strokeWeight(a); 
-			// 	p5.point(x1, y1);
-			// 	p5.noStroke();
-			// }
+			p5.imageMode(p5.CENTER);
+			p5.push();
+				p5.tint(255, 150);
+				p5.image(stars,p5.windowWidth/2,p5.windowHeight/2);
+			p5.pop();
+
 			// Planet Rendering when in Home Page
 			if (this.props.pageState == PAGE_STATE["Home"]){
 				// SETTING HOVERMINOR TO FALSE EVERY FRAME
@@ -400,8 +399,8 @@ class MajorPlanet {
 			trans_y = linearInterpolation(this.y_old, this.y, 0, transitionTime, timePassed);
 			trans_d = linearInterpolation(this.diameter_old, this.diameter, 0, transitionTime, timePassed);
 		}
-		// this did not want to work for whatever reason, it would fix the image placement issue we have now when resizing
-		this.p5.imageMode(this.p5.CENTER);
+		// // this did not want to work for whatever reason, it would fix the image placement issue we have now when resizing
+		// this.p5.imageMode(this.p5.CENTER);
 
 		this.p5.image(this.img, trans_x, trans_y, trans_d+10, trans_d+10); // placed behind ellipse so hover still works but set fill of ellipse to 0 opacity
 		this.p5.ellipse(trans_x, trans_y, trans_d, trans_d);
