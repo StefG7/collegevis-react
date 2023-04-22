@@ -86,33 +86,40 @@ class Career extends React.Component{
                 <div className="row">
                     <div className="col-sm-6 title">
                         {/* eventually all the sample information shown below will be passed down as props or imported */}
-                        <div id="campus" className="row mb-5">
+                        <div className="career-pic row mb-3">
                             <img id="career-img" src="assets/campus/pexels-mario-schafer-11322619.jpg" alt="Chefs rolling out dough" />
                         </div>
                         <div className="row mx-4">
-                            <h3>{jobtitle ? jobtitle : "No Job Found"}</h3>
-                            { jobtitle ? 
-                                <p className="othernames">
-                                {JOB_DATA[jobtitle][0][0]},&nbsp;
-                                {JOB_DATA[jobtitle][0][1]},&nbsp;
-                                {JOB_DATA[jobtitle][0][2]}...
-                                </p> 
-                             : ''
-                            }
-                            <br /><br />
-                            {/* what they do*/}
-                            <p>{jobtitle ? JOB_DATA[jobtitle][1] : ''}</p>
-
-                            <div className="my-4">
-                                
-                                <h4><strong>Tasks:</strong></h4>
+                            <div className="row career mb-1 p-3 ml-2">
+                                <h3>{jobtitle ? jobtitle : "No Job Found"}</h3>
                                 { jobtitle ? 
-                                <ul>
-                                    <li>{JOB_DATA[jobtitle][2][0]}</li>
-                                    <li>{JOB_DATA[jobtitle][2][1]}</li>
-                                    <li>{JOB_DATA[jobtitle][2][2]}</li>
-                                </ul>
-                                : ''}
+                                    <div className="othernames">
+                                        <p>
+                                        <strong>Also called: </strong>
+                                            {JOB_DATA[jobtitle][0][0]},&nbsp;
+                                            {JOB_DATA[jobtitle][0][1]},&nbsp;
+                                            {JOB_DATA[jobtitle][0][2]}...
+                                        </p> 
+                                    </div>
+                                : ''
+                                }
+                                {/* what they do*/}
+                                <p>{jobtitle ? JOB_DATA[jobtitle][1] : ''}</p>
+                            </div>
+                            <div className="row my-4">
+                                <div className="tasks">
+                                    <h4><strong>Tasks:</strong></h4>
+                                    { jobtitle ? 
+                                    <ul>
+                                        <li>{JOB_DATA[jobtitle][2][0]}</li>
+                                        <li>{JOB_DATA[jobtitle][2][1]}</li>
+                                        <li>{JOB_DATA[jobtitle][2][2]}</li>
+                                    </ul>
+                                    : ''}
+                                </div>
+                                <div className="col-sm-3">
+                                        {console.log(jobtitle)}
+                                </div>
                             </div>
                         </div>
                     </div>

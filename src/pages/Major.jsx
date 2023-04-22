@@ -283,7 +283,7 @@ class Major extends React.Component{
                         </div>
                     </div>
                 </div>
-                <div className="row source2">
+                <div className="row source">
                     <p>Data sourced from <a href="https://educationdata.urban.org/data-explorer" target="_blank" rel="noopener noreferrer">Educational Data Explorer</a> | Nov. 2022</p>
                 </div>  
             </div>

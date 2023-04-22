@@ -14,7 +14,7 @@ let numPlanet = MAJOR_CATEGORIES.length;
 let planetSizeRatio = 0.15;
 let majorPlanetList = [];
 let planetImg = [];
-let textSize = 18; // Planet text size
+let textSize = 19; // Planet text size
 
 let majorMinorRatio = 0.2; // size ratio between major and minor planets
 let minorFocusRatio = 0.8; // size ratio between major and minor planets when the minor planets are in focus
@@ -93,7 +93,17 @@ class P5Page extends React.Component {
 			// p5.image(planetImg[0],0,0,200,200);			
 			let currentTime = p5.millis();
 			let timePassed = currentTime - this.aniStartTime;
-
+			// add stars here
+			// Stars
+			// for (let j = 0; j < 20; j++) {
+			// 	let a = Math.floor(Math.random() * 10) + 1;
+			// 	let x1 = Math.floor(Math.random() * p5.windowWidth-5) + 5;
+			// 	let y1 = Math.floor(Math.random() * p5.windowHeight-5) + 5;
+			// 	p5.stroke("#b3deff"); 
+			// 	p5.strokeWeight(a); 
+			// 	p5.point(x1, y1);
+			// 	p5.noStroke();
+			// }
 			// Planet Rendering when in Home Page
 			if (this.props.pageState == PAGE_STATE["Home"]){
 				// SETTING HOVERMINOR TO FALSE EVERY FRAME
@@ -297,7 +307,7 @@ const MinorDescription = (props) => {
     return (
         <div id="MinorDescription" style={props.style}>
 			<h1> {props.planetName} </h1>
-            <p> {MINOR_DESCRIPTION_FIRST_PAGE[props.planetName]} </p>
+            {/* <p> {MINOR_DESCRIPTION_FIRST_PAGE[props.planetName]} </p> */}
         </div>
     );
 }
@@ -516,21 +526,30 @@ class MinorPlanet {
 		if (landingPageState == 1 && this.majorI == majorPlanetInFocus && timePassed > transitionTime){
 			
 			// Display Minor Planet Text
-			this.p5.textSize(textSize);
+			this.p5.textSize(textSize*1.2);
 			this.p5.textAlign(this.p5.CENTER);
 			this.p5.fill("#202020");
 			this.p5.text(this.name, 
 				this.x - this.d * textBoxRatio + 1,
-				this.y + this.d * 0.1 + 1,
+				this.y + this.d * 0.1 - 35,
+				this.d * textBoxRatio * 2,
+				this.p5.sqrt(this.p5.sq(this.d / 2) - this.p5.sq(this.d * textBoxRatio)));
+			this.p5.text(this.name, 
+				this.x - this.d * textBoxRatio - 1,
+				this.y + this.d * 0.1 - 37,
+				this.d * textBoxRatio * 2,
+				this.p5.sqrt(this.p5.sq(this.d / 2) - this.p5.sq(this.d * textBoxRatio)));
+			this.p5.text(this.name, 
+				this.x - this.d * textBoxRatio + 1,
+				this.y + this.d * 0.1 - 37,
 				this.d * textBoxRatio * 2,
 				this.p5.sqrt(this.p5.sq(this.d / 2) - this.p5.sq(this.d * textBoxRatio)));
 			this.p5.fill("#ffffff");
 			this.p5.text(this.name, 
 					this.x - this.d * textBoxRatio,
-					this.y + this.d * 0.1,
+					this.y + this.d * 0.1 - 37,
 					this.d * textBoxRatio * 2,
 					this.p5.sqrt(this.p5.sq(this.d / 2) - this.p5.sq(this.d * textBoxRatio)));
-
 		}
 
 		return minorPlanetString;
