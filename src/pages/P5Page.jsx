@@ -69,7 +69,6 @@ class P5Page extends React.Component {
 
 		p5.setup = () => {
 			p5.createCanvas(p5.windowWidth, p5.windowHeight);
-			p5.frameRate(23);
 			
 			stars = p5.loadImage("./assets/stars.png");
 

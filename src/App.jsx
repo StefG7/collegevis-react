@@ -76,7 +76,7 @@ function App() {
         }
         
         // Sort by distance
-        newShownJobs.sort((a,b) => (a[1] - b[1]));
+        // newShownJobs.sort((a,b) => (a[1] - b[1]));
         setShownJobs(newShownJobs);
     }
 
