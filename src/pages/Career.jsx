@@ -2,6 +2,7 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import JOBS from '../data/final_jobs.json';
 import { JOB_DATA } from "../data/job_data";
+import { MINOR_IMG } from "../constants";
 
 import ExternalLink from "../components/ExternalLink";
 import MinorTagsTable from "../components/MinorTagsTable";
@@ -58,6 +59,7 @@ class Career extends React.Component{
         super();
         this.state = {
          selectedJobTitle: '',
+         currentImg: 'assets/pexels-mario-schafer-11322619.jpg',
         }
         this.jobClicked = this.jobClicked.bind(this);
     }
@@ -65,7 +67,8 @@ class Career extends React.Component{
     jobClicked(name) {
         console.log(name);
         this.setState({
-            selectedJobTitle: name
+            selectedJobTitle: name,
+            currentImg: MINOR_IMG[this.props.minorSelections[0]],
         });
      }
 
@@ -87,7 +90,7 @@ class Career extends React.Component{
                     <div className="col-sm-6 title">
                         {/* eventually all the sample information shown below will be passed down as props or imported */}
                         <div className="career-pic row mb-3">
-                            <img id="career-img" src="assets/campus/pexels-mario-schafer-11322619.jpg" alt="Chefs rolling out dough" />
+                            <img id="career-img" src={this.state.currentImg} alt="Career image" />
                         </div>
                         <div className="row mx-4">
                             <div className="row career mb-1 p-3 ml-2">
