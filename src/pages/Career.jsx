@@ -59,7 +59,7 @@ class Career extends React.Component{
         super();
         this.state = {
          selectedJobTitle: '',
-         currentImg: 'assets/pexels-mario-schafer-11322619.jpg',
+         currentImg: MINOR_IMG['Sociology'],
         }
         this.jobClicked = this.jobClicked.bind(this);
     }
