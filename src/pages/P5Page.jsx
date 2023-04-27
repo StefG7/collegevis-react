@@ -137,6 +137,7 @@ class P5Page extends React.Component {
 
 		this.updatePlanetPosition = () => {
 			if (this.landingPageState == 0) {
+				stars.resize(p5.windowWidth,p5.windowHeight);
 				for (let i = 0; i < majorPlanetList.length; i++){
 					majorPlanetList[i].x = p5.width * MAJOR_POSITIONS[MAJOR_CATEGORIES[i]][0];
 					majorPlanetList[i].y = p5.height * MAJOR_POSITIONS[MAJOR_CATEGORIES[i]][1];
@@ -145,6 +146,7 @@ class P5Page extends React.Component {
 				}
 			}
 			else if (this.landingPageState == 1) {
+				stars.resize(p5.windowWidth,p5.windowHeight);
 				let p0 = [p5.width * MAJOR_POSITIONS[MAJOR_CATEGORIES[this.majorPlanetInFocus]][0],
 						  p5.height * MAJOR_POSITIONS[MAJOR_CATEGORIES[this.majorPlanetInFocus]][1]];
 				let left = 0 + p5.width * borderMarginRatio;
